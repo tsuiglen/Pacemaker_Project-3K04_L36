@@ -1,15 +1,26 @@
-import tkinter
+from tkinter import *
 
-def login():
-    window = tkinter.Tk()
-    window.title("Login")
+class loginWindow:
 
-    tkinter.Label(window, text = "Username").grid(row = 0)
-    tkinter.Entry(window).grid(row = 0, column = 1)
+    def __init__(self, master):
+        self.master = master
+        master.title("Welcome")
+        #master.geometry("500x500")
+        Label(master, text="Username").grid(row=0)
+        Label(master, text="Password").grid(row=1)
 
-    tkinter.Label(window, text = "Password").grid(row = 1)
-    tkinter.Entry(window).grid(row = 1, column = 1)
+        self.username = Entry(master)
+        self.username.grid(row=0, column=1)
 
-    tkinter.Checkbutton(window, text = "Keep Me Logged In").grid(columnspan = 2)
+        self.password = Entry(master)
+        self.password.grid(row=1, column=1)
 
-    window.mainloop()
+        self.printButton = Button(master, text="Login", command=self.validateLogin)
+        self.printButton.grid(row=3, column=1)
+
+    def validateLogin(self):
+        print("Hello " + self.username.get())
+
+login = Tk()
+loginWindow = loginWindow(login)
+login.mainloop()
