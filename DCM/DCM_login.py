@@ -21,6 +21,7 @@ class loginWindow:
     def validateLogin(self):
         print("Hello " + self.username.get())
 
+#Testing
 login = Tk()
 loginWindow = loginWindow(login)
 login.mainloop()
