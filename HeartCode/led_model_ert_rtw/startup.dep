@@ -1,0 +1,37 @@
+startup.o: D:/Softwares/Freescale/KSDK_1.2.0/platform/devices/startup.c \
+ D:/Softwares/Freescale/KSDK_1.2.0/platform/devices/startup.h \
+ D:/Softwares/Freescale/KSDK_1.2.0/platform/devices/fsl_device_registers.h \
+ D:/Softwares/Freescale/KSDK_1.2.0/platform/devices/MK64F12/include/MK64F12.h \
+ D:/Softwares/Freescale/KSDK_1.2.0/platform/CMSIS/Include/core_cm4.h \
+ D:/Softwares/Freescale/KSDK_1.2.0/platform/CMSIS/Include/core_cmInstr.h \
+ D:/Softwares/Freescale/KSDK_1.2.0/platform/CMSIS/Include/core_cmFunc.h \
+ D:/Softwares/Freescale/KSDK_1.2.0/platform/CMSIS/Include/core_cmSimd.h \
+ D:/Softwares/Freescale/KSDK_1.2.0/platform/devices/MK64F12/startup/system_MK64F12.h \
+ D:/Softwares/Freescale/KSDK_1.2.0/platform/devices/MK64F12/include/MK64F12_extension.h \
+ D:/Softwares/Freescale/KSDK_1.2.0/platform/devices/MK64F12/include/MK64F12.h \
+ D:/Softwares/Freescale/KSDK_1.2.0/platform/devices/MK64F12/include/fsl_bitaccess.h \
+ D:/Softwares/Freescale/KSDK_1.2.0/platform/devices/MK64F12/include/MK64F12_features.h
+
+D:/Softwares/Freescale/KSDK_1.2.0/platform/devices/startup.h:
+
+D:/Softwares/Freescale/KSDK_1.2.0/platform/devices/fsl_device_registers.h:
+
+D:/Softwares/Freescale/KSDK_1.2.0/platform/devices/MK64F12/include/MK64F12.h:
+
+D:/Softwares/Freescale/KSDK_1.2.0/platform/CMSIS/Include/core_cm4.h:
+
+D:/Softwares/Freescale/KSDK_1.2.0/platform/CMSIS/Include/core_cmInstr.h:
+
+D:/Softwares/Freescale/KSDK_1.2.0/platform/CMSIS/Include/core_cmFunc.h:
+
+D:/Softwares/Freescale/KSDK_1.2.0/platform/CMSIS/Include/core_cmSimd.h:
+
+D:/Softwares/Freescale/KSDK_1.2.0/platform/devices/MK64F12/startup/system_MK64F12.h:
+
+D:/Softwares/Freescale/KSDK_1.2.0/platform/devices/MK64F12/include/MK64F12_extension.h:
+
+D:/Softwares/Freescale/KSDK_1.2.0/platform/devices/MK64F12/include/MK64F12.h:
+
+D:/Softwares/Freescale/KSDK_1.2.0/platform/devices/MK64F12/include/fsl_bitaccess.h:
+
+D:/Softwares/Freescale/KSDK_1.2.0/platform/devices/MK64F12/include/MK64F12_features.h:

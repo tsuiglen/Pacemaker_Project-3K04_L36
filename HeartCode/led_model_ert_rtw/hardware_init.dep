@@ -1,0 +1,98 @@
+hardware_init.o: \
+ C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/freedomk64f/src/hardware_init.c \
+ C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/freedomk64f/include/MW_Ethernet.h \
+ D:/Documents/MATLAB/led_model_ert_rtw/rtwtypes.h \
+ D:/Softwares/Freescale/KSDK_1.2.0/platform/devices/fsl_device_registers.h \
+ D:/Softwares/Freescale/KSDK_1.2.0/platform/devices/MK64F12/include/MK64F12.h \
+ D:/Softwares/Freescale/KSDK_1.2.0/platform/CMSIS/Include/core_cm4.h \
+ D:/Softwares/Freescale/KSDK_1.2.0/platform/CMSIS/Include/core_cmInstr.h \
+ D:/Softwares/Freescale/KSDK_1.2.0/platform/CMSIS/Include/core_cmFunc.h \
+ D:/Softwares/Freescale/KSDK_1.2.0/platform/CMSIS/Include/core_cmSimd.h \
+ D:/Softwares/Freescale/KSDK_1.2.0/platform/devices/MK64F12/startup/system_MK64F12.h \
+ D:/Softwares/Freescale/KSDK_1.2.0/platform/devices/MK64F12/include/MK64F12_extension.h \
+ D:/Softwares/Freescale/KSDK_1.2.0/platform/devices/MK64F12/include/MK64F12.h \
+ D:/Softwares/Freescale/KSDK_1.2.0/platform/devices/MK64F12/include/fsl_bitaccess.h \
+ D:/Softwares/Freescale/KSDK_1.2.0/platform/devices/MK64F12/include/MK64F12_features.h \
+ C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/freedomk64f/include/board.h \
+ C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/freedomk64f/include/pin_mux.h \
+ C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/freedomk64f/include/gpio_pins.h \
+ D:/Softwares/Freescale/KSDK_1.2.0/platform/drivers/inc/fsl_gpio_driver.h \
+ D:/Softwares/Freescale/KSDK_1.2.0/platform/hal/inc/fsl_port_hal.h \
+ D:/Softwares/Freescale/KSDK_1.2.0/platform/hal/inc/fsl_gpio_hal.h \
+ D:/Softwares/Freescale/KSDK_1.2.0/platform/devices/MK64F12/include/MK64F12.h \
+ D:/Softwares/Freescale/KSDK_1.2.0/platform/osa/inc/fsl_os_abstraction.h \
+ D:/Softwares/Freescale/KSDK_1.2.0/platform/osa/inc/fsl_os_abstraction_bm.h \
+ C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/freedomk64f/include/pin_mux.h \
+ D:/Softwares/Freescale/KSDK_1.2.0/platform/system/inc/fsl_clock_manager.h \
+ D:/Softwares/Freescale/KSDK_1.2.0/platform/hal/inc/fsl_sim_hal.h \
+ d:\softwares\freescale\ksdk_1.2.0\platform\hal\src\sim\mk64f12\fsl_sim_hal_mk64f12.h \
+ d:\softwares\freescale\ksdk_1.2.0\platform\system\src\clock\mk64f12\fsl_clock_mk64f12.h \
+ D:/Softwares/Freescale/KSDK_1.2.0/platform/hal/inc/fsl_mcg_hal.h \
+ D:/Softwares/Freescale/KSDK_1.2.0/platform/hal/inc/fsl_mcg_hal_modes.h \
+ D:/Softwares/Freescale/KSDK_1.2.0/platform/hal/inc/fsl_mcg_hal.h \
+ D:/Softwares/Freescale/KSDK_1.2.0/platform/hal/inc/fsl_osc_hal.h \
+ D:/Softwares/Freescale/KSDK_1.2.0/platform/utilities/inc/fsl_debug_console.h
+
+C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/freedomk64f/include/MW_Ethernet.h:
+
+D:/Documents/MATLAB/led_model_ert_rtw/rtwtypes.h:
+
+D:/Softwares/Freescale/KSDK_1.2.0/platform/devices/fsl_device_registers.h:
+
+D:/Softwares/Freescale/KSDK_1.2.0/platform/devices/MK64F12/include/MK64F12.h:
+
+D:/Softwares/Freescale/KSDK_1.2.0/platform/CMSIS/Include/core_cm4.h:
+
+D:/Softwares/Freescale/KSDK_1.2.0/platform/CMSIS/Include/core_cmInstr.h:
+
+D:/Softwares/Freescale/KSDK_1.2.0/platform/CMSIS/Include/core_cmFunc.h:
+
+D:/Softwares/Freescale/KSDK_1.2.0/platform/CMSIS/Include/core_cmSimd.h:
+
+D:/Softwares/Freescale/KSDK_1.2.0/platform/devices/MK64F12/startup/system_MK64F12.h:
+
+D:/Softwares/Freescale/KSDK_1.2.0/platform/devices/MK64F12/include/MK64F12_extension.h:
+
+D:/Softwares/Freescale/KSDK_1.2.0/platform/devices/MK64F12/include/MK64F12.h:
+
+D:/Softwares/Freescale/KSDK_1.2.0/platform/devices/MK64F12/include/fsl_bitaccess.h:
+
+D:/Softwares/Freescale/KSDK_1.2.0/platform/devices/MK64F12/include/MK64F12_features.h:
+
+C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/freedomk64f/include/board.h:
+
+C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/freedomk64f/include/pin_mux.h:
+
+C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/freedomk64f/include/gpio_pins.h:
+
+D:/Softwares/Freescale/KSDK_1.2.0/platform/drivers/inc/fsl_gpio_driver.h:
+
+D:/Softwares/Freescale/KSDK_1.2.0/platform/hal/inc/fsl_port_hal.h:
+
+D:/Softwares/Freescale/KSDK_1.2.0/platform/hal/inc/fsl_gpio_hal.h:
+
+D:/Softwares/Freescale/KSDK_1.2.0/platform/devices/MK64F12/include/MK64F12.h:
+
+D:/Softwares/Freescale/KSDK_1.2.0/platform/osa/inc/fsl_os_abstraction.h:
+
+D:/Softwares/Freescale/KSDK_1.2.0/platform/osa/inc/fsl_os_abstraction_bm.h:
+
+C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/freedomk64f/include/pin_mux.h:
+
+D:/Softwares/Freescale/KSDK_1.2.0/platform/system/inc/fsl_clock_manager.h:
+
+D:/Softwares/Freescale/KSDK_1.2.0/platform/hal/inc/fsl_sim_hal.h:
+
+d:\softwares\freescale\ksdk_1.2.0\platform\hal\src\sim\mk64f12\fsl_sim_hal_mk64f12.h:
+
+d:\softwares\freescale\ksdk_1.2.0\platform\system\src\clock\mk64f12\fsl_clock_mk64f12.h:
+
+D:/Softwares/Freescale/KSDK_1.2.0/platform/hal/inc/fsl_mcg_hal.h:
+
+D:/Softwares/Freescale/KSDK_1.2.0/platform/hal/inc/fsl_mcg_hal_modes.h:
+
+D:/Softwares/Freescale/KSDK_1.2.0/platform/hal/inc/fsl_mcg_hal.h:
+
+D:/Softwares/Freescale/KSDK_1.2.0/platform/hal/inc/fsl_osc_hal.h:
+
+D:/Softwares/Freescale/KSDK_1.2.0/platform/utilities/inc/fsl_debug_console.h:

@@ -1,0 +1,11 @@
+led_model_tgtconn.o: \
+ D:/Documents/MATLAB/led_model_ert_rtw/led_model_tgtconn.c \
+ D:/Documents/MATLAB/led_model_ert_rtw/rtwtypes.h \
+ D:/Softwares/MATLAB/extern/include/RTIOStreamTgtAppSvc/RTIOStreamTgtAppSvcCIntrf.h \
+ D:/Softwares/MATLAB/extern/include/RTIOStreamTgtAppSvc/RTIOStreamTgtAppSvc_dll.hpp
+
+D:/Documents/MATLAB/led_model_ert_rtw/rtwtypes.h:
+
+D:/Softwares/MATLAB/extern/include/RTIOStreamTgtAppSvc/RTIOStreamTgtAppSvcCIntrf.h:
+
+D:/Softwares/MATLAB/extern/include/RTIOStreamTgtAppSvc/RTIOStreamTgtAppSvc_dll.hpp:
