@@ -2,7 +2,8 @@ from tkinter import *
 import DCM_login 
 import DCM_display
 
-#keep clean
+#Login Window
 login = Tk()
-loginWindow = loginWindow(login)
+loginWindow = DCM_login.loginWindow(login)
 login.mainloop()
+
