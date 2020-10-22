@@ -3,20 +3,21 @@ from tkinter import *
 class signup:
     def __init__(self, master):
         top=self.top=Toplevel(master)
-        Label(top, text="Enter Username").grid(row=0)
-        Label(top, text="Enter Password").grid(row=1)
+        top.title("Create an Account")
+        Label(top, text="Enter Username").grid(row=0, pady=10, padx=10)
+        Label(top, text="Enter Password").grid(row=1, pady=10, padx=10)
 
         self.userInfo = Entry(top)
-        self.userInfo.grid(row=0, column=1)
+        self.userInfo.grid(row=0, column=1, pady=10, padx=10)
 
-        self.pwdInfo = Entry(top)
-        self.pwdInfo.grid(row=1, column=1)
+        self.pwdInfo = Entry(top, show="*")
+        self.pwdInfo.grid(row=1, column=1, pady=10, padx=10)
         
 
-        self.comfirmAccButton = Button(top, text="Create", command=self.createAcc)
-        self.comfirmAccButton.grid(row=2, column=1)
+        self.comfirmAccButton = Button(top, text="Create", command=self._createAcc)
+        self.comfirmAccButton.grid(row=2, column=0, pady=10, padx=10, columnspan=2)
 
-    def createAcc(self):
+    def _createAcc(self):
         try:
             accountInfo = open("accountInfo.txt", 'a')
             #print(self.userInfo.get())
@@ -36,7 +37,7 @@ class loginWindow:
         self.username = Entry(master)
         self.username.grid(row=0, column=1, pady=10, padx=10)
 
-        self.password = Entry(master)
+        self.password = Entry(master, show="*")
         self.password.grid(row=1, column=1, pady=10)
 
         self.loginButton = Button(master, text="Login", command=self.validateLogin)
@@ -53,11 +54,11 @@ class loginWindow:
             accounts = accountInfo.read().split("\n")
             accountInfo.close()
             accounts.pop()  #removes empty line
-            print('hi ' + username + ' ' + password)
 
             for i in accounts:
                 if(username == i.split("-")[0] and password == i.split("-")[1]):
-                    print("Correct info")
+                    print("Login Successful!")
+                    self.master.destroy()
                     return
             self.popupmsg("Incorrect Login!")
         except:
