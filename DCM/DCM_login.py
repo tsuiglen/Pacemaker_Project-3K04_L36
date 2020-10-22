@@ -48,19 +48,23 @@ class loginWindow:
 
     def validateLogin(self):
         try:
-            accountInfo = open("accountInfo.txt", 'r')
-            username = str(self.username.get())
-            password = str(self.password.get())
-            accounts = accountInfo.read().split("\n")
-            accountInfo.close()
-            accounts.pop()  #removes empty line
 
-            for i in accounts:
-                if(username == i.split("-")[0] and password == i.split("-")[1]):
-                    print("Login Successful!")
-                    self.master.destroy()
-                    return
-            self.popupmsg("Incorrect Login!")
+            # accountInfo = open("accountInfo.txt", 'r')
+            # username = str(self.username.get())
+            # password = str(self.password.get())
+            # accounts = accountInfo.read().split("\n")
+            # accountInfo.close()
+            # accounts.pop()  #removes empty line
+
+            # for i in accounts:
+            #     if(username == i.split("-")[0] and password == i.split("-")[1]):
+            #         print("Login Successful!")
+            #         self.master.destroy()
+            #         return
+            # self.popupmsg("Incorrect Login!")
+            DCM = Tk()
+            DCMWindow = DCM_display.DCMWindow(login)
+            DCM.mainloop()
         except:
             print("FileI/O Error ValidateLogin")
             
@@ -68,6 +72,7 @@ class loginWindow:
         try:
             accountInfo = open("accountInfo.txt", 'r')
             accounts = accountInfo.readlines()
+            print(len(accounts))
             if(len(accounts) > 9):
                 return False
             else:
@@ -82,7 +87,7 @@ class loginWindow:
             self.master.wait_window(newAcc.top)
             self.createAccButton['state'] = 'normal'
         else:
-            self.popupmsg("Max amount of local Accounts!")
+            self.popupmsg("Max amount of local Accounts!!!")
     
     def popupmsg(self, msg):
         popup = Tk()
@@ -93,7 +98,7 @@ class loginWindow:
         B1.pack(pady=5, padx=10)
         popup.mainloop()
 
-#Testing
+#Testin
 #login = Tk()
 #oginWindow = loginWindow(login)
 #login.mainloop()
