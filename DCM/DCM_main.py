@@ -2,6 +2,8 @@ import tkinter as tk
 from DCM_login import welcomePage
 from DCM_createAccount import CreateAccPage
 from DCM_display import DCMPage
+from DCM_homePage import homePage
+
 #from DCM_AOO_mode import DCM_AOO
 
 class main(tk.Tk):
@@ -29,7 +31,7 @@ class main(tk.Tk):
             for i in accounts:
                 if(username == i.split("-")[0] and password == i.split("-")[1]):
                     print("Login Successful!")
-                    self.switch_frame(DCMPage)
+                    self.switch_frame(homePage)
                     return
             print(username)
             self.popupmsg("Incorrect Login!")
@@ -61,6 +63,17 @@ class main(tk.Tk):
         finally:
             accountInfo.close()
         self.switch_frame(welcomePage)
+    
+    def logOut(self):
+
+        self.switch_frame(welcomePage)
+
+    def goToDCM(self):
+        
+        self.switch_frame(DCMPage)
+
+        
+
 
     def popupmsg(self, msg):
         popup = tk.Tk()
