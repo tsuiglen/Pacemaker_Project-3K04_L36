@@ -2,6 +2,7 @@ import tkinter as tk
 from DCM_login import welcomePage
 from DCM_createAccount import CreateAccPage
 from DCM_display import DCMPage
+#from DCM_AOO_mode import DCM_AOO
 
 class main(tk.Tk):
     def __init__(self):
@@ -73,3 +74,14 @@ class main(tk.Tk):
 
 app = main()
 app.mainloop()
+
+
+#Notes
+
+#Code for dynamically changing color a label
+        #self.a.configure(fg="red")
+        #self.master.update()
+
+        #Make sure to change the label to the format below
+        #self.a = tk.Label(self, text="Pacing Modes: ")
+        #self.a.grid(row=0, column=0, pady=10)
