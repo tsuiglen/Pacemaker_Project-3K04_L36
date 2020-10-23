@@ -8,7 +8,7 @@ class main(tk.Tk):
     def __init__(self):
         tk.Tk.__init__(self)
         self._frame = None
-        self.switch_frame(welcomePage)
+        self.switch_frame(DCMPage)
 
     def switch_frame(self, frame_class):
         new_frame = frame_class(self)
@@ -61,6 +61,10 @@ class main(tk.Tk):
         finally:
             accountInfo.close()
         self.switch_frame(welcomePage)
+
+    
+        
+
 
     def popupmsg(self, msg):
         popup = tk.Tk()
