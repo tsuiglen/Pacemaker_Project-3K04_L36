@@ -1,5 +1,4 @@
 import tkinter as tk
-from DCM_login import welcomePage
 
 def switchMode(val):
     if(val == 'AOO'):
