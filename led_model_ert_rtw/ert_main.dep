@@ -1,0 +1,107 @@
+ert_main.o: \
+ /Users/atrio/Desktop/3K04\ Project/3K04_L36/led_model_ert_rtw/ert_main.c \
+ /Users/atrio/Desktop/3K04\ Project/3K04_L36/led_model_ert_rtw/led_model.h \
+ /Users/atrio/Desktop/3K04\ Project/3K04_L36/led_model_ert_rtw/rtwtypes.h \
+ /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/include/MW_digitalIO.h \
+ /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/include/MW_SVD.h \
+ /Users/atrio/Desktop/3K04\ Project/3K04_L36/led_model_ert_rtw/rtwtypes.h \
+ /Users/atrio/Desktop/3K04\ Project/3K04_L36/led_model_ert_rtw/led_model_types.h \
+ /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/include/MW_SVD.h \
+ /Users/atrio/Desktop/3K04\ Project/3K04_L36/led_model_ert_rtw/led_model_private.h \
+ /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/include/board.h \
+ /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/fsl_device_registers.h \
+ /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/MK64F12/include/MK64F12.h \
+ /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/CMSIS/Include/core_cm4.h \
+ /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/CMSIS/Include/core_cmInstr.h \
+ /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/CMSIS/Include/core_cmFunc.h \
+ /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/CMSIS/Include/core_cmSimd.h \
+ /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/MK64F12/startup/system_MK64F12.h \
+ /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/MK64F12/include/MK64F12_extension.h \
+ /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/MK64F12/include/MK64F12.h \
+ /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/MK64F12/include/fsl_bitaccess.h \
+ /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/MK64F12/include/MK64F12_features.h \
+ /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/include/pin_mux.h \
+ /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/include/gpio_pins.h \
+ /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/drivers/inc/fsl_gpio_driver.h \
+ /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/hal/inc/fsl_port_hal.h \
+ /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/hal/inc/fsl_gpio_hal.h \
+ /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/MK64F12/include/MK64F12.h \
+ /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/osa/inc/fsl_os_abstraction.h \
+ /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/osa/inc/fsl_os_abstraction_bm.h \
+ /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/armcortexmbase/cmsis_rtos_rtx/include/mw_cmsis_rtos.h \
+ /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/3P.instrset/cmsis.instrset/CMSIS/RTOS/RTX/INC/cmsis_os.h \
+ /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/armcortexmbase/cmsis_rtos_rtx/include/mw_thread.h \
+ /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/armcortexmbase/cmsis_rtos_rtx/include/mw_semaphore.h \
+ /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/armcortexmbase/cmsis_rtos_rtx/include/mw_timer.h \
+ /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/armcortexmbase/cmsis_rtos_rtx/include/mw_signal.h \
+ /Users/atrio/Desktop/3K04\ Project/3K04_L36/led_model_ert_rtw/MW_target_hardware_resources.h
+
+/Users/atrio/Desktop/3K04\ Project/3K04_L36/led_model_ert_rtw/led_model.h:
+
+/Users/atrio/Desktop/3K04\ Project/3K04_L36/led_model_ert_rtw/rtwtypes.h:
+
+/Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/include/MW_digitalIO.h:
+
+/Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/include/MW_SVD.h:
+
+/Users/atrio/Desktop/3K04\ Project/3K04_L36/led_model_ert_rtw/rtwtypes.h:
+
+/Users/atrio/Desktop/3K04\ Project/3K04_L36/led_model_ert_rtw/led_model_types.h:
+
+/Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/include/MW_SVD.h:
+
+/Users/atrio/Desktop/3K04\ Project/3K04_L36/led_model_ert_rtw/led_model_private.h:
+
+/Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/include/board.h:
+
+/Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/fsl_device_registers.h:
+
+/Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/MK64F12/include/MK64F12.h:
+
+/Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/CMSIS/Include/core_cm4.h:
+
+/Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/CMSIS/Include/core_cmInstr.h:
+
+/Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/CMSIS/Include/core_cmFunc.h:
+
+/Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/CMSIS/Include/core_cmSimd.h:
+
+/Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/MK64F12/startup/system_MK64F12.h:
+
+/Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/MK64F12/include/MK64F12_extension.h:
+
+/Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/MK64F12/include/MK64F12.h:
+
+/Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/MK64F12/include/fsl_bitaccess.h:
+
+/Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/MK64F12/include/MK64F12_features.h:
+
+/Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/include/pin_mux.h:
+
+/Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/include/gpio_pins.h:
+
+/Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/drivers/inc/fsl_gpio_driver.h:
+
+/Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/hal/inc/fsl_port_hal.h:
+
+/Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/hal/inc/fsl_gpio_hal.h:
+
+/Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/MK64F12/include/MK64F12.h:
+
+/Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/osa/inc/fsl_os_abstraction.h:
+
+/Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/osa/inc/fsl_os_abstraction_bm.h:
+
+/Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/armcortexmbase/cmsis_rtos_rtx/include/mw_cmsis_rtos.h:
+
+/Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/3P.instrset/cmsis.instrset/CMSIS/RTOS/RTX/INC/cmsis_os.h:
+
+/Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/armcortexmbase/cmsis_rtos_rtx/include/mw_thread.h:
+
+/Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/armcortexmbase/cmsis_rtos_rtx/include/mw_semaphore.h:
+
+/Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/armcortexmbase/cmsis_rtos_rtx/include/mw_timer.h:
+
+/Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/armcortexmbase/cmsis_rtos_rtx/include/mw_signal.h:
+
+/Users/atrio/Desktop/3K04\ Project/3K04_L36/led_model_ert_rtw/MW_target_hardware_resources.h:

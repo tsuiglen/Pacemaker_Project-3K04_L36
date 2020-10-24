@@ -1,0 +1,89 @@
+MW_digitalIO.o: \
+ /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/MW_digitalIO.c \
+ /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/include/MW_digitalIO.h \
+ /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/include/MW_SVD.h \
+ /Users/atrio/Desktop/3K04\ Project/3K04_L36/led_model_ert_rtw/rtwtypes.h \
+ /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/include/mw_sdk_interface.h \
+ /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/drivers/inc/fsl_gpio_driver.h \
+ /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/hal/inc/fsl_port_hal.h \
+ /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/fsl_device_registers.h \
+ /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/MK64F12/include/MK64F12.h \
+ /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/CMSIS/Include/core_cm4.h \
+ /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/CMSIS/Include/core_cmInstr.h \
+ /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/CMSIS/Include/core_cmFunc.h \
+ /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/CMSIS/Include/core_cmSimd.h \
+ /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/MK64F12/startup/system_MK64F12.h \
+ /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/MK64F12/include/MK64F12_extension.h \
+ /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/MK64F12/include/MK64F12.h \
+ /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/MK64F12/include/fsl_bitaccess.h \
+ /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/MK64F12/include/MK64F12_features.h \
+ /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/hal/inc/fsl_gpio_hal.h \
+ /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/include/board.h \
+ /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/include/pin_mux.h \
+ /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/include/gpio_pins.h \
+ /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/MK64F12/include/MK64F12.h \
+ /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/osa/inc/fsl_os_abstraction.h \
+ /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/osa/inc/fsl_os_abstraction_bm.h \
+ /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/drivers/inc/fsl_ftm_driver.h \
+ /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/hal/inc/fsl_ftm_hal.h \
+ /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/system/inc/fsl_interrupt_manager.h \
+ /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/drivers/inc/fsl_adc16_driver.h \
+ /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/hal/inc/fsl_adc16_hal.h
+
+/Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/include/MW_digitalIO.h:
+
+/Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/include/MW_SVD.h:
+
+/Users/atrio/Desktop/3K04\ Project/3K04_L36/led_model_ert_rtw/rtwtypes.h:
+
+/Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/include/mw_sdk_interface.h:
+
+/Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/drivers/inc/fsl_gpio_driver.h:
+
+/Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/hal/inc/fsl_port_hal.h:
+
+/Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/fsl_device_registers.h:
+
+/Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/MK64F12/include/MK64F12.h:
+
+/Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/CMSIS/Include/core_cm4.h:
+
+/Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/CMSIS/Include/core_cmInstr.h:
+
+/Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/CMSIS/Include/core_cmFunc.h:
+
+/Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/CMSIS/Include/core_cmSimd.h:
+
+/Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/MK64F12/startup/system_MK64F12.h:
+
+/Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/MK64F12/include/MK64F12_extension.h:
+
+/Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/MK64F12/include/MK64F12.h:
+
+/Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/MK64F12/include/fsl_bitaccess.h:
+
+/Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/MK64F12/include/MK64F12_features.h:
+
+/Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/hal/inc/fsl_gpio_hal.h:
+
+/Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/include/board.h:
+
+/Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/include/pin_mux.h:
+
+/Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/include/gpio_pins.h:
+
+/Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/MK64F12/include/MK64F12.h:
+
+/Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/osa/inc/fsl_os_abstraction.h:
+
+/Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/osa/inc/fsl_os_abstraction_bm.h:
+
+/Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/drivers/inc/fsl_ftm_driver.h:
+
+/Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/hal/inc/fsl_ftm_hal.h:
+
+/Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/system/inc/fsl_interrupt_manager.h:
+
+/Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/drivers/inc/fsl_adc16_driver.h:
+
+/Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/hal/inc/fsl_adc16_hal.h:

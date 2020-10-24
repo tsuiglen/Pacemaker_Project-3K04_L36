@@ -1,0 +1,11 @@
+led_model_tgtconn.o: \
+ /Users/atrio/Desktop/3K04\ Project/3K04_L36/led_model_ert_rtw/led_model_tgtconn.c \
+ /Users/atrio/Desktop/3K04\ Project/3K04_L36/led_model_ert_rtw/rtwtypes.h \
+ /Users/atrio/Desktop/Matlab/MATLAB_R2020a.app/extern/include/RTIOStreamTgtAppSvc/RTIOStreamTgtAppSvcCIntrf.h \
+ /Users/atrio/Desktop/Matlab/MATLAB_R2020a.app/extern/include/RTIOStreamTgtAppSvc/RTIOStreamTgtAppSvc_dll.hpp
+
+/Users/atrio/Desktop/3K04\ Project/3K04_L36/led_model_ert_rtw/rtwtypes.h:
+
+/Users/atrio/Desktop/Matlab/MATLAB_R2020a.app/extern/include/RTIOStreamTgtAppSvc/RTIOStreamTgtAppSvcCIntrf.h:
+
+/Users/atrio/Desktop/Matlab/MATLAB_R2020a.app/extern/include/RTIOStreamTgtAppSvc/RTIOStreamTgtAppSvc_dll.hpp:

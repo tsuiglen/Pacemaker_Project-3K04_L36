@@ -1,0 +1,26 @@
+led_model.o: \
+ /Users/atrio/Desktop/3K04\ Project/3K04_L36/led_model_ert_rtw/led_model.c \
+ /Users/atrio/Desktop/3K04\ Project/3K04_L36/led_model_ert_rtw/led_model.h \
+ /Users/atrio/Desktop/3K04\ Project/3K04_L36/led_model_ert_rtw/rtwtypes.h \
+ /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/include/MW_digitalIO.h \
+ /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/include/MW_SVD.h \
+ /Users/atrio/Desktop/3K04\ Project/3K04_L36/led_model_ert_rtw/rtwtypes.h \
+ /Users/atrio/Desktop/3K04\ Project/3K04_L36/led_model_ert_rtw/led_model_types.h \
+ /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/include/MW_SVD.h \
+ /Users/atrio/Desktop/3K04\ Project/3K04_L36/led_model_ert_rtw/led_model_private.h
+
+/Users/atrio/Desktop/3K04\ Project/3K04_L36/led_model_ert_rtw/led_model.h:
+
+/Users/atrio/Desktop/3K04\ Project/3K04_L36/led_model_ert_rtw/rtwtypes.h:
+
+/Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/include/MW_digitalIO.h:
+
+/Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/include/MW_SVD.h:
+
+/Users/atrio/Desktop/3K04\ Project/3K04_L36/led_model_ert_rtw/rtwtypes.h:
+
+/Users/atrio/Desktop/3K04\ Project/3K04_L36/led_model_ert_rtw/led_model_types.h:
+
+/Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/include/MW_SVD.h:
+
+/Users/atrio/Desktop/3K04\ Project/3K04_L36/led_model_ert_rtw/led_model_private.h:

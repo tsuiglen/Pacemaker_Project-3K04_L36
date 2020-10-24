@@ -2,7 +2,7 @@
 ## Makefile generated for Simulink model 'led_model'. 
 ## 
 ## Makefile     : led_model.mk
-## Generated on : Thu Oct 01 16:56:04 2020
+## Generated on : Sat Oct 24 14:54:25 2020
 ## MATLAB Coder version: 5.0 (R2020a)
 ## 
 ## Build Info:
@@ -25,11 +25,11 @@
 
 PRODUCT_NAME              = led_model
 MAKEFILE                  = led_model.mk
-MATLAB_ROOT               = D:/Softwares/MATLAB
-MATLAB_BIN                = D:/Softwares/MATLAB/bin
-MATLAB_ARCH_BIN           = $(MATLAB_BIN)/win64
+MATLAB_ROOT               = /Users/atrio/Desktop/Matlab/MATLAB_R2020a.app
+MATLAB_BIN                = /Users/atrio/Desktop/Matlab/MATLAB_R2020a.app/bin
+MATLAB_ARCH_BIN           = $(MATLAB_BIN)/maci64
 MASTER_ANCHOR_DIR         = 
-START_DIR                 = D:/Documents/MATLAB
+START_DIR                 = /Users/atrio/Desktop/3K04\ Project/3K04_L36/HeartCode
 SOLVER                    = 
 SOLVER_OBJ                = 
 CLASSIC_INTERFACE         = 0
@@ -69,7 +69,6 @@ LIBM                  = ${shell $(MW_GNU_ARM_TOOLS_PATH)/arm-none-eabi-gcc ${CFL
 PRODUCT_BIN           = $(RELATIVE_PATH_TO_ANCHOR)/$(PRODUCT_NAME).bin
 PRODUCT_HEX           = $(RELATIVE_PATH_TO_ANCHOR)/$(PRODUCT_NAME).hex
 CPFLAGS               = -O binary
-SHELL                 = %SystemRoot%/system32/cmd.exe
 
 TOOLCHAIN_SRCS = 
 TOOLCHAIN_INCS = 
@@ -126,7 +125,7 @@ DOWNLOAD =
 EXECUTE = $(PRODUCT)
 
 # Builder: GMAKE Utility
-MAKE_PATH = %MATLAB%\bin\win64
+MAKE_PATH = %MATLAB%/bin/maci64
 MAKE = "$(MAKE_PATH)/gmake"
 
 
@@ -149,7 +148,7 @@ STATICLIB_OUTPUT_FLAG =
 MEX_DEBUG           = -g
 RM                  = @del /f/q
 ECHO                = @echo
-MV                  = @move
+MV                  = @mv
 RUN                 =
 
 #----------------------------------------
@@ -229,7 +228,7 @@ DEFINES = $(DEFINES_) $(DEFINES_BUILD_ARGS) $(DEFINES_CUSTOM) $(DEFINES_OPTS) $(
 ## SOURCE FILES
 ###########################################################################
 
-SRCS = C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/freedomk64f/src/MW_digitalIO.c C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/freedomk64f/src/mw_sdk_interface.c $(START_DIR)/led_model_ert_rtw/led_model.c $(START_DIR)/led_model_ert_rtw/led_model_data.c D:/Softwares/Freescale/KSDK_1.2.0/platform/devices/startup.c D:/Softwares/Freescale/KSDK_1.2.0/platform/devices/MK64F12/startup/system_MK64F12.c D:/Softwares/Freescale/KSDK_1.2.0/platform/devices/MK64F12/startup/gcc/startup_MK64F12.S C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/freedomk64f/src/board.c C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/freedomk64f/src/hardware_init.c C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/freedomk64f/src/pin_mux.c C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/freedomk64f/src/fsl_misc_utilities.c C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/freedomk64f/src/fsl_edma_irq.c C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/freedomk64f/src/fsl_uart_irq.c C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/freedomk64f/src/irq_stub.c C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/freedomk64f/src/sbrk.c C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/armcortexmbase/cmsis_rtos_rtx/src/cmsis_rtos_init.c C:/ProgramData/MATLAB/SupportPackages/R2020a/3P.instrset/cmsis.instrset/CMSIS/RTOS/RTX/Templates/RTX_Conf_CM.c C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/armcortexmbase/cmsis_rtos_rtx/src/mw_thread.c C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/armcortexmbase/cmsis_rtos_rtx/src/mw_semaphore.c C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/armcortexmbase/cmsis_rtos_rtx/src/mw_timer.c C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/armcortexmbase/cmsis_rtos_rtx/src/mw_signal.c
+SRCS = /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/MW_PWM.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/mw_sdk_interface.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/MW_digitalIO.c $(START_DIR)/led_model_ert_rtw/led_model.c $(START_DIR)/led_model_ert_rtw/led_model_data.c /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/startup.c /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/MK64F12/startup/system_MK64F12.c /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/MK64F12/startup/gcc/startup_MK64F12.S /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/board.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/hardware_init.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/pin_mux.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/fsl_misc_utilities.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/fsl_edma_irq.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/fsl_uart_irq.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/irq_stub.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/sbrk.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/armcortexmbase/cmsis_rtos_rtx/src/cmsis_rtos_init.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/3P.instrset/cmsis.instrset/CMSIS/RTOS/RTX/Templates/RTX_Conf_CM.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/armcortexmbase/cmsis_rtos_rtx/src/mw_thread.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/armcortexmbase/cmsis_rtos_rtx/src/mw_semaphore.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/armcortexmbase/cmsis_rtos_rtx/src/mw_timer.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/armcortexmbase/cmsis_rtos_rtx/src/mw_signal.c
 
 MAIN_SRC = $(START_DIR)/led_model_ert_rtw/ert_main.c
 
@@ -239,7 +238,7 @@ ALL_SRCS = $(SRCS) $(MAIN_SRC)
 ## OBJECTS
 ###########################################################################
 
-OBJS = MW_digitalIO.o mw_sdk_interface.o led_model.o led_model_data.o startup.o system_MK64F12.o startup_MK64F12.o board.o hardware_init.o pin_mux.o fsl_misc_utilities.o fsl_edma_irq.o fsl_uart_irq.o irq_stub.o sbrk.o cmsis_rtos_init.o RTX_Conf_CM.o mw_thread.o mw_semaphore.o mw_timer.o mw_signal.o
+OBJS = MW_PWM.o mw_sdk_interface.o MW_digitalIO.o led_model.o led_model_data.o startup.o system_MK64F12.o startup_MK64F12.o board.o hardware_init.o pin_mux.o fsl_misc_utilities.o fsl_edma_irq.o fsl_uart_irq.o irq_stub.o sbrk.o cmsis_rtos_init.o RTX_Conf_CM.o mw_thread.o mw_semaphore.o mw_timer.o mw_signal.o
 
 MAIN_OBJ = ert_main.o
 
@@ -255,7 +254,7 @@ PREBUILT_OBJS =
 ## LIBRARIES
 ###########################################################################
 
-LIBS = C:/ProgramData/MATLAB/SupportPackages/R2020a/3P.instrset/cmsis.instrset/CMSIS/Lib/GCC/libarm_cortexM4lf_math.a C:/ProgramData/MATLAB/SupportPackages/R2020a/3P.instrset/cmsis.instrset/CMSIS/RTOS/RTX/LIB/GCC/libRTX_CM4.a C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/freedomk64f/src/ksdk_armgcc_lib/bm/libksdk_platform.a
+LIBS = /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/3P.instrset/cmsis.instrset/CMSIS/Lib/GCC/libarm_cortexM4lf_math.a /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/3P.instrset/cmsis.instrset/CMSIS/RTOS/RTX/LIB/GCC/libRTX_CM4.a /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/ksdk_armgcc_lib/bm/libksdk_platform.a
 
 ###########################################################################
 ## SYSTEM LIBRARIES
@@ -289,7 +288,7 @@ CPPFLAGS += $(CPPFLAGS_SKIPFORSIL) $(CPPFLAGS_BASIC)
 # C++ Linker
 #---------------
 
-CPP_LDFLAGS_SKIPFORSIL = -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard --specs=nosys.specs -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -L"C:\ProgramData\MATLAB\SupportPackages\R2020a\toolbox\target\supportpackages\freedomk64f/src" -T "MK64FN1M0xxx12_flash_1.ld" -g -Xlinker --gc-sections -Wl,-Map=$(PRODUCT_NAME).map
+CPP_LDFLAGS_SKIPFORSIL = -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard --specs=nosys.specs -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -L"/Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src" -T "MK64FN1M0xxx12_flash_1.ld" -g -Xlinker --gc-sections -Wl,-Map=$(PRODUCT_NAME).map
 
 CPP_LDFLAGS += $(CPP_LDFLAGS_SKIPFORSIL)
 
@@ -297,7 +296,7 @@ CPP_LDFLAGS += $(CPP_LDFLAGS_SKIPFORSIL)
 # C++ Shared Library Linker
 #------------------------------
 
-CPP_SHAREDLIB_LDFLAGS_SKIPFORSIL = -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard --specs=nosys.specs -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -L"C:\ProgramData\MATLAB\SupportPackages\R2020a\toolbox\target\supportpackages\freedomk64f/src" -T "MK64FN1M0xxx12_flash_1.ld" -g -Xlinker --gc-sections -Wl,-Map=$(PRODUCT_NAME).map
+CPP_SHAREDLIB_LDFLAGS_SKIPFORSIL = -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard --specs=nosys.specs -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -L"/Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src" -T "MK64FN1M0xxx12_flash_1.ld" -g -Xlinker --gc-sections -Wl,-Map=$(PRODUCT_NAME).map
 
 CPP_SHAREDLIB_LDFLAGS += $(CPP_SHAREDLIB_LDFLAGS_SKIPFORSIL)
 
@@ -305,7 +304,7 @@ CPP_SHAREDLIB_LDFLAGS += $(CPP_SHAREDLIB_LDFLAGS_SKIPFORSIL)
 # Linker
 #-----------
 
-LDFLAGS_SKIPFORSIL = -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard --specs=nosys.specs -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -L"C:\ProgramData\MATLAB\SupportPackages\R2020a\toolbox\target\supportpackages\freedomk64f/src" -T "MK64FN1M0xxx12_flash_1.ld" -g -Xlinker --gc-sections -Wl,-Map=$(PRODUCT_NAME).map
+LDFLAGS_SKIPFORSIL = -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard --specs=nosys.specs -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -L"/Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src" -T "MK64FN1M0xxx12_flash_1.ld" -g -Xlinker --gc-sections -Wl,-Map=$(PRODUCT_NAME).map
 
 LDFLAGS += $(LDFLAGS_SKIPFORSIL)
 
@@ -329,7 +328,7 @@ MEX_CFLAGS += $(MEX_Compiler_BASIC)
 # Shared Library Linker
 #--------------------------
 
-SHAREDLIB_LDFLAGS_SKIPFORSIL = -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard --specs=nosys.specs -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -L"C:\ProgramData\MATLAB\SupportPackages\R2020a\toolbox\target\supportpackages\freedomk64f/src" -T "MK64FN1M0xxx12_flash_1.ld" -g -Xlinker --gc-sections -Wl,-Map=$(PRODUCT_NAME).map
+SHAREDLIB_LDFLAGS_SKIPFORSIL = -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard --specs=nosys.specs -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -L"/Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src" -T "MK64FN1M0xxx12_flash_1.ld" -g -Xlinker --gc-sections -Wl,-Map=$(PRODUCT_NAME).map
 
 SHAREDLIB_LDFLAGS += $(SHAREDLIB_LDFLAGS_SKIPFORSIL)
 
@@ -405,7 +404,7 @@ execute : download
 
 $(PRODUCT) : $(OBJS) $(PREBUILT_OBJS) $(LIBS) $(MAIN_OBJ)
 	@echo "### Creating standalone executable "$(PRODUCT)" ..."
-	$(CPP_LD) $(CPP_LDFLAGS) -o $(PRODUCT) @$(CMD_FILE) $(LIBS) $(SYSTEM_LIBS) $(TOOLCHAIN_LIBS)
+	$(LD) $(LDFLAGS) -o $(PRODUCT) @$(CMD_FILE) $(LIBS) $(SYSTEM_LIBS) $(TOOLCHAIN_LIBS)
 	@echo "### Created: $(PRODUCT)"
 
 
@@ -585,11 +584,15 @@ $(PRODUCT) : $(OBJS) $(PREBUILT_OBJS) $(LIBS) $(MAIN_OBJ)
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-MW_digitalIO.o : C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/freedomk64f/src/MW_digitalIO.c
+MW_PWM.o : /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/MW_PWM.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-mw_sdk_interface.o : C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/freedomk64f/src/mw_sdk_interface.c
+mw_sdk_interface.o : /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/mw_sdk_interface.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+MW_digitalIO.o : /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/MW_digitalIO.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
@@ -605,71 +608,71 @@ led_model_data.o : $(START_DIR)/led_model_ert_rtw/led_model_data.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-startup.o : D:/Softwares/Freescale/KSDK_1.2.0/platform/devices/startup.c
+startup.o : /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/startup.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-system_MK64F12.o : D:/Softwares/Freescale/KSDK_1.2.0/platform/devices/MK64F12/startup/system_MK64F12.c
+system_MK64F12.o : /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/MK64F12/startup/system_MK64F12.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-startup_MK64F12.o : D:/Softwares/Freescale/KSDK_1.2.0/platform/devices/MK64F12/startup/gcc/startup_MK64F12.S
+startup_MK64F12.o : /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/MK64F12/startup/gcc/startup_MK64F12.S
 	$(AS) $(ASFLAGS) -o "$@" "$<"
 
 
-board.o : C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/freedomk64f/src/board.c
+board.o : /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/board.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-hardware_init.o : C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/freedomk64f/src/hardware_init.c
+hardware_init.o : /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/hardware_init.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-pin_mux.o : C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/freedomk64f/src/pin_mux.c
+pin_mux.o : /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/pin_mux.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-fsl_misc_utilities.o : C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/freedomk64f/src/fsl_misc_utilities.c
+fsl_misc_utilities.o : /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/fsl_misc_utilities.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-fsl_edma_irq.o : C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/freedomk64f/src/fsl_edma_irq.c
+fsl_edma_irq.o : /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/fsl_edma_irq.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-fsl_uart_irq.o : C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/freedomk64f/src/fsl_uart_irq.c
+fsl_uart_irq.o : /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/fsl_uart_irq.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-irq_stub.o : C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/freedomk64f/src/irq_stub.c
+irq_stub.o : /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/irq_stub.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-sbrk.o : C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/freedomk64f/src/sbrk.c
+sbrk.o : /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/sbrk.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-cmsis_rtos_init.o : C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/armcortexmbase/cmsis_rtos_rtx/src/cmsis_rtos_init.c
+cmsis_rtos_init.o : /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/armcortexmbase/cmsis_rtos_rtx/src/cmsis_rtos_init.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-RTX_Conf_CM.o : C:/ProgramData/MATLAB/SupportPackages/R2020a/3P.instrset/cmsis.instrset/CMSIS/RTOS/RTX/Templates/RTX_Conf_CM.c
+RTX_Conf_CM.o : /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/3P.instrset/cmsis.instrset/CMSIS/RTOS/RTX/Templates/RTX_Conf_CM.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-mw_thread.o : C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/armcortexmbase/cmsis_rtos_rtx/src/mw_thread.c
+mw_thread.o : /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/armcortexmbase/cmsis_rtos_rtx/src/mw_thread.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-mw_semaphore.o : C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/armcortexmbase/cmsis_rtos_rtx/src/mw_semaphore.c
+mw_semaphore.o : /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/armcortexmbase/cmsis_rtos_rtx/src/mw_semaphore.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-mw_timer.o : C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/armcortexmbase/cmsis_rtos_rtx/src/mw_timer.c
+mw_timer.o : /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/armcortexmbase/cmsis_rtos_rtx/src/mw_timer.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-mw_signal.o : C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/armcortexmbase/cmsis_rtos_rtx/src/mw_signal.c
+mw_signal.o : /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/armcortexmbase/cmsis_rtos_rtx/src/mw_signal.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
@@ -718,8 +721,8 @@ info :
 
 clean : 
 	$(ECHO) "### Deleting all derived files..."
-	$(RM) $(subst /,\,$(PRODUCT))
-	$(RM) $(subst /,\,$(ALL_OBJS))
+	$(RM) $(PRODUCT)
+	$(RM) $(ALL_OBJS)
 	$(RM) *.dep
 	$(ECHO) "### Deleted all derived files."
 

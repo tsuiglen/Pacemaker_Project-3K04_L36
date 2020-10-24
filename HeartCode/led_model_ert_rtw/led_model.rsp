@@ -1,3 +1,4 @@
+MW_PWM.o
 MW_digitalIO.o
 RTX_Conf_CM.o
 board.o
