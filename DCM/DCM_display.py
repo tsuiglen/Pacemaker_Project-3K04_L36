@@ -1,5 +1,6 @@
 import tkinter as tk
-
+from DCM_serial import *
+from DCM_homePage import homePage
 
 def switchMode(val):
     if(val == 'AOO'):
@@ -10,6 +11,21 @@ def switchMode(val):
         return DCM_AAI
     elif(val == 'VVI'):
         return DCM_VVI
+
+def connectionIndicator(obj):
+    if(isConnect()):
+        obj.configure(fg="green")
+        obj.configure(text="Connected")
+        obj.master.update()
+    else:
+        obj.configure(fg="red")
+        obj.configure(text="Not Connected")
+        obj.master.update()
+
+def connectionID(obj):
+    obj.configure(fg="red" if getDeviceID() == "N/A" else "green")
+    obj.configure(text="ID: " +getDeviceID())
+    obj.master.update()
 
 
 class DCMPage(tk.Frame):
@@ -26,10 +42,16 @@ class DCMPage(tk.Frame):
         pacingModeMenu.grid(row=0, column=1, pady=10, padx=5)
 
         tk.Label(self, text="Pacing Modes: ").grid(row=0, column=0, pady=10)
-        tk.Label(self, text="Upper Rate Limit").grid(
-            row=1, column=0, pady=10, padx=10)
-        tk.Label(self, text="Lower Rate Limit").grid(
-            row=1, column=2, pady=10, padx=10)
+       
+        self.isConnected = tk.Label(self, text="") #connection indicator
+        self.ID = tk.Label(self, text="") 
+        self.isConnected.grid(row=0, column=2, pady=10)
+        self.ID.grid(row=0, column=3, pady=10)
+        connectionIndicator(self.isConnected)
+        connectionID(self.ID)
+
+        tk.Label(self, text="Upper Rate Limit").grid(row=1, column=0, pady=10, padx=10)
+        tk.Label(self, text="Lower Rate Limit").grid(row=1, column=2, pady=10, padx=10)
 
         self.upperRateLimit = tk.Entry(self)
         self.upperRateLimit.grid(row=1, column=1, pady=10, padx=10)
@@ -37,8 +59,9 @@ class DCMPage(tk.Frame):
         self.lowerRateLimit = tk.Entry(self)
         self.lowerRateLimit.grid(row=1, column=3, pady=10, padx=10)
 
+        tk.Button(self, text="Back",
+                  command=lambda: self.master.switch_frame(homePage)).grid(row=4, columnspan=4, pady=10, padx=20)
       
-
     def getDropDown(self, val):
         self.master.switch_frame(switchMode(val))
 
@@ -50,6 +73,13 @@ class DCM_AOO(tk.Frame):
 
         tk.Label(self, text="Pacing Mode:   AOO").grid(
             row=0, column=0, pady=10, padx=10)
+
+        self.isConnected = tk.Label(self, text="") #connection indicator
+        self.ID = tk.Label(self, text="") 
+        self.isConnected.grid(row=0, column=2, pady=10)
+        self.ID.grid(row=0, column=3, pady=10)
+        connectionIndicator(self.isConnected)
+        connectionID(self.ID)
 
         self.tkvar = tk.StringVar(self)
         pacingMode = {'AOO', 'VOO', 'AAI', 'VVI'}
@@ -84,16 +114,19 @@ class DCM_AOO(tk.Frame):
         atrialPulseWidth.grid(row=2, column=3, pady=10, padx=10)
 
         tk.Button(self, text="Modify",
-                  command=lambda: self.modifyParameters(upperRateLimit, lowerRateLimit, atrialPulseAmplitude, atrialPulseWidth)).grid(row=0, column=2, pady=10, padx=5)
+                  command=lambda: self.modifyParameters(upperRateLimit, lowerRateLimit, atrialPulseAmplitude, atrialPulseWidth)).grid(row=4, columnspan=2 ,column=0, pady=10, padx=5)
+
+        tk.Button(self, text="Back",
+                  command=lambda: self.master.switch_frame(homePage)).grid(row=4, columnspan=2, column=2, pady=10, padx=20)
 
     def getDropDown(self, val):
         self.master.switch_frame(switchMode(val))
 
     def modifyParameters(self, upperRateLimit, lowerRateLimit, atrialPulseAmplitude, atrialPulseWidth):
-        self.upperRateLimit = upperRateLimit
-        self.lowerRateLimit = lowerRateLimit
-        self.atrialPulseAmplitude = atrialPulseAmplitude
-        self.atrialPulseWidth = atrialPulseWidth
+        self.upperRateLimit = upperRateLimit.get()
+        self.lowerRateLimit = lowerRateLimit.get()
+        self.atrialPulseAmplitude = atrialPulseAmplitude.get()
+        self.atrialPulseWidth = atrialPulseWidth.get()
 
 
 class DCM_VOO(tk.Frame):
@@ -103,6 +136,13 @@ class DCM_VOO(tk.Frame):
 
         tk.Label(self, text="Pacing Mode:   VOO").grid(
             row=0, column=0, pady=10)
+
+        self.isConnected = tk.Label(self, text="") #connection indicator
+        self.ID = tk.Label(self, text="") 
+        self.isConnected.grid(row=0, column=2, pady=10)
+        self.ID.grid(row=0, column=3, pady=10)
+        connectionIndicator(self.isConnected)
+        connectionID(self.ID)
 
         self.tkvar = tk.StringVar(self)
         pacingMode = {'AOO', 'VOO', 'AAI', 'VVI'}
@@ -133,9 +173,22 @@ class DCM_VOO(tk.Frame):
         self.ventricularPulseWidth = tk.Entry(self)
         self.ventricularPulseWidth.grid(row=2, column=3, pady=10, padx=10)
 
+        tk.Button(self, text="Modify",
+                  command=lambda: self.modifyParameters(upperRateLimit, lowerRateLimit, ventricularPulseAmplitude, ventricularPulseWidth)).grid(row=4, columnspan=2 ,column=0, pady=10, padx=5)
+
+        tk.Button(self, text="Back",
+                  command=lambda: self.master.switch_frame(homePage)).grid(row=4, columnspan=2, column=2, pady=10, padx=20)
+
+    def modifyParameters(self, upperRateLimit, lowerRateLimit, ventricularPulseAmplitude, ventricularPulseWidth):
+        self.upperRateLimit = upperRateLimit.get()
+        self.lowerRateLimit = lowerRateLimit.get()
+        self.ventricularPulseAmplitude = ventricularPulseAmplitude.get()
+        self.ventricularPulseWidth = ventricularPulseWidth.get()
+
     def getDropDown(self, val):
         self.master.switch_frame(switchMode(val))
-
+    
+    
 
 class DCM_AAI(tk.Frame):
     def __init__(self, master):
@@ -144,6 +197,13 @@ class DCM_AAI(tk.Frame):
 
         tk.Label(self, text="Pacing Mode:   AAI").grid(
             row=0, column=0, pady=10)
+
+        self.isConnected = tk.Label(self, text="") #connection indicator
+        self.ID = tk.Label(self, text="") 
+        self.isConnected.grid(row=0, column=2, pady=10)
+        self.ID.grid(row=0, column=3, pady=10)
+        connectionIndicator(self.isConnected)
+        connectionID(self.ID)
 
         self.tkvar = tk.StringVar(self)
         pacingMode = {'AOO', 'VOO', 'AAI', 'VVI'}
@@ -200,6 +260,23 @@ class DCM_AAI(tk.Frame):
         self.rateSmoothing = tk.Entry(self)
         self.rateSmoothing.grid(row=5, column=1, pady=10, padx=10)
 
+        tk.Button(self, text="Modify",
+                  command=lambda: self.modifyParameters(upperRateLimit, lowerRateLimit, atrialPulseAmplitude, atrialPulseWidth, atrialSensitivity, ARP, PVARP, hysteresis, rateSmoothing)).grid(row=6, columnspan=2 ,column=0, pady=10, padx=5)
+
+        tk.Button(self, text="Back",
+                  command=lambda: self.master.switch_frame(homePage)).grid(row=6, columnspan=2, column=2, pady=10, padx=20)
+
+    def modifyParameters(self, upperRateLimit, lowerRateLimit, atrialPulseAmplitude, atrialPulseWidth, atrialSensitivity, ARP, PVARP, hysteresis, rateSmoothing):
+        self.upperRateLimit = upperRateLimit.get()
+        self.lowerRateLimit = lowerRateLimit.get()
+        self.atrialPulseAmplitude = atrialPulseAmplitude.get()
+        self.atrialPulseWidth = atrialPulseWidth.get()
+        self.atrialSensitivity = atrialSensitivity.get()
+        self.ARP = ARP.get()
+        self.PVARP = PVARP.get()
+        self.hysteresis = hysteresis.get()
+        self.rateSmoothing = rateSmoothing.get()
+
     def getDropDown(self, val):
         self.master.switch_frame(switchMode(val))
 
@@ -211,6 +288,13 @@ class DCM_VVI(tk.Frame):
 
         tk.Label(self, text="Pacing Mode:   VVI").grid(
             row=0, column=0, pady=10)
+
+        self.isConnected = tk.Label(self, text="") #connection indicator
+        self.ID = tk.Label(self, text="") 
+        self.isConnected.grid(row=0, column=2, pady=10)
+        self.ID.grid(row=0, column=3, pady=10)
+        connectionIndicator(self.isConnected)
+        connectionID(self.ID)
 
         self.tkvar = tk.StringVar(self)
         pacingMode = {'AOO', 'VOO', 'AAI', 'VVI'}
@@ -261,6 +345,22 @@ class DCM_VVI(tk.Frame):
 
         self.rateSmoothing = tk.Entry(self)
         self.rateSmoothing.grid(row=4, column=3, pady=10, padx=10)
+
+        tk.Button(self, text="Modify",
+                  command=lambda: self.modifyParameters(upperRateLimit, lowerRateLimit, ventricularPulseAmplitude, ventricularPulseWidth, ventricularSensitivity, VRP, hysteresis, rateSmoothing)).grid(row=5, columnspan=2 ,column=0, pady=10, padx=5)
+
+        tk.Button(self, text="Back",
+                  command=lambda: self.master.switch_frame(homePage)).grid(row=5, columnspan=2, column=2, pady=10, padx=20)
+
+    def modifyParameters(self, upperRateLimit, lowerRateLimit, ventricularPulseAmplitude, ventricularPulseWidth, ventricularSensitivity, VRP, hysteresis, rateSmoothing):
+        self.upperRateLimit = upperRateLimit.get()
+        self.lowerRateLimit = lowerRateLimit.get()
+        self.ventricularPulseAmplitude = ventricularPulseAmplitude.get()
+        self.ventricularPulseWidth = ventricularPulseWidth.get()
+        self.ventricularSensitivity = ventricularSensitivity.get()
+        self.VRP = VRP.get()
+        self.hysteresis = hysteresis.get()
+        self.rateSmoothing = rateSmoothing.get()
 
     def getDropDown(self, val):
         self.master.switch_frame(switchMode(val))

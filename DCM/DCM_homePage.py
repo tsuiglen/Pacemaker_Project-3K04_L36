@@ -3,8 +3,7 @@ class homePage(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
         master.title("Home")
-
-
+        
         # tk.Button(self, text="DCM",
                 #   command=lambda: master.validateLogin(self.getUser(), self.getPass())).grid(row=1, columnspan=2, pady=2)
         tk.Button(self, text="DCM Settings",

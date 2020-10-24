@@ -35,7 +35,7 @@ class main(tk.Tk):
                     return
             print(username)
             self.popupmsg("Incorrect Login!")
-        finally:
+        except:
             print("FileI/O Error ValidateLogin")
     
     def accountCount(self):
@@ -69,11 +69,7 @@ class main(tk.Tk):
         self.switch_frame(welcomePage)
 
     def goToDCM(self):
-        
         self.switch_frame(DCMPage)
-
-        
-
 
     def popupmsg(self, msg):
         popup = tk.Tk()
@@ -88,13 +84,3 @@ class main(tk.Tk):
 app = main()
 app.mainloop()
 
-
-#Notes
-
-#Code for dynamically changing color a label
-        #self.a.configure(fg="red")
-        #self.master.update()
-
-        #Make sure to change the label to the format below
-        #self.a = tk.Label(self, text="Pacing Modes: ")
-        #self.a.grid(row=0, column=0, pady=10)
