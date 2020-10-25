@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'led_model'.
  *
- * Model version                  : 1.21
+ * Model version                  : 1.23
  * Simulink Coder version         : 9.3 (R2020a) 18-Nov-2019
- * C/C++ source code generated on : Sat Oct 24 17:20:59 2020
+ * C/C++ source code generated on : Sat Oct 24 22:40:43 2020
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -23,82 +23,82 @@
 /* Block parameters (default storage) */
 P_led_model_T led_model_P = {
   /* Expression: SampleTime
-   * Referenced by: '<Root>/Digital Read1'
+   * Referenced by: '<S1>/VENT_CMP_DETECT (Boolean)'
    */
   -1.0,
 
   /* Expression: SampleTime
-   * Referenced by: '<Root>/Digital Read'
+   * Referenced by: '<S1>/ATR_CMP_DETECT (Boolean)'
    */
   -1.0,
 
   /* Expression: 60
-   * Referenced by: '<Root>/Constant'
+   * Referenced by: '<S1>/LRL (ppm)'
    */
   60.0,
 
   /* Expression: 120
-   * Referenced by: '<Root>/Constant1'
+   * Referenced by: '<S1>/URL (ppm)'
    */
   120.0,
 
   /* Expression: 4000
-   * Referenced by: '<Root>/Constant2'
+   * Referenced by: '<S1>/A_Amplitude (mV)'
    */
   4000.0,
 
   /* Expression: 10
-   * Referenced by: '<Root>/Constant3'
+   * Referenced by: '<S1>/A_Pulse_Width (ms)'
    */
   10.0,
 
   /* Expression: 4000
-   * Referenced by: '<Root>/Constant4'
+   * Referenced by: '<S1>/V_Amplitude (mV)'
    */
   4000.0,
 
   /* Expression: 10
-   * Referenced by: '<Root>/Constant5'
+   * Referenced by: '<S1>/V_Pulse_Width (ms)'
    */
   10.0,
 
   /* Expression: 0
-   * Referenced by: '<Root>/Constant7'
+   * Referenced by: '<S1>/A_RefractoryPeriod (ms)'
    */
   0.0,
 
   /* Expression: 0
-   * Referenced by: '<Root>/Constant8'
+   * Referenced by: '<S1>/V_RefractoryPeriod (ms)'
    */
   0.0,
 
   /* Expression: 0
-   * Referenced by: '<Root>/Constant9'
+   * Referenced by: '<S1>/A_Sens (mV)'
    */
   0.0,
 
   /* Expression: 0
-   * Referenced by: '<Root>/Constant10'
+   * Referenced by: '<S1>/V_Sens (mV)'
    */
   0.0,
 
   /* Expression: 0
-   * Referenced by: '<Root>/Constant11'
+   * Referenced by: '<S1>/Rate_Smoothing (%)'
    */
   0.0,
 
   /* Expression: 0
-   * Referenced by: '<Root>/Constant12'
+   * Referenced by: '<S1>/Hysterisis (ms)'
    */
   0.0,
 
   /* Expression: 0
-   * Referenced by: '<Root>/Constant13'
+   * Referenced by: '<S1>/PVARP (ms)'
    */
   0.0,
 
   /* Expression: 0
-   * Referenced by: '<Root>/Constant6'
+   * Referenced by: '<S1>/Mode'
    */
   0.0
 };

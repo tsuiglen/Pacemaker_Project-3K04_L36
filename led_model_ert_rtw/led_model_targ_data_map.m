@@ -31,67 +31,67 @@
       section.nData     = 16;
       section.data(16)  = dumData; %prealloc
       
-	  ;% led_model_P.DigitalRead1_SampleTime
+	  ;% led_model_P.VENT_CMP_DETECTBoolean_SampleTi
 	  section.data(1).logicalSrcIdx = 0;
 	  section.data(1).dtTransOffset = 0;
 	
-	  ;% led_model_P.DigitalRead_SampleTime
+	  ;% led_model_P.ATR_CMP_DETECTBoolean_SampleTim
 	  section.data(2).logicalSrcIdx = 1;
 	  section.data(2).dtTransOffset = 1;
 	
-	  ;% led_model_P.Constant_Value
+	  ;% led_model_P.LRLppm_Value
 	  section.data(3).logicalSrcIdx = 2;
 	  section.data(3).dtTransOffset = 2;
 	
-	  ;% led_model_P.Constant1_Value
+	  ;% led_model_P.URLppm_Value
 	  section.data(4).logicalSrcIdx = 3;
 	  section.data(4).dtTransOffset = 3;
 	
-	  ;% led_model_P.Constant2_Value
+	  ;% led_model_P.A_AmplitudemV_Value
 	  section.data(5).logicalSrcIdx = 4;
 	  section.data(5).dtTransOffset = 4;
 	
-	  ;% led_model_P.Constant3_Value
+	  ;% led_model_P.A_Pulse_Widthms_Value
 	  section.data(6).logicalSrcIdx = 5;
 	  section.data(6).dtTransOffset = 5;
 	
-	  ;% led_model_P.Constant4_Value
+	  ;% led_model_P.V_AmplitudemV_Value
 	  section.data(7).logicalSrcIdx = 6;
 	  section.data(7).dtTransOffset = 6;
 	
-	  ;% led_model_P.Constant5_Value
+	  ;% led_model_P.V_Pulse_Widthms_Value
 	  section.data(8).logicalSrcIdx = 7;
 	  section.data(8).dtTransOffset = 7;
 	
-	  ;% led_model_P.Constant7_Value
+	  ;% led_model_P.A_RefractoryPeriodms_Value
 	  section.data(9).logicalSrcIdx = 8;
 	  section.data(9).dtTransOffset = 8;
 	
-	  ;% led_model_P.Constant8_Value
+	  ;% led_model_P.V_RefractoryPeriodms_Value
 	  section.data(10).logicalSrcIdx = 9;
 	  section.data(10).dtTransOffset = 9;
 	
-	  ;% led_model_P.Constant9_Value
+	  ;% led_model_P.A_SensmV_Value
 	  section.data(11).logicalSrcIdx = 10;
 	  section.data(11).dtTransOffset = 10;
 	
-	  ;% led_model_P.Constant10_Value
+	  ;% led_model_P.V_SensmV_Value
 	  section.data(12).logicalSrcIdx = 11;
 	  section.data(12).dtTransOffset = 11;
 	
-	  ;% led_model_P.Constant11_Value
+	  ;% led_model_P.Rate_Smoothing_Value
 	  section.data(13).logicalSrcIdx = 12;
 	  section.data(13).dtTransOffset = 12;
 	
-	  ;% led_model_P.Constant12_Value
+	  ;% led_model_P.Hysterisisms_Value
 	  section.data(14).logicalSrcIdx = 13;
 	  section.data(14).dtTransOffset = 13;
 	
-	  ;% led_model_P.Constant13_Value
+	  ;% led_model_P.PVARPms_Value
 	  section.data(15).logicalSrcIdx = 14;
 	  section.data(15).dtTransOffset = 14;
 	
-	  ;% led_model_P.Constant6_Value
+	  ;% led_model_P.Mode_Value
 	  section.data(16).logicalSrcIdx = 15;
 	  section.data(16).dtTransOffset = 15;
 	
@@ -143,59 +143,59 @@
       section.nData     = 17;
       section.data(17)  = dumData; %prealloc
       
-	  ;% led_model_B.Constant
+	  ;% led_model_B.LRLppm
 	  section.data(1).logicalSrcIdx = 0;
 	  section.data(1).dtTransOffset = 0;
 	
-	  ;% led_model_B.Constant1
+	  ;% led_model_B.URLppm
 	  section.data(2).logicalSrcIdx = 1;
 	  section.data(2).dtTransOffset = 1;
 	
-	  ;% led_model_B.Constant2
+	  ;% led_model_B.A_AmplitudemV
 	  section.data(3).logicalSrcIdx = 2;
 	  section.data(3).dtTransOffset = 2;
 	
-	  ;% led_model_B.Constant3
+	  ;% led_model_B.A_Pulse_Widthms
 	  section.data(4).logicalSrcIdx = 3;
 	  section.data(4).dtTransOffset = 3;
 	
-	  ;% led_model_B.Constant4
+	  ;% led_model_B.V_AmplitudemV
 	  section.data(5).logicalSrcIdx = 4;
 	  section.data(5).dtTransOffset = 4;
 	
-	  ;% led_model_B.Constant5
+	  ;% led_model_B.V_Pulse_Widthms
 	  section.data(6).logicalSrcIdx = 5;
 	  section.data(6).dtTransOffset = 5;
 	
-	  ;% led_model_B.Constant7
+	  ;% led_model_B.A_RefractoryPeriodms
 	  section.data(7).logicalSrcIdx = 6;
 	  section.data(7).dtTransOffset = 6;
 	
-	  ;% led_model_B.Constant8
+	  ;% led_model_B.V_RefractoryPeriodms
 	  section.data(8).logicalSrcIdx = 7;
 	  section.data(8).dtTransOffset = 7;
 	
-	  ;% led_model_B.Constant9
+	  ;% led_model_B.A_SensmV
 	  section.data(9).logicalSrcIdx = 8;
 	  section.data(9).dtTransOffset = 8;
 	
-	  ;% led_model_B.Constant10
+	  ;% led_model_B.V_SensmV
 	  section.data(10).logicalSrcIdx = 9;
 	  section.data(10).dtTransOffset = 9;
 	
-	  ;% led_model_B.Constant11
+	  ;% led_model_B.Rate_Smoothing
 	  section.data(11).logicalSrcIdx = 10;
 	  section.data(11).dtTransOffset = 10;
 	
-	  ;% led_model_B.Constant12
+	  ;% led_model_B.Hysterisisms
 	  section.data(12).logicalSrcIdx = 11;
 	  section.data(12).dtTransOffset = 11;
 	
-	  ;% led_model_B.Constant13
+	  ;% led_model_B.PVARPms
 	  section.data(13).logicalSrcIdx = 12;
 	  section.data(13).dtTransOffset = 12;
 	
-	  ;% led_model_B.Constant6
+	  ;% led_model_B.Mode
 	  section.data(14).logicalSrcIdx = 13;
 	  section.data(14).dtTransOffset = 13;
 	
@@ -266,11 +266,11 @@
 	  section.data(12).logicalSrcIdx = 28;
 	  section.data(12).dtTransOffset = 11;
 	
-	  ;% led_model_B.DigitalRead
+	  ;% led_model_B.ATR_CMP_DETECTBoolean
 	  section.data(13).logicalSrcIdx = 29;
 	  section.data(13).dtTransOffset = 12;
 	
-	  ;% led_model_B.DigitalRead1
+	  ;% led_model_B.VENT_CMP_DETECTBoolean
 	  section.data(14).logicalSrcIdx = 30;
 	  section.data(14).dtTransOffset = 13;
 	
@@ -337,39 +337,39 @@
       section.nData     = 15;
       section.data(15)  = dumData; %prealloc
       
-	  ;% led_model_DW.obj_l
+	  ;% led_model_DW.obj_e
 	  section.data(1).logicalSrcIdx = 2;
 	  section.data(1).dtTransOffset = 0;
 	
-	  ;% led_model_DW.obj_i
+	  ;% led_model_DW.obj_n
 	  section.data(2).logicalSrcIdx = 3;
 	  section.data(2).dtTransOffset = 1;
 	
-	  ;% led_model_DW.obj_m
+	  ;% led_model_DW.obj_i
 	  section.data(3).logicalSrcIdx = 4;
 	  section.data(3).dtTransOffset = 2;
 	
-	  ;% led_model_DW.obj_n
+	  ;% led_model_DW.obj_f
 	  section.data(4).logicalSrcIdx = 5;
 	  section.data(4).dtTransOffset = 3;
 	
-	  ;% led_model_DW.obj_f
+	  ;% led_model_DW.obj_l
 	  section.data(5).logicalSrcIdx = 6;
 	  section.data(5).dtTransOffset = 4;
 	
-	  ;% led_model_DW.obj_lm
+	  ;% led_model_DW.obj_nv
 	  section.data(6).logicalSrcIdx = 7;
 	  section.data(6).dtTransOffset = 5;
 	
-	  ;% led_model_DW.obj_nv
+	  ;% led_model_DW.obj_h
 	  section.data(7).logicalSrcIdx = 8;
 	  section.data(7).dtTransOffset = 6;
 	
-	  ;% led_model_DW.obj_b
+	  ;% led_model_DW.obj_l5
 	  section.data(8).logicalSrcIdx = 9;
 	  section.data(8).dtTransOffset = 7;
 	
-	  ;% led_model_DW.obj_l0
+	  ;% led_model_DW.obj_lf
 	  section.data(9).logicalSrcIdx = 10;
 	  section.data(9).dtTransOffset = 8;
 	
@@ -377,23 +377,23 @@
 	  section.data(10).logicalSrcIdx = 11;
 	  section.data(10).dtTransOffset = 9;
 	
-	  ;% led_model_DW.obj_l5
+	  ;% led_model_DW.obj_l0
 	  section.data(11).logicalSrcIdx = 12;
 	  section.data(11).dtTransOffset = 10;
 	
-	  ;% led_model_DW.obj_e
+	  ;% led_model_DW.obj_b
 	  section.data(12).logicalSrcIdx = 13;
 	  section.data(12).dtTransOffset = 11;
 	
-	  ;% led_model_DW.obj_h
+	  ;% led_model_DW.obj_lh
 	  section.data(13).logicalSrcIdx = 14;
 	  section.data(13).dtTransOffset = 12;
 	
-	  ;% led_model_DW.obj_lh
+	  ;% led_model_DW.obj_o
 	  section.data(14).logicalSrcIdx = 15;
 	  section.data(14).dtTransOffset = 13;
 	
-	  ;% led_model_DW.obj_o
+	  ;% led_model_DW.obj_m
 	  section.data(15).logicalSrcIdx = 16;
 	  section.data(15).dtTransOffset = 14;
 	
@@ -453,8 +453,8 @@
   ;%
 
 
-  targMap.checksum0 = 3555415670;
-  targMap.checksum1 = 505968802;
-  targMap.checksum2 = 3493561398;
-  targMap.checksum3 = 3609976573;
+  targMap.checksum0 = 2886376191;
+  targMap.checksum1 = 1933565180;
+  targMap.checksum2 = 152612308;
+  targMap.checksum3 = 612289369;
 

@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'led_model'.
  *
- * Model version                  : 1.21
+ * Model version                  : 1.23
  * Simulink Coder version         : 9.3 (R2020a) 18-Nov-2019
- * C/C++ source code generated on : Sat Oct 24 17:20:59 2020
+ * C/C++ source code generated on : Sat Oct 24 22:40:43 2020
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -25,6 +25,13 @@
 #include "mw_cmsis_rtos.h"
 #define UNUSED(x)                      x = x
 #define NAMELEN                        16
+#define EXIT_ON_ERROR(msg, cond)       if (cond) { return(0); }
+
+extern const char *TgtConnInit(int_T argc, char_T *argv[]);
+extern void TgtConnTerm();
+extern void TgtConnPreStep(int_T tid);
+extern void TgtConnPostStep(int_T tid);
+const char * csErrorStatus;
 
 /* Function prototype declaration*/
 void exitFcn(int sig);
@@ -37,17 +44,37 @@ mw_signal_event_t stopSem;
 mw_signal_event_t baserateTaskSem;
 mw_thread_t schedulerThread;
 mw_thread_t baseRateThread;
+mw_thread_t backgroundThread;
 void *threadJoinStatus;
 int terminatingmodel = 0;
 void *baseRateTask(void *arg)
 {
-  runModel = (rtmGetErrorStatus(led_model_M) == (NULL));
+  runModel = (rtmGetErrorStatus(led_model_M) == (NULL)) && !rtmGetStopRequested
+    (led_model_M);
   while (runModel) {
     mw_osSignalEventWaitEver(&baserateTaskSem);
+
+    /* External mode */
+    {
+      boolean_T rtmStopReq = false;
+      rtExtModePauseIfNeeded(led_model_M->extModeInfo, 1, &rtmStopReq);
+      if (rtmStopReq) {
+        rtmSetStopRequested(led_model_M, true);
+      }
+
+      if (rtmGetStopRequested(led_model_M) == true) {
+        rtmSetErrorStatus(led_model_M, "Simulation finished");
+        break;
+      }
+    }
+
     led_model_step();
 
     /* Get model outputs here */
-    stopRequested = !((rtmGetErrorStatus(led_model_M) == (NULL)));
+    rtExtModeCheckEndTrigger();
+    stopRequested = !((rtmGetErrorStatus(led_model_M) == (NULL)) &&
+                      !rtmGetStopRequested(led_model_M));
+    runModel = !stopRequested;
   }
 
   runModel = 0;
@@ -70,13 +97,37 @@ void *terminateTask(void *arg)
 
   {
     runModel = 0;
+
+    /* Wait for background task to complete */
+    CHECK_STATUS(mw_osThreadJoin(backgroundThread, &threadJoinStatus), 0,
+                 "mw_osThreadJoin");
   }
 
   /* Disable rt_OneStep() here */
 
   /* Terminate model */
   led_model_terminate();
+  rtExtModeShutdown(1);
+  TgtConnTerm();
   mw_osSignalEventRelease(&stopSem);
+  return NULL;
+}
+
+void *backgroundTask(void *arg)
+{
+  while (runModel) {
+    /* External mode */
+    {
+      boolean_T rtmStopReq = false;
+      rtExtModeOneStep(led_model_M->extModeInfo, 1, &rtmStopReq);
+      if (rtmStopReq) {
+        rtmSetStopRequested(led_model_M, true);
+      }
+    }
+
+    runCommService();
+  }
+
   return NULL;
 }
 
@@ -85,9 +136,28 @@ int main(int argc, char **argv)
   SystemCoreClockUpdate();
   hardware_init();
   rtmSetErrorStatus(led_model_M, 0);
+  rtExtModeParseArgs(argc, (const char_T **)argv, NULL);
+
+  /* Target connectivity initialization */
+  csErrorStatus = TgtConnInit(argc, argv);
+  EXIT_ON_ERROR("Error initializing target connectivity: %s\n", csErrorStatus);
 
   /* Initialize model */
   led_model_initialize();
+
+  /* External mode */
+  rtSetTFinalForExtMode(&rtmGetTFinal(led_model_M));
+  rtExtModeCheckInit(1);
+
+  {
+    boolean_T rtmStopReq = false;
+    rtExtModeWaitForStartPkt(led_model_M->extModeInfo, 1, &rtmStopReq);
+    if (rtmStopReq) {
+      rtmSetStopRequested(led_model_M, true);
+    }
+  }
+
+  rtERTExtModeStartMsg();
 
   /* Call RTOS Initialization function */
   mw_RTOSInit(0.001, 0);
