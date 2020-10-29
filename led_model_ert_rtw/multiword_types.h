@@ -3,7 +3,7 @@
  * course requirements at degree granting institutions only.  Not for
  * government, commercial, or other organizational use.
  *
- * File: led_model_private.h
+ * File: multiword_types.h
  *
  * Code generated for Simulink model 'led_model'.
  *
@@ -17,16 +17,17 @@
  * Validation result: Not run
  */
 
-#ifndef RTW_HEADER_led_model_private_h_
-#define RTW_HEADER_led_model_private_h_
+#ifndef MULTIWORD_TYPES_H
+#define MULTIWORD_TYPES_H
 #include "rtwtypes.h"
-#include "multiword_types.h"
 
-/* Private macros used by the generated code to access rtModel */
-#ifndef rtmSetTFinal
-# define rtmSetTFinal(rtm, val)        ((rtm)->Timing.tFinal = (val))
-#endif
-#endif                                 /* RTW_HEADER_led_model_private_h_ */
+/*
+ * Definitions supporting external data access
+ */
+typedef int32_T chunk_T;
+typedef uint32_T uchunk_T;
+
+#endif                                 /* MULTIWORD_TYPES_H */
 
 /*
  * File trailer for generated code.

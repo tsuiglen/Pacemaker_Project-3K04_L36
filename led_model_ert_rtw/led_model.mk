@@ -2,7 +2,7 @@
 ## Makefile generated for Simulink model 'led_model'. 
 ## 
 ## Makefile     : led_model.mk
-## Generated on : Thu Oct 29 14:28:14 2020
+## Generated on : Thu Oct 29 15:01:12 2020
 ## MATLAB Coder version: 5.0 (R2020a)
 ## 
 ## Build Info:
@@ -215,11 +215,11 @@ INCLUDES = $(INCLUDES_BUILDINFO)
 ## DEFINES
 ###########################################################################
 
-DEFINES_ = -DMODEL=led_model -DNUMST=1 -DNCSTATES=0 -DHAVESTDIO -DMODEL_HAS_DYNAMICALLY_LOADED_SFCNS=0 -DCLASSIC_INTERFACE=0 -DALLOCATIONFCN=0 -DTID01EQ=0 -DTERMFCN=1 -DONESTEPFCN=1 -DMAT_FILE=0 -DMULTI_INSTANCE_CODE=0 -DINTEGER_CODE=0 -DMT=0 -DNULL=0 -DEXIT_FAILURE=1 -DEXTMODE_DISABLEPRINTF -DEXTMODE_DISABLETESTING -DEXTMODE_DISABLE_ARGS_PROCESSING=1 -DTARGET_K64F -DTARGET_Freescale -DTOOLCHAIN_GCC_ARM -DTOOLCHAIN_GCC -DTARGET_K64F -DTARGET_M4 -DTARGET_CORTEX_M -DTARGET_Freescale -DTARGET_KPSDK_MCUS -DTARGET_KPSDK_CODE -DTARGET_MCU_K64F -DTARGET_FRDM -DTOOLCHAIN_GCC_ARM -DTOOLCHAIN_GCC -D__CORTEX_M4 -DARM_MATH_CM4 -D__FPU_PRESENT=1 -DCPU_MK64FN1M0VMD12 -DFRDM_K64F120M -DFREEDOM -D__STACK_SIZE=0x2000 -D__HEAP_SIZE=0x2000 -DCLOCK_SETUP -D__FPU_USED=1 -DUSE_RTX -DOS_ROBIN=0 -DOS_TIMERS=1 -DOS_TIMERPRIO=6 -DOS_TIMERSTKSZ=200 -DSTACK_SIZE=64 -D__MW_TARGET_USE_HARDWARE_RESOURCES_H__ -DOS_CLOCK=120000000 -DOS_TICK=1000 -DMW_BASERATEMULTIPLIER=1 -DOS_TASKCNT=2 -DOS_STKSIZE=1088 -DOS_MAINSTKSIZE=512
-DEFINES_BUILD_ARGS = -DCLASSIC_INTERFACE=0 -DALLOCATIONFCN=0 -DTERMFCN=1 -DONESTEPFCN=1 -DMAT_FILE=0 -DMULTI_INSTANCE_CODE=0 -DINTEGER_CODE=0 -DMT=0
+DEFINES_ = -DMODEL=led_model -DNUMST=1 -DNCSTATES=0 -DHAVESTDIO -DMODEL_HAS_DYNAMICALLY_LOADED_SFCNS=0 -DON_TARGET_WAIT_FOR_START=1 -DCLASSIC_INTERFACE=0 -DALLOCATIONFCN=0 -DTID01EQ=0 -DTERMFCN=1 -DONESTEPFCN=1 -DMAT_FILE=0 -DMULTI_INSTANCE_CODE=0 -DEXT_MODE=1 -DINTEGER_CODE=0 -DMT=0 -DNULL=0 -DEXIT_FAILURE=1 -DEXTMODE_DISABLEPRINTF -DEXTMODE_DISABLETESTING -DEXTMODE_DISABLE_ARGS_PROCESSING=1 -DTARGET_K64F -DTARGET_Freescale -DTOOLCHAIN_GCC_ARM -DTOOLCHAIN_GCC -DTARGET_K64F -DTARGET_M4 -DTARGET_CORTEX_M -DTARGET_Freescale -DTARGET_KPSDK_MCUS -DTARGET_KPSDK_CODE -DTARGET_MCU_K64F -DTARGET_FRDM -DTOOLCHAIN_GCC_ARM -DTOOLCHAIN_GCC -D__CORTEX_M4 -DARM_MATH_CM4 -D__FPU_PRESENT=1 -DCPU_MK64FN1M0VMD12 -DFRDM_K64F120M -DFREEDOM -D__STACK_SIZE=0x2000 -D__HEAP_SIZE=0x2000 -DCLOCK_SETUP -D__FPU_USED=1 -DUSE_RTX -DOS_ROBIN=0 -DOS_TIMERS=1 -DOS_TIMERPRIO=6 -DOS_TIMERSTKSZ=200 -DSTACK_SIZE=64 -D__MW_TARGET_USE_HARDWARE_RESOURCES_H__ -DOS_CLOCK=120000000 -DOS_TICK=1000 -DMW_BASERATEMULTIPLIER=1 -DOS_TASKCNT=3 -DOS_STKSIZE=1088 -DOS_MAINSTKSIZE=512 -DTGTSVC_RUNNING
+DEFINES_BUILD_ARGS = -DCLASSIC_INTERFACE=0 -DALLOCATIONFCN=0 -DTERMFCN=1 -DONESTEPFCN=1 -DMAT_FILE=0 -DMULTI_INSTANCE_CODE=0 -DEXT_MODE=1 -DINTEGER_CODE=0 -DMT=0
 DEFINES_CUSTOM = 
-DEFINES_OPTS = -DTID01EQ=0
-DEFINES_SKIPFORSIL = -DNULL=0 -DEXIT_FAILURE=1 -DEXTMODE_DISABLEPRINTF -DEXTMODE_DISABLETESTING -DEXTMODE_DISABLE_ARGS_PROCESSING=1 -DTARGET_K64F -DTARGET_Freescale -DTOOLCHAIN_GCC_ARM -DTOOLCHAIN_GCC -DTARGET_K64F -DTARGET_M4 -DTARGET_CORTEX_M -DTARGET_Freescale -DTARGET_KPSDK_MCUS -DTARGET_KPSDK_CODE -DTARGET_MCU_K64F -DTARGET_FRDM -DTOOLCHAIN_GCC_ARM -DTOOLCHAIN_GCC -D__CORTEX_M4 -DARM_MATH_CM4 -D__FPU_PRESENT=1 -DCPU_MK64FN1M0VMD12 -DFRDM_K64F120M -DFREEDOM -D__STACK_SIZE=0x2000 -D__HEAP_SIZE=0x2000 -DCLOCK_SETUP -D__FPU_USED=1 -DUSE_RTX -DOS_ROBIN=0 -DOS_TIMERS=1 -DOS_TIMERPRIO=6 -DOS_TIMERSTKSZ=200 -DSTACK_SIZE=64 -DOS_CLOCK=120000000 -DOS_TICK=1000 -DMW_BASERATEMULTIPLIER=1 -DOS_TASKCNT=2 -DOS_STKSIZE=1088 -DOS_MAINSTKSIZE=512
+DEFINES_OPTS = -DON_TARGET_WAIT_FOR_START=1 -DTID01EQ=0
+DEFINES_SKIPFORSIL = -DNULL=0 -DEXIT_FAILURE=1 -DEXTMODE_DISABLEPRINTF -DEXTMODE_DISABLETESTING -DEXTMODE_DISABLE_ARGS_PROCESSING=1 -DTARGET_K64F -DTARGET_Freescale -DTOOLCHAIN_GCC_ARM -DTOOLCHAIN_GCC -DTARGET_K64F -DTARGET_M4 -DTARGET_CORTEX_M -DTARGET_Freescale -DTARGET_KPSDK_MCUS -DTARGET_KPSDK_CODE -DTARGET_MCU_K64F -DTARGET_FRDM -DTOOLCHAIN_GCC_ARM -DTOOLCHAIN_GCC -D__CORTEX_M4 -DARM_MATH_CM4 -D__FPU_PRESENT=1 -DCPU_MK64FN1M0VMD12 -DFRDM_K64F120M -DFREEDOM -D__STACK_SIZE=0x2000 -D__HEAP_SIZE=0x2000 -DCLOCK_SETUP -D__FPU_USED=1 -DUSE_RTX -DOS_ROBIN=0 -DOS_TIMERS=1 -DOS_TIMERPRIO=6 -DOS_TIMERSTKSZ=200 -DSTACK_SIZE=64 -DOS_CLOCK=120000000 -DOS_TICK=1000 -DMW_BASERATEMULTIPLIER=1 -DOS_TASKCNT=3 -DOS_STKSIZE=1088 -DOS_MAINSTKSIZE=512 -DTGTSVC_RUNNING
 DEFINES_STANDARD = -DMODEL=led_model -DNUMST=1 -DNCSTATES=0 -DHAVESTDIO -DMODEL_HAS_DYNAMICALLY_LOADED_SFCNS=0
 
 DEFINES = $(DEFINES_) $(DEFINES_BUILD_ARGS) $(DEFINES_CUSTOM) $(DEFINES_OPTS) $(DEFINES_SKIPFORSIL) $(DEFINES_STANDARD)
@@ -228,7 +228,7 @@ DEFINES = $(DEFINES_) $(DEFINES_BUILD_ARGS) $(DEFINES_CUSTOM) $(DEFINES_OPTS) $(
 ## SOURCE FILES
 ###########################################################################
 
-SRCS = /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/MW_digitalIO.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/mw_sdk_interface.c $(START_DIR)/led_model_ert_rtw/led_model.c $(START_DIR)/led_model_ert_rtw/led_model_data.c /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/startup.c /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/MK64F12/startup/system_MK64F12.c /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/MK64F12/startup/gcc/startup_MK64F12.S /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/board.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/hardware_init.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/pin_mux.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/fsl_misc_utilities.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/fsl_edma_irq.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/fsl_uart_irq.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/irq_stub.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/sbrk.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/armcortexmbase/cmsis_rtos_rtx/src/cmsis_rtos_init.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/3P.instrset/cmsis.instrset/CMSIS/RTOS/RTX/Templates/RTX_Conf_CM.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/armcortexmbase/cmsis_rtos_rtx/src/mw_thread.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/armcortexmbase/cmsis_rtos_rtx/src/mw_semaphore.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/armcortexmbase/cmsis_rtos_rtx/src/mw_timer.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/armcortexmbase/cmsis_rtos_rtx/src/mw_signal.c
+SRCS = /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/MW_digitalIO.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/mw_sdk_interface.c $(START_DIR)/led_model_ert_rtw/led_model.c $(START_DIR)/led_model_ert_rtw/led_model_data.c $(START_DIR)/led_model_ert_rtw/led_model_tgtconn.c $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/updown.c $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/ext_work.c /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/startup.c /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/MK64F12/startup/system_MK64F12.c /Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/devices/MK64F12/startup/gcc/startup_MK64F12.S /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/board.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/hardware_init.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/pin_mux.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/fsl_misc_utilities.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/fsl_edma_irq.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/fsl_uart_irq.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/irq_stub.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/sbrk.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/armcortexmbase/cmsis_rtos_rtx/src/cmsis_rtos_init.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/3P.instrset/cmsis.instrset/CMSIS/RTOS/RTX/Templates/RTX_Conf_CM.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/armcortexmbase/cmsis_rtos_rtx/src/mw_thread.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/armcortexmbase/cmsis_rtos_rtx/src/mw_semaphore.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/armcortexmbase/cmsis_rtos_rtx/src/mw_timer.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/armcortexmbase/cmsis_rtos_rtx/src/mw_signal.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/k64f_rtiostream_interface.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/k64f_rtiostream_commservice.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/k64f_ext_svr.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/k64f_rtiostream_utils.c /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/tgtSvc_UARTInfo.c
 
 MAIN_SRC = $(START_DIR)/led_model_ert_rtw/ert_main.c
 
@@ -238,7 +238,7 @@ ALL_SRCS = $(SRCS) $(MAIN_SRC)
 ## OBJECTS
 ###########################################################################
 
-OBJS = MW_digitalIO.o mw_sdk_interface.o led_model.o led_model_data.o startup.o system_MK64F12.o startup_MK64F12.o board.o hardware_init.o pin_mux.o fsl_misc_utilities.o fsl_edma_irq.o fsl_uart_irq.o irq_stub.o sbrk.o cmsis_rtos_init.o RTX_Conf_CM.o mw_thread.o mw_semaphore.o mw_timer.o mw_signal.o
+OBJS = MW_digitalIO.o mw_sdk_interface.o led_model.o led_model_data.o led_model_tgtconn.o updown.o ext_work.o startup.o system_MK64F12.o startup_MK64F12.o board.o hardware_init.o pin_mux.o fsl_misc_utilities.o fsl_edma_irq.o fsl_uart_irq.o irq_stub.o sbrk.o cmsis_rtos_init.o RTX_Conf_CM.o mw_thread.o mw_semaphore.o mw_timer.o mw_signal.o k64f_rtiostream_interface.o k64f_rtiostream_commservice.o k64f_ext_svr.o k64f_rtiostream_utils.o tgtSvc_UARTInfo.o
 
 MAIN_OBJ = ert_main.o
 
@@ -254,7 +254,7 @@ PREBUILT_OBJS =
 ## LIBRARIES
 ###########################################################################
 
-LIBS = /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/3P.instrset/cmsis.instrset/CMSIS/Lib/GCC/libarm_cortexM4lf_math.a /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/3P.instrset/cmsis.instrset/CMSIS/RTOS/RTX/LIB/GCC/libRTX_CM4.a /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/ksdk_armgcc_lib/bm/libksdk_platform.a
+LIBS = /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/bin/libcodertarget_RTIOStreamAppSvc.lib /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/bin/bm/libcodertarget_TargetServices.lib /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/3P.instrset/cmsis.instrset/CMSIS/Lib/GCC/libarm_cortexM4lf_math.a /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/3P.instrset/cmsis.instrset/CMSIS/RTOS/RTX/LIB/GCC/libRTX_CM4.a /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/ksdk_armgcc_lib/bm/libksdk_platform.a
 
 ###########################################################################
 ## SYSTEM LIBRARIES
@@ -584,6 +584,62 @@ $(PRODUCT) : $(OBJS) $(PREBUILT_OBJS) $(LIBS) $(MAIN_OBJ)
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
+%.o : $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/%.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/%.s
+	$(AS) $(ASFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/%.S
+	$(AS) $(ASFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/%.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/%.cc
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/%.C
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/%.cxx
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/rtiostream/src/utils/%.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/rtiostream/src/utils/%.s
+	$(AS) $(ASFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/rtiostream/src/utils/%.S
+	$(AS) $(ASFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/rtiostream/src/utils/%.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/rtiostream/src/utils/%.cc
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/rtiostream/src/utils/%.C
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.o : $(MATLAB_ROOT)/toolbox/coder/rtiostream/src/utils/%.cxx
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
 MW_digitalIO.o : /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/MW_digitalIO.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
@@ -601,6 +657,18 @@ led_model.o : $(START_DIR)/led_model_ert_rtw/led_model.c
 
 
 led_model_data.o : $(START_DIR)/led_model_ert_rtw/led_model_data.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+led_model_tgtconn.o : $(START_DIR)/led_model_ert_rtw/led_model_tgtconn.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+updown.o : $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/updown.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+ext_work.o : $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/ext_work.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
@@ -669,6 +737,26 @@ mw_timer.o : /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/targ
 
 
 mw_signal.o : /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/armcortexmbase/cmsis_rtos_rtx/src/mw_signal.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+k64f_rtiostream_interface.o : /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/k64f_rtiostream_interface.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+k64f_rtiostream_commservice.o : /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/k64f_rtiostream_commservice.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+k64f_ext_svr.o : /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/k64f_ext_svr.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+k64f_rtiostream_utils.o : /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/k64f_rtiostream_utils.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+tgtSvc_UARTInfo.o : /Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/freedomk64f/src/tgtSvc_UARTInfo.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 

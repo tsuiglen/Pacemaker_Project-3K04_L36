@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'led_model'.
  *
- * Model version                  : 1.24
+ * Model version                  : 1.25
  * Simulink Coder version         : 9.3 (R2020a) 18-Nov-2019
- * C/C++ source code generated on : Thu Oct 29 14:28:04 2020
+ * C/C++ source code generated on : Thu Oct 29 15:00:50 2020
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -62,10 +62,10 @@ P_led_model_T led_model_P = {
    */
   10.0,
 
-  /* Expression: 250
+  /* Expression: 100
    * Referenced by: '<S1>/A_RefractoryPeriod (ms)'
    */
-  250.0,
+  100.0,
 
   /* Expression: 320
    * Referenced by: '<S1>/V_RefractoryPeriod (ms)'
@@ -97,10 +97,10 @@ P_led_model_T led_model_P = {
    */
   250.0,
 
-  /* Expression: 0
+  /* Expression: 3
    * Referenced by: '<S1>/Mode (VOO - 0, VVI - 1, AOO - 2, AAI - 3)'
    */
-  0.0
+  3.0
 };
 
 /*
