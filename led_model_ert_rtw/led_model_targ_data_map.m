@@ -31,11 +31,11 @@
       section.nData     = 16;
       section.data(16)  = dumData; %prealloc
       
-	  ;% led_model_P.VENT_CMP_DETECTBoolean_SampleTi
+	  ;% led_model_P.VENT_CMP_DETECTONOFF_SampleTime
 	  section.data(1).logicalSrcIdx = 0;
 	  section.data(1).dtTransOffset = 0;
 	
-	  ;% led_model_P.ATR_CMP_DETECTBoolean_SampleTim
+	  ;% led_model_P.ATR_CMP_DETECTONOFF_SampleTime
 	  section.data(2).logicalSrcIdx = 1;
 	  section.data(2).dtTransOffset = 1;
 	
@@ -83,7 +83,7 @@
 	  section.data(13).logicalSrcIdx = 12;
 	  section.data(13).dtTransOffset = 12;
 	
-	  ;% led_model_P.Hysterisisms_Value
+	  ;% led_model_P.HysterisisOnOffOff0On1_Value
 	  section.data(14).logicalSrcIdx = 13;
 	  section.data(14).dtTransOffset = 13;
 	
@@ -91,7 +91,7 @@
 	  section.data(15).logicalSrcIdx = 14;
 	  section.data(15).dtTransOffset = 14;
 	
-	  ;% led_model_P.Mode_Value
+	  ;% led_model_P.ModeVOO0VVI1AOO2AAI3_Value
 	  section.data(16).logicalSrcIdx = 15;
 	  section.data(16).dtTransOffset = 15;
 	
@@ -187,7 +187,7 @@
 	  section.data(11).logicalSrcIdx = 10;
 	  section.data(11).dtTransOffset = 10;
 	
-	  ;% led_model_B.Hysterisisms
+	  ;% led_model_B.HysterisisOnOffOff0On1
 	  section.data(12).logicalSrcIdx = 11;
 	  section.data(12).dtTransOffset = 11;
 	
@@ -195,7 +195,7 @@
 	  section.data(13).logicalSrcIdx = 12;
 	  section.data(13).dtTransOffset = 12;
 	
-	  ;% led_model_B.Mode
+	  ;% led_model_B.ModeVOO0VVI1AOO2AAI3
 	  section.data(14).logicalSrcIdx = 13;
 	  section.data(14).dtTransOffset = 13;
 	
@@ -266,11 +266,11 @@
 	  section.data(12).logicalSrcIdx = 28;
 	  section.data(12).dtTransOffset = 11;
 	
-	  ;% led_model_B.ATR_CMP_DETECTBoolean
+	  ;% led_model_B.ATR_CMP_DETECTONOFF
 	  section.data(13).logicalSrcIdx = 29;
 	  section.data(13).dtTransOffset = 12;
 	
-	  ;% led_model_B.VENT_CMP_DETECTBoolean
+	  ;% led_model_B.VENT_CMP_DETECTONOFF
 	  section.data(14).logicalSrcIdx = 30;
 	  section.data(14).dtTransOffset = 13;
 	
@@ -453,8 +453,8 @@
   ;%
 
 
-  targMap.checksum0 = 2886376191;
-  targMap.checksum1 = 1933565180;
-  targMap.checksum2 = 152612308;
-  targMap.checksum3 = 612289369;
+  targMap.checksum0 = 3542944121;
+  targMap.checksum1 = 4268451704;
+  targMap.checksum2 = 2680770645;
+  targMap.checksum3 = 2298141403;
 

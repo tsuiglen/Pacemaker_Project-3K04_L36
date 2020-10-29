@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'led_model'.
  *
- * Model version                  : 1.23
+ * Model version                  : 1.24
  * Simulink Coder version         : 9.3 (R2020a) 18-Nov-2019
- * C/C++ source code generated on : Sat Oct 24 22:40:43 2020
+ * C/C++ source code generated on : Thu Oct 29 14:28:04 2020
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -23,12 +23,12 @@
 /* Block parameters (default storage) */
 P_led_model_T led_model_P = {
   /* Expression: SampleTime
-   * Referenced by: '<S1>/VENT_CMP_DETECT (Boolean)'
+   * Referenced by: '<S1>/VENT_CMP_DETECT (ON // OFF)'
    */
   -1.0,
 
   /* Expression: SampleTime
-   * Referenced by: '<S1>/ATR_CMP_DETECT (Boolean)'
+   * Referenced by: '<S1>/ATR_CMP_DETECT (ON // OFF)'
    */
   -1.0,
 
@@ -62,25 +62,25 @@ P_led_model_T led_model_P = {
    */
   10.0,
 
-  /* Expression: 0
+  /* Expression: 250
    * Referenced by: '<S1>/A_RefractoryPeriod (ms)'
    */
-  0.0,
+  250.0,
 
-  /* Expression: 0
+  /* Expression: 320
    * Referenced by: '<S1>/V_RefractoryPeriod (ms)'
    */
-  0.0,
+  320.0,
 
-  /* Expression: 0
+  /* Expression: 0.75
    * Referenced by: '<S1>/A_Sens (mV)'
    */
-  0.0,
+  0.75,
 
-  /* Expression: 0
+  /* Expression: 2.5
    * Referenced by: '<S1>/V_Sens (mV)'
    */
-  0.0,
+  2.5,
 
   /* Expression: 0
    * Referenced by: '<S1>/Rate_Smoothing (%)'
@@ -88,17 +88,17 @@ P_led_model_T led_model_P = {
   0.0,
 
   /* Expression: 0
-   * Referenced by: '<S1>/Hysterisis (ms)'
+   * Referenced by: '<S1>/Hysterisis (On // Off) (Off - 0, On - 1)'
    */
   0.0,
 
-  /* Expression: 0
+  /* Expression: 250
    * Referenced by: '<S1>/PVARP (ms)'
    */
-  0.0,
+  250.0,
 
   /* Expression: 0
-   * Referenced by: '<S1>/Mode'
+   * Referenced by: '<S1>/Mode (VOO - 0, VVI - 1, AOO - 2, AAI - 3)'
    */
   0.0
 };

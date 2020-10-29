@@ -6,8 +6,6 @@
 -I/Users/atrio/Desktop/Matlab/MATLAB_R2020a.app/rtw/c/src
 -I/Users/atrio/Desktop/Matlab/MATLAB_R2020a.app/rtw/c/src/ext_mode/common
 -I/Users/atrio/Desktop/Matlab/MATLAB_R2020a.app/rtw/c/ert
--I/Users/atrio/Desktop/Matlab/MATLAB_R2020a.app/toolbox/coder/rtiostream/src
--I/Users/atrio/Desktop/Matlab/MATLAB_R2020a.app/toolbox/coder/rtiostream/src/utils
 -I/Users/atrio/Desktop/Matlab/KSDK_1.2.0/platform/CMSIS/Include
 -I/Users/atrio/Desktop/Matlab/MATLAB_R2020a.app/rtw/c/src/ext_mode/serial
 -I/Users/atrio/Documents/MATLAB/SupportPackages/R2020a_1/toolbox/target/supportpackages/armcortexmbase/scheduler/include
