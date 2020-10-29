@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'led_model'.
  *
- * Model version                  : 1.25
+ * Model version                  : 1.26
  * Simulink Coder version         : 9.3 (R2020a) 18-Nov-2019
- * C/C++ source code generated on : Thu Oct 29 15:00:50 2020
+ * C/C++ source code generated on : Thu Oct 29 16:59:16 2020
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -20,7 +20,6 @@
 #ifndef RTW_HEADER_led_model_types_h_
 #define RTW_HEADER_led_model_types_h_
 #include "rtwtypes.h"
-#include "multiword_types.h"
 
 /* Model Code Variants */
 
@@ -85,6 +84,27 @@ struct tag_62aCTDKRGQaAsT8vVipI2D
 typedef struct tag_62aCTDKRGQaAsT8vVipI2D freedomk64f_DigitalWrite_led__T;
 
 #endif                               /*typedef_freedomk64f_DigitalWrite_led__T*/
+
+#ifndef struct_tag_asB9FwAteE1VObOuq1LwyE
+#define struct_tag_asB9FwAteE1VObOuq1LwyE
+
+struct tag_asB9FwAteE1VObOuq1LwyE
+{
+  boolean_T matlabCodegenIsDeleted;
+  int32_T isInitialized;
+  boolean_T isSetupComplete;
+  b_freedomk64f_Hardware_led_mo_T Hw;
+  MW_Handle_Type MW_PWM_HANDLE;
+};
+
+#endif                                 /*struct_tag_asB9FwAteE1VObOuq1LwyE*/
+
+#ifndef typedef_freedomk64f_PWMOutput_led_mod_T
+#define typedef_freedomk64f_PWMOutput_led_mod_T
+
+typedef struct tag_asB9FwAteE1VObOuq1LwyE freedomk64f_PWMOutput_led_mod_T;
+
+#endif                               /*typedef_freedomk64f_PWMOutput_led_mod_T*/
 
 /* Parameters (default storage) */
 typedef struct P_led_model_T_ P_led_model_T;

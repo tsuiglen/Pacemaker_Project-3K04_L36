@@ -7,34 +7,25 @@
 %endfunction
 %function ChartDataMap(block, system) void
   %createrecord ChartDataElements {\
-    NumChartData   4 \
+    NumChartData   3 \
     ChartDataDefaults {\
       RecordType   "ChartData"\
       Dimensions   []\
       IsTestPoint  0\
     }\
     ChartData {\
-      Name         "sfEvent"\
-      Description  "ActiveChartEvent"\
+      Name         "is_active_c3_led_model"\
+      Description  "StateIsActive"\
       SFName       ""\
       Path         ""\
       SrcLocation  ""\
     }\
     ChartData {\
-      Name         "is_active_c3_led_model"\
-      Description  "StateIsActive"\
-      SFName       "is_active_c3_led_model"\
-      Path         "is_active_c3_led_model"\
-      SrcLocation  ""\
-      IsTestPoint  1\
-    }\
-    ChartData {\
       Name         "is_c3_led_model"\
       Description  "StateActiveChild"\
-      SFName       "is_c3_led_model"\
-      Path         "is_c3_led_model"\
+      SFName       ""\
+      Path         ""\
       SrcLocation  ""\
-      IsTestPoint  1\
     }\
     ChartData {\
       Name         "temporalCounter_i1"\
