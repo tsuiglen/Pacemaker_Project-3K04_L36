@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'led_model'.
  *
- * Model version                  : 1.21
+ * Model version                  : 1.25
  * Simulink Coder version         : 9.3 (R2020a) 18-Nov-2019
- * C/C++ source code generated on : Sat Oct 24 14:54:16 2020
+ * C/C++ source code generated on : Thu Oct 29 14:59:55 2020
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -24,7 +24,6 @@
 #ifndef led_model_COMMON_INCLUDES_
 # define led_model_COMMON_INCLUDES_
 #include "rtwtypes.h"
-#include "MW_PWM.h"
 #include "MW_digitalIO.h"
 #endif                                 /* led_model_COMMON_INCLUDES_ */
 
@@ -60,23 +59,23 @@ typedef struct {
 
 /* Block states (default storage) for system '<Root>' */
 typedef struct {
-  freedomk64f_DigitalRead_led_m_T obj; /* '<Root>/Digital Read' */
-  freedomk64f_DigitalRead_led_m_T obj_g;/* '<Root>/Digital Read1' */
-  freedomk64f_DigitalWrite_led__T obj_l;/* '<Root>/Digital Write' */
-  freedomk64f_DigitalWrite_led__T obj_i;/* '<Root>/Digital Write1' */
-  freedomk64f_DigitalWrite_led__T obj_m;/* '<Root>/Digital Write10' */
-  freedomk64f_DigitalWrite_led__T obj_n;/* '<Root>/Digital Write2' */
-  freedomk64f_DigitalWrite_led__T obj_b;/* '<Root>/Digital Write20' */
-  freedomk64f_DigitalWrite_led__T obj_l0;/* '<Root>/Digital Write3' */
-  freedomk64f_DigitalWrite_led__T obj_k;/* '<Root>/Digital Write4' */
-  freedomk64f_DigitalWrite_led__T obj_l5;/* '<Root>/Digital Write5' */
-  freedomk64f_DigitalWrite_led__T obj_e;/* '<Root>/Digital Write6' */
-  freedomk64f_DigitalWrite_led__T obj_h;/* '<Root>/Digital Write7' */
-  freedomk64f_DigitalWrite_led__T obj_lh;/* '<Root>/Digital Write8' */
-  freedomk64f_DigitalWrite_led__T obj_o;/* '<Root>/Digital Write9' */
-  freedomk64f_PWMOutput_led_mod_T obj_j;/* '<Root>/PWM Output' */
-  freedomk64f_PWMOutput_led_mod_T obj_ea;/* '<Root>/PWM Output1' */
-  freedomk64f_PWMOutput_led_mod_T obj_a;/* '<Root>/PWM Output2' */
+  freedomk64f_DigitalRead_led_m_T obj; /* '<S1>/ATR_CMP_DETECT (ON // OFF)' */
+  freedomk64f_DigitalRead_led_m_T obj_g;/* '<S1>/VENT_CMP_DETECT (ON // OFF)' */
+  freedomk64f_DigitalWrite_led__T obj_e;/* '<S3>/PACE_CHARGE_CTRL' */
+  freedomk64f_DigitalWrite_led__T obj_n;/* '<S3>/VENT_CMP_REF_PWM' */
+  freedomk64f_DigitalWrite_led__T obj_i;/* '<S3>/Z_ATR_CTRL' */
+  freedomk64f_DigitalWrite_led__T obj_f;/* '<S3>/PACING_REF_PWM' */
+  freedomk64f_DigitalWrite_led__T obj_l;/* '<S3>/ATR_CMP_REF_PWM' */
+  freedomk64f_DigitalWrite_led__T obj_nv;/* '<S3>/Z_VENT_CTRL' */
+  freedomk64f_DigitalWrite_led__T obj_h;/* '<S3>/ATR_PACE_CTRL' */
+  freedomk64f_DigitalWrite_led__T obj_l5;/* '<S3>/VENT_PACE_CTRL' */
+  freedomk64f_DigitalWrite_led__T obj_lf;/* '<S3>/PACE_GND_CTRL' */
+  freedomk64f_DigitalWrite_led__T obj_k;/* '<S3>/ATR_GND_CTRL' */
+  freedomk64f_DigitalWrite_led__T obj_l0;/* '<S3>/VENT_GND_CTRL' */
+  freedomk64f_DigitalWrite_led__T obj_b;/* '<S3>/FRONTEND_CTRL' */
+  freedomk64f_DigitalWrite_led__T obj_lh;/* '<S3>/RED_LED' */
+  freedomk64f_DigitalWrite_led__T obj_o;/* '<S3>/GREEN_LED' */
+  freedomk64f_DigitalWrite_led__T obj_m;/* '<S3>/BLUE_LED' */
   uint32_T temporalCounter_i1;         /* '<Root>/Modes' */
   uint8_T is_active_c3_led_model;      /* '<Root>/Modes' */
   uint8_T is_c3_led_model;             /* '<Root>/Modes' */
@@ -84,53 +83,53 @@ typedef struct {
 
 /* Parameters (default storage) */
 struct P_led_model_T_ {
-  real_T DigitalRead1_SampleTime;      /* Expression: SampleTime
-                                        * Referenced by: '<Root>/Digital Read1'
+  real_T VENT_CMP_DETECTONOFF_SampleTime;/* Expression: SampleTime
+                                          * Referenced by: '<S1>/VENT_CMP_DETECT (ON // OFF)'
+                                          */
+  real_T ATR_CMP_DETECTONOFF_SampleTime;/* Expression: SampleTime
+                                         * Referenced by: '<S1>/ATR_CMP_DETECT (ON // OFF)'
+                                         */
+  real_T LRLppm_Value;                 /* Expression: 60
+                                        * Referenced by: '<S1>/LRL (ppm)'
                                         */
-  real_T DigitalRead_SampleTime;       /* Expression: SampleTime
-                                        * Referenced by: '<Root>/Digital Read'
+  real_T URLppm_Value;                 /* Expression: 120
+                                        * Referenced by: '<S1>/URL (ppm)'
                                         */
-  real_T Constant_Value;               /* Expression: 60
-                                        * Referenced by: '<Root>/Constant'
+  real_T A_AmplitudemV_Value;          /* Expression: 4000
+                                        * Referenced by: '<S1>/A_Amplitude (mV)'
                                         */
-  real_T Constant1_Value;              /* Expression: 120
-                                        * Referenced by: '<Root>/Constant1'
+  real_T A_Pulse_Widthms_Value;        /* Expression: 10
+                                        * Referenced by: '<S1>/A_Pulse_Width (ms)'
                                         */
-  real_T Constant2_Value;              /* Expression: 4000
-                                        * Referenced by: '<Root>/Constant2'
+  real_T V_AmplitudemV_Value;          /* Expression: 4000
+                                        * Referenced by: '<S1>/V_Amplitude (mV)'
                                         */
-  real_T Constant3_Value;              /* Expression: 10
-                                        * Referenced by: '<Root>/Constant3'
+  real_T V_Pulse_Widthms_Value;        /* Expression: 10
+                                        * Referenced by: '<S1>/V_Pulse_Width (ms)'
                                         */
-  real_T Constant4_Value;              /* Expression: 4000
-                                        * Referenced by: '<Root>/Constant4'
+  real_T A_RefractoryPeriodms_Value;   /* Expression: 100
+                                        * Referenced by: '<S1>/A_RefractoryPeriod (ms)'
                                         */
-  real_T Constant5_Value;              /* Expression: 10
-                                        * Referenced by: '<Root>/Constant5'
+  real_T V_RefractoryPeriodms_Value;   /* Expression: 320
+                                        * Referenced by: '<S1>/V_RefractoryPeriod (ms)'
                                         */
-  real_T Constant7_Value;              /* Expression: 0
-                                        * Referenced by: '<Root>/Constant7'
+  real_T A_SensmV_Value;               /* Expression: 0.75
+                                        * Referenced by: '<S1>/A_Sens (mV)'
                                         */
-  real_T Constant8_Value;              /* Expression: 0
-                                        * Referenced by: '<Root>/Constant8'
+  real_T V_SensmV_Value;               /* Expression: 2.5
+                                        * Referenced by: '<S1>/V_Sens (mV)'
                                         */
-  real_T Constant9_Value;              /* Expression: 0
-                                        * Referenced by: '<Root>/Constant9'
+  real_T Rate_Smoothing_Value;         /* Expression: 0
+                                        * Referenced by: '<S1>/Rate_Smoothing (%)'
                                         */
-  real_T Constant10_Value;             /* Expression: 0
-                                        * Referenced by: '<Root>/Constant10'
+  real_T HysterisisOnOffOff0On1_Value; /* Expression: 0
+                                        * Referenced by: '<S1>/Hysterisis (On // Off) (Off - 0, On - 1)'
                                         */
-  real_T Constant11_Value;             /* Expression: 0
-                                        * Referenced by: '<Root>/Constant11'
+  real_T PVARPms_Value;                /* Expression: 250
+                                        * Referenced by: '<S1>/PVARP (ms)'
                                         */
-  real_T Constant12_Value;             /* Expression: 0
-                                        * Referenced by: '<Root>/Constant12'
-                                        */
-  real_T Constant13_Value;             /* Expression: 0
-                                        * Referenced by: '<Root>/Constant13'
-                                        */
-  real_T Constant6_Value;              /* Expression: 0
-                                        * Referenced by: '<Root>/Constant6'
+  real_T ModeVOO0VVI1AOO2AAI3_Value;   /* Expression: 3
+                                        * Referenced by: '<S1>/Mode (VOO - 0, VVI - 1, AOO - 2, AAI - 3)'
                                         */
 };
 
@@ -171,7 +170,9 @@ extern RT_MODEL_led_model_T *const led_model_M;
  * Here is the system hierarchy for this model
  *
  * '<Root>' : 'led_model'
- * '<S1>'   : 'led_model/Modes'
+ * '<S1>'   : 'led_model/Input Subsystem'
+ * '<S2>'   : 'led_model/Modes'
+ * '<S3>'   : 'led_model/Output Subsystem'
  */
 #endif                                 /* RTW_HEADER_led_model_h_ */
 

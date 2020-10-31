@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'led_model'.
  *
- * Model version                  : 1.21
+ * Model version                  : 1.25
  * Simulink Coder version         : 9.3 (R2020a) 18-Nov-2019
- * C/C++ source code generated on : Sat Oct 24 14:54:16 2020
+ * C/C++ source code generated on : Thu Oct 29 14:59:55 2020
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -23,7 +23,7 @@
 
 /* Model Code Variants */
 
-/* Custom Type definition for MATLABSystem: '<Root>/Digital Read' */
+/* Custom Type definition for MATLABSystem: '<S3>/PACE_CHARGE_CTRL' */
 #include "MW_SVD.h"
 #ifndef struct_tag_bvK2L41g8z1P0jzpdjsJhE
 #define struct_tag_bvK2L41g8z1P0jzpdjsJhE
@@ -41,48 +41,6 @@ struct tag_bvK2L41g8z1P0jzpdjsJhE
 typedef struct tag_bvK2L41g8z1P0jzpdjsJhE b_freedomk64f_Hardware_led_mo_T;
 
 #endif                               /*typedef_b_freedomk64f_Hardware_led_mo_T*/
-
-#ifndef struct_tag_asB9FwAteE1VObOuq1LwyE
-#define struct_tag_asB9FwAteE1VObOuq1LwyE
-
-struct tag_asB9FwAteE1VObOuq1LwyE
-{
-  boolean_T matlabCodegenIsDeleted;
-  int32_T isInitialized;
-  boolean_T isSetupComplete;
-  b_freedomk64f_Hardware_led_mo_T Hw;
-  MW_Handle_Type MW_PWM_HANDLE;
-};
-
-#endif                                 /*struct_tag_asB9FwAteE1VObOuq1LwyE*/
-
-#ifndef typedef_freedomk64f_PWMOutput_led_mod_T
-#define typedef_freedomk64f_PWMOutput_led_mod_T
-
-typedef struct tag_asB9FwAteE1VObOuq1LwyE freedomk64f_PWMOutput_led_mod_T;
-
-#endif                               /*typedef_freedomk64f_PWMOutput_led_mod_T*/
-
-#ifndef struct_tag_62aCTDKRGQaAsT8vVipI2D
-#define struct_tag_62aCTDKRGQaAsT8vVipI2D
-
-struct tag_62aCTDKRGQaAsT8vVipI2D
-{
-  boolean_T matlabCodegenIsDeleted;
-  int32_T isInitialized;
-  boolean_T isSetupComplete;
-  b_freedomk64f_Hardware_led_mo_T Hw;
-  MW_Handle_Type MW_DIGITALIO_HANDLE;
-};
-
-#endif                                 /*struct_tag_62aCTDKRGQaAsT8vVipI2D*/
-
-#ifndef typedef_freedomk64f_DigitalWrite_led__T
-#define typedef_freedomk64f_DigitalWrite_led__T
-
-typedef struct tag_62aCTDKRGQaAsT8vVipI2D freedomk64f_DigitalWrite_led__T;
-
-#endif                               /*typedef_freedomk64f_DigitalWrite_led__T*/
 
 #ifndef struct_tag_gY1zYXXyNHJpvdqiHJr34G
 #define struct_tag_gY1zYXXyNHJpvdqiHJr34G
@@ -105,6 +63,27 @@ struct tag_gY1zYXXyNHJpvdqiHJr34G
 typedef struct tag_gY1zYXXyNHJpvdqiHJr34G freedomk64f_DigitalRead_led_m_T;
 
 #endif                               /*typedef_freedomk64f_DigitalRead_led_m_T*/
+
+#ifndef struct_tag_62aCTDKRGQaAsT8vVipI2D
+#define struct_tag_62aCTDKRGQaAsT8vVipI2D
+
+struct tag_62aCTDKRGQaAsT8vVipI2D
+{
+  boolean_T matlabCodegenIsDeleted;
+  int32_T isInitialized;
+  boolean_T isSetupComplete;
+  b_freedomk64f_Hardware_led_mo_T Hw;
+  MW_Handle_Type MW_DIGITALIO_HANDLE;
+};
+
+#endif                                 /*struct_tag_62aCTDKRGQaAsT8vVipI2D*/
+
+#ifndef typedef_freedomk64f_DigitalWrite_led__T
+#define typedef_freedomk64f_DigitalWrite_led__T
+
+typedef struct tag_62aCTDKRGQaAsT8vVipI2D freedomk64f_DigitalWrite_led__T;
+
+#endif                               /*typedef_freedomk64f_DigitalWrite_led__T*/
 
 /* Parameters (default storage) */
 typedef struct P_led_model_T_ P_led_model_T;

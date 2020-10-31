@@ -15,7 +15,7 @@ mw_sdk_interface.o: \
  D:/Softwares/Freescale/KSDK_1.2.0/platform/devices/MK64F12/include/MK64F12_features.h \
  D:/Softwares/Freescale/KSDK_1.2.0/platform/hal/inc/fsl_gpio_hal.h \
  C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/freedomk64f/include/mw_sdk_interface.h \
- D:/Documents/MATLAB/led_model_ert_rtw/rtwtypes.h \
+ D:/Documents/GitHub/3K04_L36/HeartCode/led_model_ert_rtw/rtwtypes.h \
  C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/freedomk64f/include/board.h \
  C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/freedomk64f/include/pin_mux.h \
  C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/freedomk64f/include/gpio_pins.h \
@@ -61,7 +61,7 @@ D:/Softwares/Freescale/KSDK_1.2.0/platform/hal/inc/fsl_gpio_hal.h:
 
 C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/freedomk64f/include/mw_sdk_interface.h:
 
-D:/Documents/MATLAB/led_model_ert_rtw/rtwtypes.h:
+D:/Documents/GitHub/3K04_L36/HeartCode/led_model_ert_rtw/rtwtypes.h:
 
 C:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/freedomk64f/include/board.h:
 
