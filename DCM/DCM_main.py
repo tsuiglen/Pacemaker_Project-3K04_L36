@@ -73,7 +73,7 @@ class main(tk.Tk):
 
     def popupmsg(self, msg):
         popup = tk.Tk()
-        popup.wm_title("!")
+        popup.wm_title("Attention!")
         label = tk.Label(popup, text=msg)
         label.pack(side="top", fill="x", pady=10)
         B1 = tk.Button(popup, text="Okay", command = popup.destroy)

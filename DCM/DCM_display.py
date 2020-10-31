@@ -41,11 +41,17 @@ def programmableDataRange(modeParam):
     errors = []
     for i in modeParam:
         if i[0] == "upperRateLimit":
-            if float(i[1]) > 175.0 or float(i[1]) < 50.0:
-                errors.append("Upper Rate Limit Invalid (50 - 175)")
-        if i[0] == "lowerRateLimit":
-            if float(i[1]) > 50.0 or float(i[1]) < 30.0:
-                errors.append("Upper Rate Limit Invalid (50 - 175, increment = 5)")
+            if i[1] == "" or float(i[1]) > 175.0 or float(i[1]) < 50.0:
+                errors.append("Upper Rate Limit Invalid: (50 - 175)")
+        elif i[0] == "lowerRateLimit":
+            if i[1] == "" or float(i[1]) > 50.0 or float(i[1]) < 30.0:
+                errors.append("Lower Rate Limit Invalid: \n-    (30 - 50, increment = 5)\n- (50 - 90, increment = 1)\n- (90 - 175, increment = 5)")
+        elif i[0] == "atrialPulseAmplitude":
+            if i[1] == "" or i[1] != "OFF" and (float(i[1]) > 3.2 or float(i[1]) < 0.5):
+                errors.append("Atrial Pulse Amplitude Invalid: \n- (0.5 - 3.2, increment = 0.1) \n- (3.5 - 7.0, increment = 0.5) \n- OFF")
+        elif i[0] == "atrialPulseWidth":
+            if i[1] == "" or float(i[1]) > 1.9 or float(i[1]) < 0.1:
+                errors.append("Atrial Pulse Width Upper Rate Limit Invalid:\n - (0.1 - 1.9, increment = 0.1) \n - 0.05")
     if errors:
         popupmsg(errors)
         return False
@@ -155,7 +161,7 @@ class DCM_AOO(tk.Frame):
         self.atrialPulseWidth = atrialPulseWidth.get()
 
         programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
-                    ["atrialPulseAmplitude", self.atrialPulseAmplitude],["self.atrialPulseWidth", atrialPulseWidth]])
+                    ["atrialPulseAmplitude", self.atrialPulseAmplitude],["atrialPulseWidth", self.atrialPulseWidth]])
 
 class DCM_VOO(tk.Frame):
     def __init__(self, master):
