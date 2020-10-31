@@ -27,6 +27,32 @@ def connectionID(obj):
     obj.configure(text="ID: " +getDeviceID())
     obj.master.update()
 
+def popupmsg(msg):
+        popup = tk.Tk()
+        popup.wm_title("ERROR!")
+        for i in msg:
+            tk.Label(popup, text=i).pack(side="top", fill="x", padx=10)
+        B1 = tk.Button(popup, text="Okay", command = popup.destroy)
+        B1.pack(pady=5, padx=10)
+        popup.mainloop()
+
+#TODO create a function that limits the upper and lower ranges for each parameter. 
+def programmableDataRange(modeParam):
+    errors = []
+    for i in modeParam:
+        if i[0] == "upperRateLimit":
+            if float(i[1]) > 175.0 or float(i[1]) < 50.0:
+                errors.append("Upper Rate Limit Invalid (50 - 175)")
+        if i[0] == "lowerRateLimit":
+            if float(i[1]) > 50.0 or float(i[1]) < 30.0:
+                errors.append("Upper Rate Limit Invalid (50 - 175, increment = 5)")
+    if errors:
+        popupmsg(errors)
+        return False
+    return True
+
+
+
 
 class DCMPage(tk.Frame):
     def __init__(self, master):
@@ -128,6 +154,8 @@ class DCM_AOO(tk.Frame):
         self.atrialPulseAmplitude = atrialPulseAmplitude.get()
         self.atrialPulseWidth = atrialPulseWidth.get()
 
+        programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
+                    ["atrialPulseAmplitude", self.atrialPulseAmplitude],["self.atrialPulseWidth", atrialPulseWidth]])
 
 class DCM_VOO(tk.Frame):
     def __init__(self, master):
