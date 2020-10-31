@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'led_model'.
  *
- * Model version                  : 1.25
+ * Model version                  : 1.26
  * Simulink Coder version         : 9.3 (R2020a) 18-Nov-2019
- * C/C++ source code generated on : Thu Oct 29 15:00:50 2020
+ * C/C++ source code generated on : Thu Oct 29 16:59:16 2020
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -20,12 +20,6 @@
 #ifndef RTW_HEADER_led_model_private_h_
 #define RTW_HEADER_led_model_private_h_
 #include "rtwtypes.h"
-#include "multiword_types.h"
-
-/* Private macros used by the generated code to access rtModel */
-#ifndef rtmSetTFinal
-# define rtmSetTFinal(rtm, val)        ((rtm)->Timing.tFinal = (val))
-#endif
 #endif                                 /* RTW_HEADER_led_model_private_h_ */
 
 /*
