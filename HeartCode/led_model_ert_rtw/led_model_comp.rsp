@@ -6,6 +6,8 @@
 -ID:/Softwares/MATLAB/rtw/c/src
 -ID:/Softwares/MATLAB/rtw/c/src/ext_mode/common
 -ID:/Softwares/MATLAB/rtw/c/ert
+-ID:/Softwares/MATLAB/toolbox/coder/rtiostream/src
+-ID:/Softwares/MATLAB/toolbox/coder/rtiostream/src/utils
 -ID:/Softwares/Freescale/KSDK_1.2.0/platform/CMSIS/Include
 -ID:/Softwares/MATLAB/rtw/c/src/ext_mode/serial
 -IC:/ProgramData/MATLAB/SupportPackages/R2020a/toolbox/target/supportpackages/armcortexmbase/scheduler/include

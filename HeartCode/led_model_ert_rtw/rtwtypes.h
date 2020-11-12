@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'led_model'.
  *
- * Model version                  : 1.25
+ * Model version                  : 1.33
  * Simulink Coder version         : 9.3 (R2020a) 18-Nov-2019
- * C/C++ source code generated on : Thu Oct 29 14:59:55 2020
+ * C/C++ source code generated on : Sun Nov  1 16:13:22 2020
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex

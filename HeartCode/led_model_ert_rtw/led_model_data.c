@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'led_model'.
  *
- * Model version                  : 1.25
+ * Model version                  : 1.33
  * Simulink Coder version         : 9.3 (R2020a) 18-Nov-2019
- * C/C++ source code generated on : Thu Oct 29 14:59:55 2020
+ * C/C++ source code generated on : Sun Nov  1 16:13:22 2020
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -32,15 +32,15 @@ P_led_model_T led_model_P = {
    */
   -1.0,
 
-  /* Expression: 60
+  /* Expression: 120
    * Referenced by: '<S1>/LRL (ppm)'
    */
-  60.0,
+  120.0,
 
-  /* Expression: 120
+  /* Expression: 130
    * Referenced by: '<S1>/URL (ppm)'
    */
-  120.0,
+  130.0,
 
   /* Expression: 4000
    * Referenced by: '<S1>/A_Amplitude (mV)'
@@ -52,10 +52,10 @@ P_led_model_T led_model_P = {
    */
   10.0,
 
-  /* Expression: 4000
+  /* Expression: 3500
    * Referenced by: '<S1>/V_Amplitude (mV)'
    */
-  4000.0,
+  3500.0,
 
   /* Expression: 10
    * Referenced by: '<S1>/V_Pulse_Width (ms)'
@@ -67,15 +67,15 @@ P_led_model_T led_model_P = {
    */
   100.0,
 
-  /* Expression: 320
+  /* Expression: 100
    * Referenced by: '<S1>/V_RefractoryPeriod (ms)'
    */
-  320.0,
+  100.0,
 
-  /* Expression: 0.75
+  /* Expression: 0.25
    * Referenced by: '<S1>/A_Sens (mV)'
    */
-  0.75,
+  0.25,
 
   /* Expression: 2.5
    * Referenced by: '<S1>/V_Sens (mV)'
@@ -97,10 +97,10 @@ P_led_model_T led_model_P = {
    */
   250.0,
 
-  /* Expression: 3
+  /* Expression: 0
    * Referenced by: '<S1>/Mode (VOO - 0, VVI - 1, AOO - 2, AAI - 3)'
    */
-  3.0
+  0.0
 };
 
 /*
