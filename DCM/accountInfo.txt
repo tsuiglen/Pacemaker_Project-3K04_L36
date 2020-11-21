@@ -5,6 +5,4 @@ asdasd-qwe
 java-123
 asd-asd
 asdasd-gerg
-werwef-werwe
-dsfgdsfg-dsfgsdfg
-dfgdsfgsdfg-ertertert
+-

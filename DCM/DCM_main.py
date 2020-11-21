@@ -30,13 +30,13 @@ class main(tk.Tk):
 
             for i in accounts:
                 if(username == i.split("-")[0] and password == i.split("-")[1]):
-                    print("Login Successful!")
+                    print("Login Successful! Username: "  + username)
                     self.switch_frame(homePage)
                     return
             print(username)
             self.popupmsg("Incorrect Login!")
-        except:
-            print("FileI/O Error ValidateLogin")
+        except Exception as e:
+            print(e)
     
     def accountCount(self):
         try:

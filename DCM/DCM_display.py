@@ -2,6 +2,81 @@ import tkinter as tk
 from DCM_serial import *
 from DCM_homePage import homePage
 
+upperRateLimit = []
+lowerRateLimit = []
+atrialPulseAmplitude = []
+atrialPulseWidth = []
+ventricularPulseAmplitude = []
+ventricularPulseWidth = []
+atrialSensitivity = []
+ventricularSensitivity = []
+ARP = []
+VRP = []
+PVARP = []
+rateSmoothing = []
+
+
+def setParamVals():
+    #Lower Rate Limit
+    for i in range(30, 55, 5):
+        lowerRateLimit.append(i)
+    for i in range(50, 90, 1):
+        lowerRateLimit.append(i)
+    for i in range(90, 180, 5):
+        lowerRateLimit.append(i)
+
+    #upperRateLimit
+    for i in range(50, 180, 5):
+        upperRateLimit.append(i)
+
+    #atrialPulseAmplitude and ventricularPulseAmplitude
+    atrialPulseAmplitude.append("OFF")
+
+    temp = 4
+    while(temp <= 31):
+        temp = temp + 1
+        atrialPulseAmplitude.append(temp/10)
+    
+    temp = 30
+    while(temp <= 69):
+        temp = temp + 5
+        atrialPulseAmplitude.append(temp/10)
+    ventricularPulseAmplitude.extend(atrialPulseAmplitude)
+
+    #atrialPulseWidth and ventricularPulseWidth
+    atrialPulseWidth.append(0.05)
+    temp = 0
+    while(temp <= 18):
+        temp = temp + 1
+        atrialPulseWidth.append(temp/10)
+    ventricularPulseWidth.extend(atrialPulseWidth)
+
+    #atrialSensitivity
+    atrialSensitivity.append(0.25)
+    atrialSensitivity.append(0.5)
+    atrialSensitivity.append(0.75)
+    temp = 5
+    while(temp <= 100):
+        temp = temp + 5
+        atrialSensitivity.append(temp/10)
+    ventricularSensitivity.extend(atrialSensitivity)
+
+    #ARP, VRP, and PVARP
+    temp = 140
+    while(temp <= 490):
+        temp = temp + 10
+        ARP.append(temp)
+    VRP.extend(ARP)
+    PVARP.extend(ARP)
+
+    #rateSmoothing
+    rateSmoothing.append("OFF")
+    rateSmoothing.append(25)
+    temp = 0
+    while(temp <= 21):
+        temp = temp + 3
+        rateSmoothing.append(temp)
+
 def switchMode(val):
     if(val == 'AOO'):
         return DCM_AOO
@@ -39,19 +114,65 @@ def popupmsg(msg):
 #TODO create a function that limits the upper and lower ranges for each parameter. 
 def programmableDataRange(modeParam):
     errors = []
-    for i in modeParam:
-        if i[0] == "upperRateLimit":
-            if i[1] == "" or float(i[1]) > 175.0 or float(i[1]) < 50.0:
-                errors.append("Upper Rate Limit Invalid: (50 - 175)")
-        elif i[0] == "lowerRateLimit":
-            if i[1] == "" or float(i[1]) > 50.0 or float(i[1]) < 30.0:
-                errors.append("Lower Rate Limit Invalid: \n-    (30 - 50, increment = 5)\n- (50 - 90, increment = 1)\n- (90 - 175, increment = 5)")
-        elif i[0] == "atrialPulseAmplitude":
-            if i[1] == "" or i[1] != "OFF" and (float(i[1]) > 3.2 or float(i[1]) < 0.5):
-                errors.append("Atrial Pulse Amplitude Invalid: \n- (0.5 - 3.2, increment = 0.1) \n- (3.5 - 7.0, increment = 0.5) \n- OFF")
-        elif i[0] == "atrialPulseWidth":
-            if i[1] == "" or float(i[1]) > 1.9 or float(i[1]) < 0.1:
-                errors.append("Atrial Pulse Width Upper Rate Limit Invalid:\n - (0.1 - 1.9, increment = 0.1) \n - 0.05")
+    
+    try:
+        for i in modeParam:
+            if i[0] == "upperRateLimit":
+                if int(i[1]) not in upperRateLimit:
+                    errors.append("Upper Rate Limit Invalid: (50 - 175, increment = 5)")
+
+            elif i[0] == "lowerRateLimit":
+                if int(i[1]) not in lowerRateLimit:
+                    errors.append("Lower Rate Limit Invalid: \n- (30 - 50, increment = 5)\n- (50 - 90, increment = 1)\n- (90 - 175, increment = 5)")
+
+            elif str(i[1]) != "OFF" and i[0] == "atrialPulseAmplitude":
+                if float(i[1]) not in atrialPulseAmplitude:
+                    errors.append("Atrial Pulse Amplitude Invalid: \n- (0.5 - 3.2, increment = 0.1) \n- (3.5 - 7.0, increment = 0.5) \n- OFF")
+
+            elif i[0] == "atrialPulseWidth":
+                if float(i[1]) not in atrialPulseWidth:
+                    errors.append("Atrial Pulse Width Invalid:\n - (0.1 - 1.9, increment = 0.1) \n - 0.05")
+
+            elif i[0] == "ventricularPulseAmplitude":
+                if str(i[1]) != "OFF" and float(i[1]) not in ventricularPulseAmplitude:
+                    errors.append("Ventricular Pulse Amplitude Invalid:\n - (0.5 - 3.2, increment = 0.1) \n- (3.5 - 7.0, increment = 0.5) \n- OFF")
+
+            elif i[0] == "ventricularPulseWidth":
+                if float(i[1]) not in ventricularPulseWidth:
+                    errors.append("Ventricular Pulse Width Invalid:\n - (0.1 - 1.9, increment = 0.1) \n - 0.05")
+
+            elif i[0] == "atrialSensitivity":
+                if float(i[1]) not in atrialSensitivity:
+                    errors.append("Atrial Sensitivity Invalid:\n - (0.25, 0.5, 0.75) \n - (1.0 - 10.0, increment = 0.5)")
+
+            elif i[0] == "ventricularSensitivity":
+                if float(i[1]) not in ventricularSensitivity:
+                    errors.append("Ventricular Sensitivity Invalid:\n - (0.25, 0.5, 0.75) \n - (1.0 - 10.0, increment = 0.5)")
+
+            elif i[0] == "ARP":
+                if float(i[1]) not in ARP:
+                    errors.append("ARP Invalid:\n - (150 - 500, increment = 10)")
+            
+            elif i[0] == "VRP":
+                if float(i[1]) not in VRP:
+                    errors.append("VRP Invalid:\n - (150 - 500, increment = 10)")
+            
+            elif i[0] == "ARP":
+                if float(i[1]) not in ARP:
+                    errors.append("ARP Invalid:\n - (150 - 500, increment = 10)")
+
+            elif i[0] == "PVARP":
+                if float(i[1]) not in PVARP:
+                    errors.append("PVARP:\n - (150 - 500, increment = 10)")
+
+            elif i[0] == "rateSmoothing":
+                if str(i[1]) != "OFF" and int(i[1]) not in rateSmoothing:
+                    errors.append("Rate Smoothing:\n - (OFF, 3, 6, 9, 12, 15, 18, 21, 25)")
+
+    except Exception as e:
+        print(e)
+        errors.append("Text Field(s) are empty or invalid!")
+
     if errors:
         popupmsg(errors)
         return False
@@ -159,7 +280,12 @@ class DCM_AOO(tk.Frame):
         self.lowerRateLimit = lowerRateLimit.get()
         self.atrialPulseAmplitude = atrialPulseAmplitude.get()
         self.atrialPulseWidth = atrialPulseWidth.get()
-
+        '''
+        print("upperRateLimit ", self.upperRateLimit)
+        print("lowerRateLimit ", self.lowerRateLimit)
+        print("atrialPulseAmplitude ", self.atrialPulseAmplitude)
+        print("atrialPulseWidth", self.atrialPulseWidth)
+        '''
         programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
                     ["atrialPulseAmplitude", self.atrialPulseAmplitude],["atrialPulseWidth", self.atrialPulseWidth]])
 
@@ -195,17 +321,17 @@ class DCM_VOO(tk.Frame):
         tk.Label(self, text="Ventricular Pulse Width").grid(
             row=2, column=2, pady=10, padx=10)
 
-        self.upperRateLimit = tk.Entry(self)
-        self.upperRateLimit.grid(row=1, column=1, pady=10, padx=10)
+        upperRateLimit = tk.Entry(self)
+        upperRateLimit.grid(row=1, column=1, pady=10, padx=10)
 
-        self.lowerRateLimit = tk.Entry(self)
-        self.lowerRateLimit.grid(row=1, column=3, pady=10, padx=10)
+        lowerRateLimit = tk.Entry(self)
+        lowerRateLimit.grid(row=1, column=3, pady=10, padx=10)
 
-        self.ventricularPulseAmplitude = tk.Entry(self)
-        self.ventricularPulseAmplitude.grid(row=2, column=1, pady=10, padx=10)
+        ventricularPulseAmplitude = tk.Entry(self)
+        ventricularPulseAmplitude.grid(row=2, column=1, pady=10, padx=10)
 
-        self.ventricularPulseWidth = tk.Entry(self)
-        self.ventricularPulseWidth.grid(row=2, column=3, pady=10, padx=10)
+        ventricularPulseWidth = tk.Entry(self)
+        ventricularPulseWidth.grid(row=2, column=3, pady=10, padx=10)
 
         tk.Button(self, text="Modify",
                   command=lambda: self.modifyParameters(upperRateLimit, lowerRateLimit, ventricularPulseAmplitude, ventricularPulseWidth)).grid(row=4, columnspan=2 ,column=0, pady=10, padx=5)
@@ -218,6 +344,9 @@ class DCM_VOO(tk.Frame):
         self.lowerRateLimit = lowerRateLimit.get()
         self.ventricularPulseAmplitude = ventricularPulseAmplitude.get()
         self.ventricularPulseWidth = ventricularPulseWidth.get()
+
+        programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
+                    ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth]])
 
     def getDropDown(self, val):
         self.master.switch_frame(switchMode(val))
@@ -267,32 +396,32 @@ class DCM_AAI(tk.Frame):
         tk.Label(self, text="Rate Smoothing").grid(
             row=5, column=0, pady=10, padx=10)
 
-        self.upperRateLimit = tk.Entry(self)
-        self.upperRateLimit.grid(row=1, column=1, pady=10, padx=10)
+        upperRateLimit = tk.Entry(self)
+        upperRateLimit.grid(row=1, column=1, pady=10, padx=10)
 
-        self.lowerRateLimit = tk.Entry(self)
-        self.lowerRateLimit.grid(row=1, column=3, pady=10, padx=10)
+        lowerRateLimit = tk.Entry(self)
+        lowerRateLimit.grid(row=1, column=3, pady=10, padx=10)
 
-        self.atrialPulseAmplitude = tk.Entry(self)
-        self.atrialPulseAmplitude.grid(row=2, column=1, pady=10, padx=10)
+        atrialPulseAmplitude = tk.Entry(self)
+        atrialPulseAmplitude.grid(row=2, column=1, pady=10, padx=10)
 
-        self.atrialPulseWidth = tk.Entry(self)
-        self.atrialPulseWidth.grid(row=2, column=3, pady=10, padx=10)
+        atrialPulseWidth = tk.Entry(self)
+        atrialPulseWidth.grid(row=2, column=3, pady=10, padx=10)
 
-        self.atrialSensitivity = tk.Entry(self)
-        self.atrialSensitivity.grid(row=3, column=1, pady=10, padx=10)
+        atrialSensitivity = tk.Entry(self)
+        atrialSensitivity.grid(row=3, column=1, pady=10, padx=10)
 
-        self.ARP = tk.Entry(self)
-        self.ARP.grid(row=3, column=3, pady=10, padx=10)
+        ARP = tk.Entry(self)
+        ARP.grid(row=3, column=3, pady=10, padx=10)
 
-        self.PVARP = tk.Entry(self)
-        self.PVARP.grid(row=4, column=1, pady=10, padx=10)
+        PVARP = tk.Entry(self)
+        PVARP.grid(row=4, column=1, pady=10, padx=10)
 
-        self.hysteresis = tk.Entry(self)
-        self.hysteresis.grid(row=4, column=3, pady=10, padx=10)
+        hysteresis = tk.Entry(self)
+        hysteresis.grid(row=4, column=3, pady=10, padx=10)
 
-        self.rateSmoothing = tk.Entry(self)
-        self.rateSmoothing.grid(row=5, column=1, pady=10, padx=10)
+        rateSmoothing = tk.Entry(self)
+        rateSmoothing.grid(row=5, column=1, pady=10, padx=10)
 
         tk.Button(self, text="Modify",
                   command=lambda: self.modifyParameters(upperRateLimit, lowerRateLimit, atrialPulseAmplitude, atrialPulseWidth, atrialSensitivity, ARP, PVARP, hysteresis, rateSmoothing)).grid(row=6, columnspan=2 ,column=0, pady=10, padx=5)
@@ -310,6 +439,10 @@ class DCM_AAI(tk.Frame):
         self.PVARP = PVARP.get()
         self.hysteresis = hysteresis.get()
         self.rateSmoothing = rateSmoothing.get()
+
+        programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
+                    ["atrialPulseAmplitude", self.atrialPulseAmplitude],["atrialPulseWidth", self.atrialPulseWidth],
+                    ["atrialSensitivity",self.atrialSensitivity],["ARP", self.ARP], ["PVARP", self.PVARP], ["rateSmoothing", self.rateSmoothing]])
 
     def getDropDown(self, val):
         self.master.switch_frame(switchMode(val))
@@ -356,29 +489,29 @@ class DCM_VVI(tk.Frame):
         tk.Label(self, text="Rate Smoothing").grid(
             row=4, column=2, pady=10, padx=10)
 
-        self.upperRateLimit = tk.Entry(self)
-        self.upperRateLimit.grid(row=1, column=1, pady=10, padx=10)
+        upperRateLimit = tk.Entry(self)
+        upperRateLimit.grid(row=1, column=1, pady=10, padx=10)
 
-        self.lowerRateLimit = tk.Entry(self)
-        self.lowerRateLimit.grid(row=1, column=3, pady=10, padx=10)
+        lowerRateLimit = tk.Entry(self)
+        lowerRateLimit.grid(row=1, column=3, pady=10, padx=10)
 
-        self.ventricularPulseAmplitude = tk.Entry(self)
-        self.ventricularPulseAmplitude.grid(row=2, column=1, pady=10, padx=10)
+        ventricularPulseAmplitude = tk.Entry(self)
+        ventricularPulseAmplitude.grid(row=2, column=1, pady=10, padx=10)
 
-        self.ventricularPulseWidth = tk.Entry(self)
-        self.ventricularPulseWidth.grid(row=2, column=3, pady=10, padx=10)
+        ventricularPulseWidth = tk.Entry(self)
+        ventricularPulseWidth.grid(row=2, column=3, pady=10, padx=10)
 
-        self.ventricularSensitivity = tk.Entry(self)
-        self.ventricularSensitivity.grid(row=3, column=1, pady=10, padx=10)
+        ventricularSensitivity = tk.Entry(self)
+        ventricularSensitivity.grid(row=3, column=1, pady=10, padx=10)
 
-        self.VRP = tk.Entry(self)
-        self.VRP.grid(row=3, column=3, pady=10, padx=10)
+        VRP = tk.Entry(self)
+        VRP.grid(row=3, column=3, pady=10, padx=10)
 
-        self.hysteresis = tk.Entry(self)
-        self.hysteresis.grid(row=4, column=1, pady=10, padx=10)
+        hysteresis = tk.Entry(self)
+        hysteresis.grid(row=4, column=1, pady=10, padx=10)
 
-        self.rateSmoothing = tk.Entry(self)
-        self.rateSmoothing.grid(row=4, column=3, pady=10, padx=10)
+        rateSmoothing = tk.Entry(self)
+        rateSmoothing.grid(row=4, column=3, pady=10, padx=10)
 
         tk.Button(self, text="Modify",
                   command=lambda: self.modifyParameters(upperRateLimit, lowerRateLimit, ventricularPulseAmplitude, ventricularPulseWidth, ventricularSensitivity, VRP, hysteresis, rateSmoothing)).grid(row=5, columnspan=2 ,column=0, pady=10, padx=5)
@@ -396,5 +529,12 @@ class DCM_VVI(tk.Frame):
         self.hysteresis = hysteresis.get()
         self.rateSmoothing = rateSmoothing.get()
 
+        programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
+                    ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth],
+                    ["ventricularSensitivity",self.ventricularSensitivity],["VRP", self.VRP], ["rateSmoothing", self.rateSmoothing]])
+
     def getDropDown(self, val):
         self.master.switch_frame(switchMode(val))
+
+setParamVals()
+print(rateSmoothing)
