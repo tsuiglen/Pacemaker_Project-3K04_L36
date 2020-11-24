@@ -10,7 +10,7 @@ ser = serial
 def isConnect():
     connection = False
     try:
-        ser = serial.Serial("COM3", 9600, timeout=10)
+        ser = serial.Serial("COM3", 115200, timeout=10)
 
         while ser.read():
             return True
@@ -24,10 +24,10 @@ def getDeviceID():
     return deviceID #device ID to differentiate different pacemakers
 
 def setMode(mode, param):
-    ser = serial.Serial("COM3", 9600, timeout=10)
+    ser = serial.Serial("COM3", 115200, timeout=10)
 
     modeNum = 0 #Pacing mode 1,2,3,4,5,6,7
-    
+
     if(mode == "AOO"):
         data = b"\x16\x55"
         URL_b = struct.pack("I", param[0]) 
