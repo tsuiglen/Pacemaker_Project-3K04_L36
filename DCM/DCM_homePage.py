@@ -1,4 +1,5 @@
 import tkinter as tk
+import DCM_livePlot
 class homePage(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
@@ -14,4 +15,5 @@ class homePage(tk.Frame):
         tk.Button(self, text="Log out",
                   command=lambda: master.logOut()).grid(row=3, columnspan=2, pady=10, padx=20)
     
-    
+        tk.Button(self, text="Plot",
+                  command=lambda: DCM_livePlot.plot()).grid(row=4, columnspan=2, pady=10, padx=20)
