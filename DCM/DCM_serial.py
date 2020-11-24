@@ -29,13 +29,25 @@ def setMode(mode, param):
     modeNum = 0 #Pacing mode 1,2,3,4,5,6,7
 
     if(mode == "AOO"):
-        data = b"\x16\x55"
-        URL_b = struct.pack("I", param[0]) 
-        LRL_b = struct.pack("I", param[1])
-        AA_b = struct.pack("f", param[2])
-        APW_b = struct.pack("f", param[3])
-   
-        data = data + URL_b + LRL_b + AA_b + APW_b
+        LRL = struct.pack("I", param[0])
+        URL = struct.pack("I", param[1]) 
+        AA = struct.pack("Q", param[2])
+        APW = struct.pack("I", param[3])
+        VA = struct.pack("I", param[4])
+        VPW = struct.pack("I", param[5])
+        ARP = struct.pack("I", param[5])
+        VRP = struct.pack("I", param[5])
+        A_Sens = struct.pack("I", param[5])
+        V_Sens = struct.pack("I", param[5])
+        RateSM = struct.pack("I", param[5])
+        PVARP = struct.pack("I", param[5])
+        fixAVDelay = struct.pack("I", param[5])
+        maxSensRate = struct.pack("I", param[5])
+        actThres = struct.pack("I", param[5])
+        reactTime = struct.pack("I", param[5])
+        recovTime = struct.pack("I", param[5])
 
-        ser.write(data)
-        ser.close()
+    data = b"\x16\x55"+LRL+URL+AA+APW+VA+VPW+ARP+VRP+A_Sens+V_Sens+RateSM+PVARP+fixAVDelay+maxSensRate+actThres+reactTime+reactTime
+
+    ser.write(data)
+    ser.close()
