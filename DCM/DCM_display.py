@@ -1,5 +1,5 @@
 import tkinter as tk
-from DCM_serial import *
+import DCM_serial
 from DCM_homePage import homePage
 
 upperRateLimit = []
@@ -14,7 +14,7 @@ ARP = []
 VRP = []
 PVARP = []
 rateSmoothing = []
-
+connected = False
 
 def setParamVals():
     #Lower Rate Limit
@@ -88,18 +88,20 @@ def switchMode(val):
         return DCM_VVI
 
 def connectionIndicator(obj):
-    if(isConnect()):
+    global connected
+    if(connected or DCM_serial.isConnect()):
         obj.configure(fg="green")
         obj.configure(text="Connected")
         obj.master.update()
+        connected = True
     else:
         obj.configure(fg="red")
         obj.configure(text="Not Connected")
         obj.master.update()
 
 def connectionID(obj):
-    obj.configure(fg="red" if getDeviceID() == "N/A" else "green")
-    obj.configure(text="ID: " +getDeviceID())
+    obj.configure(fg="red" if DCM_serial.getDeviceID() == "N/A" else "green")
+    obj.configure(text="ID: " + DCM_serial.getDeviceID())
     obj.master.update()
 
 def popupmsg(msg):
@@ -111,7 +113,6 @@ def popupmsg(msg):
         B1.pack(pady=5, padx=10)
         popup.mainloop()
 
-#TODO create a function that limits the upper and lower ranges for each parameter. 
 def programmableDataRange(modeParam):
     errors = []
     
@@ -177,8 +178,6 @@ def programmableDataRange(modeParam):
         popupmsg(errors)
         return False
     return True
-
-
 
 
 class DCMPage(tk.Frame):
@@ -286,8 +285,12 @@ class DCM_AOO(tk.Frame):
         print("atrialPulseAmplitude ", self.atrialPulseAmplitude)
         print("atrialPulseWidth", self.atrialPulseWidth)
         '''
-        programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
-                    ["atrialPulseAmplitude", self.atrialPulseAmplitude],["atrialPulseWidth", self.atrialPulseWidth]])
+        if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
+                    ["atrialPulseAmplitude", self.atrialPulseAmplitude],["atrialPulseWidth", self.atrialPulseWidth]])):
+            data = [self.lowerRateLimit, self.upperRateLimit, self.atrialPulseAmplitude, self.atrialPulseWidth]
+            data = list(map(int, data))
+            DCM_serial.setMode(2,data)
+            DCM_serial.echoMode()
 
 class DCM_VOO(tk.Frame):
     def __init__(self, master):
@@ -345,8 +348,12 @@ class DCM_VOO(tk.Frame):
         self.ventricularPulseAmplitude = ventricularPulseAmplitude.get()
         self.ventricularPulseWidth = ventricularPulseWidth.get()
 
-        programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
-                    ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth]])
+        if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
+                    ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth]])):
+            data = [self.lowerRateLimit, self.upperRateLimit, self.ventricularPulseAmplitude, self.ventricularPulseWidth]
+            data = list(map(int, data))
+            DCM_serial.setMode(0,data)
+            DCM_serial.echoMode()
 
     def getDropDown(self, val):
         self.master.switch_frame(switchMode(val))
@@ -429,6 +436,9 @@ class DCM_AAI(tk.Frame):
         tk.Button(self, text="Back",
                   command=lambda: self.master.switch_frame(homePage)).grid(row=6, columnspan=2, column=2, pady=10, padx=20)
 
+    def getDropDown(self, val):
+        self.master.switch_frame(switchMode(val))
+
     def modifyParameters(self, upperRateLimit, lowerRateLimit, atrialPulseAmplitude, atrialPulseWidth, atrialSensitivity, ARP, PVARP, hysteresis, rateSmoothing):
         self.upperRateLimit = upperRateLimit.get()
         self.lowerRateLimit = lowerRateLimit.get()
@@ -440,12 +450,15 @@ class DCM_AAI(tk.Frame):
         self.hysteresis = hysteresis.get()
         self.rateSmoothing = rateSmoothing.get()
 
-        programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
+        if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
                     ["atrialPulseAmplitude", self.atrialPulseAmplitude],["atrialPulseWidth", self.atrialPulseWidth],
-                    ["atrialSensitivity",self.atrialSensitivity],["ARP", self.ARP], ["PVARP", self.PVARP], ["rateSmoothing", self.rateSmoothing]])
-
-    def getDropDown(self, val):
-        self.master.switch_frame(switchMode(val))
+                    ["atrialSensitivity",self.atrialSensitivity],["ARP", self.ARP], ["PVARP", self.PVARP], ["rateSmoothing", self.rateSmoothing]])):
+            data = [self.lowerRateLimit, self.upperRateLimit, self.atrialPulseAmplitude, self.atrialPulseWidth, self.ARP, self.atrialSensitivity,
+                   self.rateSmoothing, self.PVARP]
+            data = list(map(int, data))
+            DCM_serial.setMode(3,data)
+            DCM_serial.echoMode()
+    
 
 
 class DCM_VVI(tk.Frame):
@@ -529,9 +542,14 @@ class DCM_VVI(tk.Frame):
         self.hysteresis = hysteresis.get()
         self.rateSmoothing = rateSmoothing.get()
 
-        programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
+        if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
                     ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth],
-                    ["ventricularSensitivity",self.ventricularSensitivity],["VRP", self.VRP], ["rateSmoothing", self.rateSmoothing]])
+                    ["ventricularSensitivity",self.ventricularSensitivity],["VRP", self.VRP], ["rateSmoothing", self.rateSmoothing]])):
+            data = [self.lowerRateLimit, self.upperRateLimit, self.ventricularPulseAmplitude, self.ventricularPulseWidth, self.VRP, self.ventricularSensitivity,
+                   self.rateSmoothing]
+            data = list(map(int, data))
+            DCM_serial.setMode(1,data)
+            DCM_serial.echoMode()
 
     def getDropDown(self, val):
         self.master.switch_frame(switchMode(val))
