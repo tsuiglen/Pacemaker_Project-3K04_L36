@@ -5,7 +5,7 @@ import random
 import serial 
 import time
 import struct
-'''
+
 ser = ""
 x = 0
 readIn = '' 
@@ -22,8 +22,7 @@ ax2 = fig2.add_subplot(1,1,1)
 
 def handle_close(evt):
     global ser
-    
-    ser.write(b"\x16\x62" + b"\x00"*31)
+
     print('Closed Figure!')
     ser.close()
 
@@ -35,11 +34,18 @@ def animate1(i): #currently set to use randomly generated values for testing pur
     global readIn
     xs1.append(x)
     x = x + 1
-    
-    readIn =  ser.read(31)#random.randint(0,50)
+    ser.write(b"\x16\x47" + b"\x00"*37)
+ 
+    readIn =  ser.read(37)#random.randint(0,50)
     print(readIn)
  
-    y = struct.unpack("f", readIn[0:4])
+    y = struct.unpack("f", readIn[0:4])[0]
+
+    if(len(ys1) > 50):
+        ys1.pop(0)
+        ys2.pop(0)
+        xs1.pop(0)
+        xs2.pop(0)
 
     print(x,",",y)
     ys1.append(y)
@@ -57,7 +63,7 @@ def animate2(i): #currently set to use randomly generated values for testing pur
     #x = x + 1
     #y = ser.read(31)#random.randint(0,50)
     
-    y = struct.unpack("f", readIn[4:8])
+    y = struct.unpack("f", readIn[4:8])[0]
 
     print(x,",",y)
     ys2.append(y)
@@ -71,9 +77,17 @@ def plot():
     global ax1
     global ax2
     global ser
+    global ys1
+    global ys2
+    global xs1
+    global xs2
+    ys1 = []
+    ys2 = []
+    xs1 = []
+    xs2 = []
     ser = serial.Serial("COM3", 115200)
-    time.sleep(2)
-    ser.write(b"\x16\x47" + b"\x00"*31)
+    time.sleep(1)
+    ser.write(b"\x16\x47" + b"\x00"*37)
 
     if(x > 0):
         fig1 = plt.figure()
@@ -96,6 +110,4 @@ def plot():
     plt.show()
     
 
-plot()
-
-'''
+#plot()

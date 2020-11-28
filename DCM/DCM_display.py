@@ -287,8 +287,7 @@ class DCM_AOO(tk.Frame):
         '''
         if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
                     ["atrialPulseAmplitude", self.atrialPulseAmplitude],["atrialPulseWidth", self.atrialPulseWidth]])):
-            data = [self.lowerRateLimit, self.upperRateLimit, self.atrialPulseAmplitude, self.atrialPulseWidth]
-            data = list(map(int, data))
+            data = [int(self.lowerRateLimit), int(self.upperRateLimit), int(self.atrialPulseAmplitude), float(self.atrialPulseWidth)]
             DCM_serial.setMode(2,data)
             DCM_serial.echoMode()
 
@@ -350,8 +349,7 @@ class DCM_VOO(tk.Frame):
 
         if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
                     ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth]])):
-            data = [self.lowerRateLimit, self.upperRateLimit, self.ventricularPulseAmplitude, self.ventricularPulseWidth]
-            data = list(map(int, data))
+            data = [int(self.lowerRateLimit), int(self.upperRateLimit), int(self.ventricularPulseAmplitude), float(self.ventricularPulseWidth)]
             DCM_serial.setMode(0,data)
             DCM_serial.echoMode()
 
@@ -453,9 +451,8 @@ class DCM_AAI(tk.Frame):
         if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
                     ["atrialPulseAmplitude", self.atrialPulseAmplitude],["atrialPulseWidth", self.atrialPulseWidth],
                     ["atrialSensitivity",self.atrialSensitivity],["ARP", self.ARP], ["PVARP", self.PVARP], ["rateSmoothing", self.rateSmoothing]])):
-            data = [self.lowerRateLimit, self.upperRateLimit, self.atrialPulseAmplitude, self.atrialPulseWidth, self.ARP, self.atrialSensitivity,
-                   self.rateSmoothing, self.PVARP]
-            data = list(map(int, data))
+            data = [int(self.lowerRateLimit), int(self.upperRateLimit), int(self.atrialPulseAmplitude), float(self.atrialPulseWidth), int(self.ARP), float(self.atrialSensitivity),
+                   int(self.rateSmoothing), int(self.PVARP)]
             DCM_serial.setMode(3,data)
             DCM_serial.echoMode()
     
@@ -545,9 +542,8 @@ class DCM_VVI(tk.Frame):
         if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
                     ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth],
                     ["ventricularSensitivity",self.ventricularSensitivity],["VRP", self.VRP], ["rateSmoothing", self.rateSmoothing]])):
-            data = [self.lowerRateLimit, self.upperRateLimit, self.ventricularPulseAmplitude, self.ventricularPulseWidth, self.VRP, self.ventricularSensitivity,
-                   self.rateSmoothing]
-            data = list(map(int, data))
+            data = [int(self.lowerRateLimit), int(self.upperRateLimit), int(self.ventricularPulseAmplitude), float(self.ventricularPulseWidth), int(self.VRP), float(self.ventricularSensitivity),
+                   int(self.rateSmoothing)]
             DCM_serial.setMode(1,data)
             DCM_serial.echoMode()
 
