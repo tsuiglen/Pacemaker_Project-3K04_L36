@@ -5,7 +5,7 @@ import random
 import serial 
 import time
 import struct
-
+'''
 ser = ""
 x = 0
 readIn = '' 
@@ -39,7 +39,7 @@ def animate1(i): #currently set to use randomly generated values for testing pur
     readIn =  ser.read(31)#random.randint(0,50)
     print(readIn)
  
-    y = struct.unpack("d", readIn[0:4])
+    y = struct.unpack("f", readIn[0:4])
 
     print(x,",",y)
     ys1.append(y)
@@ -57,7 +57,7 @@ def animate2(i): #currently set to use randomly generated values for testing pur
     #x = x + 1
     #y = ser.read(31)#random.randint(0,50)
     
-    y = struct.unpack("d", readIn[4:8])
+    y = struct.unpack("f", readIn[4:8])
 
     print(x,",",y)
     ys2.append(y)
@@ -96,5 +96,6 @@ def plot():
     plt.show()
     
 
-#plot()
+plot()
 
+'''
