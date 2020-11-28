@@ -555,4 +555,4 @@ class DCM_VVI(tk.Frame):
         self.master.switch_frame(switchMode(val))
 
 setParamVals()
-print(rateSmoothing)
+#print(rateSmoothing)
