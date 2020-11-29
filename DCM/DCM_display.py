@@ -1,5 +1,5 @@
 import tkinter as tk
-# import DCM_serial
+import DCM_serial
 from DCM_homePage import homePage
 
 upperRateLimit = []
@@ -124,22 +124,22 @@ def switchMode(val):
     elif(val == 'DOOR'):
         return DCM_DOOR
 
-# def connectionIndicator(obj):
-#     global connected
-#     if(connected or DCM_serial.isConnect()):
-#         obj.configure(fg="green")
-#         obj.configure(text="Connected")
-#         obj.master.update()
-#         connected = True
-#     else:
-#         obj.configure(fg="red")
-#         obj.configure(text="Not Connected")
-#         obj.master.update()
+def connectionIndicator(obj):
+    global connected
+    if(connected or DCM_serial.isConnect()):
+        obj.configure(fg="green")
+        obj.configure(text="Connected")
+        obj.master.update()
+        connected = True
+    else:
+        obj.configure(fg="red")
+        obj.configure(text="Not Connected")
+        obj.master.update()
 
-# def connectionID(obj):
-#     obj.configure(fg="red" if DCM_serial.getDeviceID() == "N/A" else "green")
-#     obj.configure(text="ID: " + DCM_serial.getDeviceID())
-#     obj.master.update()
+def connectionID(obj):
+    obj.configure(fg="red" if DCM_serial.getDeviceID() == "N/A" else "green")
+    obj.configure(text="ID: " + DCM_serial.getDeviceID())
+    obj.master.update()
 
 def popupmsg(msg):
         popup = tk.Tk()
@@ -256,8 +256,8 @@ class DCMPage(tk.Frame):
         self.ID = tk.Label(self, text="") 
         self.isConnected.grid(row=0, column=2, pady=10)
         self.ID.grid(row=0, column=3, pady=10)
-        # connectionIndicator(self.isConnected)
-        # connectionID(self.ID)
+        connectionIndicator(self.isConnected)
+        connectionID(self.ID)
 
         tk.Label(self, text="Upper Rate Limit").grid(row=1, column=0, pady=10, padx=10)
         tk.Label(self, text="Lower Rate Limit").grid(row=1, column=2, pady=10, padx=10)
@@ -287,8 +287,8 @@ class DCM_AOO(tk.Frame):
         self.ID = tk.Label(self, text="") 
         self.isConnected.grid(row=0, column=2, pady=10)
         self.ID.grid(row=0, column=3, pady=10)
-        # connectionIndicator(self.isConnected)
-        # connectionID(self.ID)
+        connectionIndicator(self.isConnected)
+        connectionID(self.ID)
 
         self.tkvar = tk.StringVar(self)
         pacingMode = {'AOO', 'VOO', 'AAI', 'VVI','DOO','AOOR','VOOR','AAIR','VVIR','DOOR'}
@@ -346,11 +346,11 @@ class DCM_AOO(tk.Frame):
         print("atrialPulseAmplitude ", self.atrialPulseAmplitude)
         print("atrialPulseWidth", self.atrialPulseWidth)
         '''
-        # if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
-        #             ["atrialPulseAmplitude", self.atrialPulseAmplitude],["atrialPulseWidth", self.atrialPulseWidth]])):
-        #     data = [int(self.lowerRateLimit), int(self.upperRateLimit), float(0 if self.atrialPulseAmplitude == "OFF" else self.atrialPulseAmplitude), float(self.atrialPulseWidth)]
-        #     DCM_serial.setMode(2,data)
-        #     DCM_serial.echoMode()
+        if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
+                    ["atrialPulseAmplitude", self.atrialPulseAmplitude],["atrialPulseWidth", self.atrialPulseWidth]])):
+            data = [int(self.lowerRateLimit), int(self.upperRateLimit), float(0 if self.atrialPulseAmplitude == "OFF" else self.atrialPulseAmplitude), float(self.atrialPulseWidth)]
+            DCM_serial.setMode(2,data)
+            DCM_serial.echoMode()
 
 class DCM_VOO(tk.Frame):
     def __init__(self, master):
@@ -364,8 +364,8 @@ class DCM_VOO(tk.Frame):
         self.ID = tk.Label(self, text="") 
         self.isConnected.grid(row=0, column=2, pady=10)
         self.ID.grid(row=0, column=3, pady=10)
-        # connectionIndicator(self.isConnected)
-        # connectionID(self.ID)
+        connectionIndicator(self.isConnected)
+        connectionID(self.ID)
 
         self.tkvar = tk.StringVar(self)
         pacingMode = {'AOO', 'VOO', 'AAI', 'VVI','DOO','AOOR','VOOR','AAIR','VVIR','DOOR'}
@@ -408,11 +408,11 @@ class DCM_VOO(tk.Frame):
         self.ventricularPulseAmplitude = ventricularPulseAmplitude.get()
         self.ventricularPulseWidth = ventricularPulseWidth.get()
 
-        # if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
-        #             ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth]])):
-        #     data = [int(self.lowerRateLimit), int(self.upperRateLimit), float(0 if self.ventricularPulseAmplitude == "OFF" else self.ventricularPulseAmplitude), float(self.ventricularPulseWidth)]
-        #     DCM_serial.setMode(0,data)
-        #     DCM_serial.echoMode()
+        if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
+                    ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth]])):
+            data = [int(self.lowerRateLimit), int(self.upperRateLimit), float(0 if self.ventricularPulseAmplitude == "OFF" else self.ventricularPulseAmplitude), float(self.ventricularPulseWidth)]
+            DCM_serial.setMode(0,data)
+            DCM_serial.echoMode()
 
     def getDropDown(self, val):
         self.master.switch_frame(switchMode(val))
@@ -431,8 +431,8 @@ class DCM_AAI(tk.Frame):
         self.ID = tk.Label(self, text="") 
         self.isConnected.grid(row=0, column=2, pady=10)
         self.ID.grid(row=0, column=3, pady=10)
-        # connectionIndicator(self.isConnected)
-        # connectionID(self.ID)
+        connectionIndicator(self.isConnected)
+        connectionID(self.ID)
 
         self.tkvar = tk.StringVar(self)
         pacingMode = {'AOO', 'VOO', 'AAI', 'VVI','DOO','AOOR','VOOR','AAIR','VVIR','DOOR'}
@@ -509,13 +509,13 @@ class DCM_AAI(tk.Frame):
         self.hysteresis = hysteresis.get()
         self.rateSmoothing = rateSmoothing.get()
 
-        # if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
-        #             ["atrialPulseAmplitude", self.atrialPulseAmplitude],["atrialPulseWidth", self.atrialPulseWidth],
-        #             ["atrialSensitivity",self.atrialSensitivity],["ARP", self.ARP], ["PVARP", self.PVARP], ["rateSmoothing", self.rateSmoothing]])):
-        #     data = [int(self.lowerRateLimit), int(self.upperRateLimit), float(0 if self.atrialPulseAmplitude == "OFF" else self.atrialPulseAmplitude), float(self.atrialPulseWidth), int(self.ARP), float(self.atrialSensitivity),
-        #            int(self.rateSmoothing), int(self.PVARP)]
-        #     DCM_serial.setMode(3,data)
-        #     DCM_serial.echoMode()
+        if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
+                    ["atrialPulseAmplitude", self.atrialPulseAmplitude],["atrialPulseWidth", self.atrialPulseWidth],
+                    ["atrialSensitivity",self.atrialSensitivity],["ARP", self.ARP], ["PVARP", self.PVARP], ["rateSmoothing", self.rateSmoothing]])):
+            data = [int(self.lowerRateLimit), int(self.upperRateLimit), float(0 if self.atrialPulseAmplitude == "OFF" else self.atrialPulseAmplitude), float(self.atrialPulseWidth), int(self.ARP), float(self.atrialSensitivity),
+                   int(self.rateSmoothing), int(self.PVARP)]
+            DCM_serial.setMode(3,data)
+            DCM_serial.echoMode()
     
 
 class DCM_VVI(tk.Frame):
@@ -530,8 +530,8 @@ class DCM_VVI(tk.Frame):
         self.ID = tk.Label(self, text="") 
         self.isConnected.grid(row=0, column=2, pady=10)
         self.ID.grid(row=0, column=3, pady=10)
-        # connectionIndicator(self.isConnected)
-        # connectionID(self.ID)
+        connectionIndicator(self.isConnected)
+        connectionID(self.ID)
 
         self.tkvar = tk.StringVar(self)
         pacingMode = {'AOO', 'VOO', 'AAI', 'VVI','DOO','AOOR','VOOR','AAIR','VVIR','DOOR'}
@@ -599,14 +599,14 @@ class DCM_VVI(tk.Frame):
         self.hysteresis = hysteresis.get()
         self.rateSmoothing = rateSmoothing.get()
 
-        # if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
-        #             ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth],
-        #             ["ventricularSensitivity",self.ventricularSensitivity],["VRP", self.VRP], ["rateSmoothing", self.rateSmoothing]])):
-        #     data = [self.lowerRateLimit, self.upperRateLimit, self.ventricularPulseAmplitude, self.ventricularPulseWidth, self.VRP, self.ventricularSensitivity,
-        #            self.rateSmoothing]
-        #     data = list(map(int, data))
-        #     DCM_serial.setMode(1,data)
-        #     DCM_serial.echoMode()
+        if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
+                    ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth],
+                    ["ventricularSensitivity",self.ventricularSensitivity],["VRP", self.VRP], ["rateSmoothing", self.rateSmoothing]])):
+            data = [self.lowerRateLimit, self.upperRateLimit, self.ventricularPulseAmplitude, self.ventricularPulseWidth, self.VRP, self.ventricularSensitivity,
+                   self.rateSmoothing]
+            data = list(map(int, data))
+            DCM_serial.setMode(1,data)
+            DCM_serial.echoMode()
 
     def getDropDown(self, val):
         self.master.switch_frame(switchMode(val))
@@ -624,8 +624,8 @@ class DCM_DOO(tk.Frame):
         self.ID = tk.Label(self, text="") 
         self.isConnected.grid(row=0, column=2, pady=10)
         self.ID.grid(row=0, column=3, pady=10)
-        # connectionIndicator(self.isConnected)
-        # connectionID(self.ID)
+        connectionIndicator(self.isConnected)
+        connectionID(self.ID)
         
         self.tkvar = tk.StringVar(self)
         pacingMode = {'AOO', 'VOO', 'AAI', 'VVI','DOO','AOOR','VOOR','AAIR','VVIR','DOOR'}
@@ -689,12 +689,12 @@ class DCM_DOO(tk.Frame):
         self.atrialPulseWidth = atrialPulseWidth.get()
         self.ventricularPulseWidth = ventricularPulseWidth.get()
 
-        # if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
-        #             ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth]])):
-        #     data = [self.lowerRateLimit, self.upperRateLimit, self.ventricularPulseAmplitude, self.ventricularPulseWidth]
-        #     data = list(map(int, data))
-        #     DCM_serial.setMode(0,data)
-        #     DCM_serial.echoMode()
+        if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
+                    ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth]])):
+            data = [self.lowerRateLimit, self.upperRateLimit, self.ventricularPulseAmplitude, self.ventricularPulseWidth]
+            data = list(map(int, data))
+            DCM_serial.setMode(0,data)
+            DCM_serial.echoMode()
 
     def getDropDown(self, val):
         self.master.switch_frame(switchMode(val))
@@ -712,8 +712,8 @@ class DCM_AOOR(tk.Frame):
         self.ID = tk.Label(self, text="") 
         self.isConnected.grid(row=0, column=2, pady=10)
         self.ID.grid(row=0, column=3, pady=10)
-        # connectionIndicator(self.isConnected)
-        # connectionID(self.ID)
+        connectionIndicator(self.isConnected)
+        connectionID(self.ID)
         
         self.tkvar = tk.StringVar(self)
         pacingMode = {'AOO', 'VOO', 'AAI', 'VVI','DOO','AOOR','VOOR','AAIR','VVIR','DOOR'}
@@ -790,12 +790,12 @@ class DCM_AOOR(tk.Frame):
         self.reactionTime = reactionTime.get()
         self.responseFactor = responseFactor.get()
         self.recoveryTime = recoveryTime.get()
-        # if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
-        #             ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth]])):
-        #     data = [self.lowerRateLimit, self.upperRateLimit, self.ventricularPulseAmplitude, self.ventricularPulseWidth]
-        #     data = list(map(int, data))
-        #     DCM_serial.setMode(0,data)
-        #     DCM_serial.echoMode()
+        if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
+                    ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth]])):
+            data = [self.lowerRateLimit, self.upperRateLimit, self.ventricularPulseAmplitude, self.ventricularPulseWidth]
+            data = list(map(int, data))
+            DCM_serial.setMode(0,data)
+            DCM_serial.echoMode()
 
     def getDropDown(self, val):
         self.master.switch_frame(switchMode(val))
@@ -812,8 +812,8 @@ class DCM_VOOR(tk.Frame):
         self.ID = tk.Label(self, text="") 
         self.isConnected.grid(row=0, column=2, pady=10)
         self.ID.grid(row=0, column=3, pady=10)
-        # connectionIndicator(self.isConnected)
-        # connectionID(self.ID)
+        connectionIndicator(self.isConnected)
+        connectionID(self.ID)
         
         self.tkvar = tk.StringVar(self)
         pacingMode = {'AOO', 'VOO', 'AAI', 'VVI','DOO','AOOR','VOOR','AAIR','VVIR','DOOR'}
@@ -887,12 +887,12 @@ class DCM_VOOR(tk.Frame):
         self.reactionTime = reactionTime.get()
         self.responseFactor = responseFactor.get()
         self.recoveryTime = recoveryTime.get()
-        # if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
-        #             ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth]])):
-        #     data = [self.lowerRateLimit, self.upperRateLimit, self.ventricularPulseAmplitude, self.ventricularPulseWidth]
-        #     data = list(map(int, data))
-        #     DCM_serial.setMode(0,data)
-        #     DCM_serial.echoMode()
+        if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
+                    ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth]])):
+            data = [self.lowerRateLimit, self.upperRateLimit, self.ventricularPulseAmplitude, self.ventricularPulseWidth]
+            data = list(map(int, data))
+            DCM_serial.setMode(0,data)
+            DCM_serial.echoMode()
 
     def getDropDown(self, val):
         self.master.switch_frame(switchMode(val))
@@ -910,8 +910,8 @@ class DCM_AAIR(tk.Frame):
         self.ID = tk.Label(self, text="") 
         self.isConnected.grid(row=0, column=2, pady=10)
         self.ID.grid(row=0, column=3, pady=10)
-        # connectionIndicator(self.isConnected)
-        # connectionID(self.ID)
+        connectionIndicator(self.isConnected)
+        connectionID(self.ID)
         
         self.tkvar = tk.StringVar(self)
         pacingMode = {'AOO', 'VOO', 'AAI', 'VVI','DOO','AOOR','VOOR','AAIR','VVIR','DOOR'}
@@ -1017,12 +1017,12 @@ class DCM_AAIR(tk.Frame):
         self.reactionTime = reactionTime.get()
         self.responseFactor = responseFactor.get()
         self.recoveryTime = recoveryTime.get()
-        # if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
-        #             ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth]])):
-        #     data = [self.lowerRateLimit, self.upperRateLimit, self.ventricularPulseAmplitude, self.ventricularPulseWidth]
-        #     data = list(map(int, data))
-        #     DCM_serial.setMode(0,data)
-        #     DCM_serial.echoMode()
+        if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
+                    ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth]])):
+            data = [self.lowerRateLimit, self.upperRateLimit, self.ventricularPulseAmplitude, self.ventricularPulseWidth]
+            data = list(map(int, data))
+            DCM_serial.setMode(0,data)
+            DCM_serial.echoMode()
 
     def getDropDown(self, val):
         self.master.switch_frame(switchMode(val))
@@ -1039,8 +1039,8 @@ class DCM_VVIR(tk.Frame):
         self.ID = tk.Label(self, text="") 
         self.isConnected.grid(row=0, column=2, pady=10)
         self.ID.grid(row=0, column=3, pady=10)
-        # connectionIndicator(self.isConnected)
-        # connectionID(self.ID)
+        connectionIndicator(self.isConnected)
+        connectionID(self.ID)
         
         self.tkvar = tk.StringVar(self)
         pacingMode = {'AOO', 'VOO', 'AAI', 'VVI','DOO','AOOR','VOOR','AAIR','VVIR','DOOR'}
@@ -1144,12 +1144,12 @@ class DCM_VVIR(tk.Frame):
         self.responseFactor = responseFactor.get()
         self.recoveryTime = recoveryTime.get()
 
-        # if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
-        #             ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth]])):
-        #     data = [self.lowerRateLimit, self.upperRateLimit, self.ventricularPulseAmplitude, self.ventricularPulseWidth]
-        #     data = list(map(int, data))
-        #     DCM_serial.setMode(0,data)
-        #     DCM_serial.echoMode()
+        if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
+                    ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth]])):
+            data = [self.lowerRateLimit, self.upperRateLimit, self.ventricularPulseAmplitude, self.ventricularPulseWidth]
+            data = list(map(int, data))
+            DCM_serial.setMode(0,data)
+            DCM_serial.echoMode()
 
     def getDropDown(self, val):
         self.master.switch_frame(switchMode(val))
@@ -1168,8 +1168,8 @@ class DCM_DOOR(tk.Frame):
         self.ID = tk.Label(self, text="") 
         self.isConnected.grid(row=0, column=2, pady=10)
         self.ID.grid(row=0, column=3, pady=10)
-        # connectionIndicator(self.isConnected)
-        # connectionID(self.ID)
+        connectionIndicator(self.isConnected)
+        connectionID(self.ID)
         
         self.tkvar = tk.StringVar(self)
         pacingMode = {'AOO', 'VOO', 'AAI', 'VVI','DOO','AOOR','VOOR','AAIR','VVIR','DOOR'}
@@ -1265,12 +1265,12 @@ class DCM_DOOR(tk.Frame):
         self.reactionTime = reactionTime.get()
         self.responseFactor = responseFactor.get()
         self.recoveryTime = recoveryTime.get()
-        # if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
-        #             ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth]])):
-        #     data = [self.lowerRateLimit, self.upperRateLimit, self.ventricularPulseAmplitude, self.ventricularPulseWidth]
-        #     data = list(map(int, data))
-        #     DCM_serial.setMode(0,data)
-        #     DCM_serial.echoMode()
+        if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
+                    ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth]])):
+            data = [self.lowerRateLimit, self.upperRateLimit, self.ventricularPulseAmplitude, self.ventricularPulseWidth]
+            data = list(map(int, data))
+            DCM_serial.setMode(0,data)
+            DCM_serial.echoMode()
 
     def getDropDown(self, val):
         self.master.switch_frame(switchMode(val))
