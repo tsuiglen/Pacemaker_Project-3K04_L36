@@ -10,7 +10,7 @@ class main(tk.Tk):
     def __init__(self):
         tk.Tk.__init__(self)
         self._frame = None
-        self.switch_frame(welcomePage)
+        self.switch_frame(homePage)
 
     def switch_frame(self, frame_class):
         new_frame = frame_class(self)

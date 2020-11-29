@@ -1,5 +1,5 @@
 import tkinter as tk
-import DCM_serial
+# import DCM_serial
 from DCM_homePage import homePage
 
 upperRateLimit = []
@@ -86,23 +86,35 @@ def switchMode(val):
         return DCM_AAI
     elif(val == 'VVI'):
         return DCM_VVI
+    elif(val == 'DOO'):
+        return DCM_DOO
+    elif(val == 'AOOR'):
+        return DCM_AOOR
+    elif(val == 'VOOR'):
+        return DCM_VOOR
+    elif(val == 'AAIR'):
+        return DCM_AAIR
+    elif(val == 'VVIR'):
+        return DCM_VVIR
+    elif(val == 'DOOR'):
+        return DCM_DOOR
 
-def connectionIndicator(obj):
-    global connected
-    if(connected or DCM_serial.isConnect()):
-        obj.configure(fg="green")
-        obj.configure(text="Connected")
-        obj.master.update()
-        connected = True
-    else:
-        obj.configure(fg="red")
-        obj.configure(text="Not Connected")
-        obj.master.update()
+# def connectionIndicator(obj):
+#     global connected
+#     if(connected or DCM_serial.isConnect()):
+#         obj.configure(fg="green")
+#         obj.configure(text="Connected")
+#         obj.master.update()
+#         connected = True
+#     else:
+#         obj.configure(fg="red")
+#         obj.configure(text="Not Connected")
+#         obj.master.update()
 
-def connectionID(obj):
-    obj.configure(fg="red" if DCM_serial.getDeviceID() == "N/A" else "green")
-    obj.configure(text="ID: " + DCM_serial.getDeviceID())
-    obj.master.update()
+# def connectionID(obj):
+#     obj.configure(fg="red" if DCM_serial.getDeviceID() == "N/A" else "green")
+#     obj.configure(text="ID: " + DCM_serial.getDeviceID())
+#     obj.master.update()
 
 def popupmsg(msg):
         popup = tk.Tk()
@@ -187,7 +199,7 @@ class DCMPage(tk.Frame):
 
         # Drop down options:
         self.tkvar = tk.StringVar(self)
-        pacingMode = {'AOO', 'VOO', 'AAI', 'VVI'}
+        pacingMode = {'AOO', 'VOO', 'AAI', 'VVI','DOO','AOOR','VOOR','AAIR','VVIR','DOOR'}
 
         pacingModeMenu = tk.OptionMenu(
             self, self.tkvar, *pacingMode, command=self.getDropDown)
@@ -199,8 +211,8 @@ class DCMPage(tk.Frame):
         self.ID = tk.Label(self, text="") 
         self.isConnected.grid(row=0, column=2, pady=10)
         self.ID.grid(row=0, column=3, pady=10)
-        connectionIndicator(self.isConnected)
-        connectionID(self.ID)
+        # connectionIndicator(self.isConnected)
+        # connectionID(self.ID)
 
         tk.Label(self, text="Upper Rate Limit").grid(row=1, column=0, pady=10, padx=10)
         tk.Label(self, text="Lower Rate Limit").grid(row=1, column=2, pady=10, padx=10)
@@ -230,11 +242,11 @@ class DCM_AOO(tk.Frame):
         self.ID = tk.Label(self, text="") 
         self.isConnected.grid(row=0, column=2, pady=10)
         self.ID.grid(row=0, column=3, pady=10)
-        connectionIndicator(self.isConnected)
-        connectionID(self.ID)
+        # connectionIndicator(self.isConnected)
+        # connectionID(self.ID)
 
         self.tkvar = tk.StringVar(self)
-        pacingMode = {'AOO', 'VOO', 'AAI', 'VVI'}
+        pacingMode = {'AOO', 'VOO', 'AAI', 'VVI','DOO','AOOR','VOOR','AAIR','VVIR','DOOR'}
 
         pacingModeMenu = tk.OptionMenu(
             self, self.tkvar, *pacingMode, command=self.getDropDown)
@@ -285,12 +297,12 @@ class DCM_AOO(tk.Frame):
         print("atrialPulseAmplitude ", self.atrialPulseAmplitude)
         print("atrialPulseWidth", self.atrialPulseWidth)
         '''
-        if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
-                    ["atrialPulseAmplitude", self.atrialPulseAmplitude],["atrialPulseWidth", self.atrialPulseWidth]])):
-            data = [self.lowerRateLimit, self.upperRateLimit, self.atrialPulseAmplitude, self.atrialPulseWidth]
-            data = list(map(int, data))
-            DCM_serial.setMode(2,data)
-            DCM_serial.echoMode()
+        # if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
+        #             ["atrialPulseAmplitude", self.atrialPulseAmplitude],["atrialPulseWidth", self.atrialPulseWidth]])):
+        #     data = [self.lowerRateLimit, self.upperRateLimit, self.atrialPulseAmplitude, self.atrialPulseWidth]
+        #     data = list(map(int, data))
+        #     DCM_serial.setMode(2,data)
+        #     DCM_serial.echoMode()
 
 class DCM_VOO(tk.Frame):
     def __init__(self, master):
@@ -304,11 +316,11 @@ class DCM_VOO(tk.Frame):
         self.ID = tk.Label(self, text="") 
         self.isConnected.grid(row=0, column=2, pady=10)
         self.ID.grid(row=0, column=3, pady=10)
-        connectionIndicator(self.isConnected)
-        connectionID(self.ID)
+        # connectionIndicator(self.isConnected)
+        # connectionID(self.ID)
 
         self.tkvar = tk.StringVar(self)
-        pacingMode = {'AOO', 'VOO', 'AAI', 'VVI'}
+        pacingMode = {'AOO', 'VOO', 'AAI', 'VVI','DOO','AOOR','VOOR','AAIR','VVIR','DOOR'}
 
         pacingModeMenu = tk.OptionMenu(
             self, self.tkvar, *pacingMode, command=self.getDropDown)
@@ -348,12 +360,12 @@ class DCM_VOO(tk.Frame):
         self.ventricularPulseAmplitude = ventricularPulseAmplitude.get()
         self.ventricularPulseWidth = ventricularPulseWidth.get()
 
-        if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
-                    ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth]])):
-            data = [self.lowerRateLimit, self.upperRateLimit, self.ventricularPulseAmplitude, self.ventricularPulseWidth]
-            data = list(map(int, data))
-            DCM_serial.setMode(0,data)
-            DCM_serial.echoMode()
+        # if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
+        #             ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth]])):
+        #     data = [self.lowerRateLimit, self.upperRateLimit, self.ventricularPulseAmplitude, self.ventricularPulseWidth]
+        #     data = list(map(int, data))
+        #     DCM_serial.setMode(0,data)
+        #     DCM_serial.echoMode()
 
     def getDropDown(self, val):
         self.master.switch_frame(switchMode(val))
@@ -372,11 +384,11 @@ class DCM_AAI(tk.Frame):
         self.ID = tk.Label(self, text="") 
         self.isConnected.grid(row=0, column=2, pady=10)
         self.ID.grid(row=0, column=3, pady=10)
-        connectionIndicator(self.isConnected)
-        connectionID(self.ID)
+        # connectionIndicator(self.isConnected)
+        # connectionID(self.ID)
 
         self.tkvar = tk.StringVar(self)
-        pacingMode = {'AOO', 'VOO', 'AAI', 'VVI'}
+        pacingMode = {'AOO', 'VOO', 'AAI', 'VVI','DOO','AOOR','VOOR','AAIR','VVIR','DOOR'}
 
         pacingModeMenu = tk.OptionMenu(
             self, self.tkvar, *pacingMode, command=self.getDropDown)
@@ -450,16 +462,17 @@ class DCM_AAI(tk.Frame):
         self.hysteresis = hysteresis.get()
         self.rateSmoothing = rateSmoothing.get()
 
-        if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
-                    ["atrialPulseAmplitude", self.atrialPulseAmplitude],["atrialPulseWidth", self.atrialPulseWidth],
-                    ["atrialSensitivity",self.atrialSensitivity],["ARP", self.ARP], ["PVARP", self.PVARP], ["rateSmoothing", self.rateSmoothing]])):
-            data = [self.lowerRateLimit, self.upperRateLimit, self.atrialPulseAmplitude, self.atrialPulseWidth, self.ARP, self.atrialSensitivity,
-                   self.rateSmoothing, self.PVARP]
-            data = list(map(int, data))
-            DCM_serial.setMode(3,data)
-            DCM_serial.echoMode()
+        # if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
+        #             ["atrialPulseAmplitude", self.atrialPulseAmplitude],["atrialPulseWidth", self.atrialPulseWidth],
+        #             ["atrialSensitivity",self.atrialSensitivity],["ARP", self.ARP], ["PVARP", self.PVARP], ["rateSmoothing", self.rateSmoothing]])):
+        #     data = [self.lowerRateLimit, self.upperRateLimit, self.atrialPulseAmplitude, self.atrialPulseWidth, self.ARP, self.atrialSensitivity,
+        #            self.rateSmoothing, self.PVARP]
+        #     data = list(map(int, data))
+        #     DCM_serial.setMode(3,data)
+        #     DCM_serial.echoMode()
     
-
+    
+    
 
 class DCM_VVI(tk.Frame):
     def __init__(self, master):
@@ -473,11 +486,11 @@ class DCM_VVI(tk.Frame):
         self.ID = tk.Label(self, text="") 
         self.isConnected.grid(row=0, column=2, pady=10)
         self.ID.grid(row=0, column=3, pady=10)
-        connectionIndicator(self.isConnected)
-        connectionID(self.ID)
+        # connectionIndicator(self.isConnected)
+        # connectionID(self.ID)
 
         self.tkvar = tk.StringVar(self)
-        pacingMode = {'AOO', 'VOO', 'AAI', 'VVI'}
+        pacingMode = {'AOO', 'VOO', 'AAI', 'VVI','DOO','AOOR','VOOR','AAIR','VVIR','DOOR'}
 
         pacingModeMenu = tk.OptionMenu(
             self, self.tkvar, *pacingMode, command=self.getDropDown)
@@ -542,17 +555,647 @@ class DCM_VVI(tk.Frame):
         self.hysteresis = hysteresis.get()
         self.rateSmoothing = rateSmoothing.get()
 
-        if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
-                    ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth],
-                    ["ventricularSensitivity",self.ventricularSensitivity],["VRP", self.VRP], ["rateSmoothing", self.rateSmoothing]])):
-            data = [self.lowerRateLimit, self.upperRateLimit, self.ventricularPulseAmplitude, self.ventricularPulseWidth, self.VRP, self.ventricularSensitivity,
-                   self.rateSmoothing]
-            data = list(map(int, data))
-            DCM_serial.setMode(1,data)
-            DCM_serial.echoMode()
+        # if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
+        #             ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth],
+        #             ["ventricularSensitivity",self.ventricularSensitivity],["VRP", self.VRP], ["rateSmoothing", self.rateSmoothing]])):
+        #     data = [self.lowerRateLimit, self.upperRateLimit, self.ventricularPulseAmplitude, self.ventricularPulseWidth, self.VRP, self.ventricularSensitivity,
+        #            self.rateSmoothing]
+        #     data = list(map(int, data))
+        #     DCM_serial.setMode(1,data)
+        #     DCM_serial.echoMode()
 
     def getDropDown(self, val):
         self.master.switch_frame(switchMode(val))
+
+    
+class DCM_DOO(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        master.title("Pacemaker DCM")
+
+        tk.Label(self, text="Pacing Mode:   DOO").grid(
+            row=0, column=0, pady=10)
+
+        self.isConnected = tk.Label(self, text="") #connection indicator
+        self.ID = tk.Label(self, text="") 
+        self.isConnected.grid(row=0, column=2, pady=10)
+        self.ID.grid(row=0, column=3, pady=10)
+        # connectionIndicator(self.isConnected)
+        # connectionID(self.ID)
+        
+        self.tkvar = tk.StringVar(self)
+        pacingMode = {'AOO', 'VOO', 'AAI', 'VVI','DOO','AOOR','VOOR','AAIR','VVIR','DOOR'}
+
+        pacingModeMenu = tk.OptionMenu(
+            self, self.tkvar, *pacingMode, command=self.getDropDown)
+        pacingModeMenu.grid(row=0, column=1, pady=10, padx=5)
+
+        tk.Label(self, text="Upper Rate Limit").grid(
+            row=1, column=0, pady=10, padx=10)
+        tk.Label(self, text="Lower Rate Limit").grid(
+            row=1, column=2, pady=10, padx=10)
+
+        tk.Label(self, text="Fixed AV Delay").grid(
+            row=2, column=0, pady=10, padx=10)
+        tk.Label(self, text="Atrial Amplitude").grid(
+            row=2, column=2, pady=10, padx=10)
+
+        tk.Label(self, text="Ventricular Amplitude").grid(
+            row=3, column=0, pady=10, padx=10)
+        tk.Label(self, text="Atrial Pulse Width").grid(row=3, column=2, pady=10, padx=10)
+
+        tk.Label(self, text="Ventricular Pulse Width").grid(
+            row=4, column=0, pady=10, padx=10)
+        
+        upperRateLimit = tk.Entry(self)
+        upperRateLimit.grid(row=1, column=1, pady=10, padx=10)
+
+        lowerRateLimit = tk.Entry(self)
+        lowerRateLimit.grid(row=1, column=3, pady=10, padx=10)
+
+        fixedAVDelay = tk.Entry(self)
+        fixedAVDelay.grid(row=2, column=1, pady=10, padx=10)
+
+        atrialAmplitude = tk.Entry(self)
+        atrialAmplitude.grid(row=2, column=3, pady=10, padx=10)
+
+        ventricularAmplitude = tk.Entry(self)
+        ventricularAmplitude.grid(row=3, column=1, pady=10, padx=10)
+
+        atrialPulseWidth = tk.Entry(self)
+        atrialPulseWidth.grid(row=3, column=3, pady=10, padx=10)
+
+        ventricularPulseWidth = tk.Entry(self)
+        ventricularPulseWidth.grid(row=4, column=1, pady=10, padx=10)
+
+
+
+        tk.Button(self, text="Modify",
+                  command=lambda: self.modifyParameters(upperRateLimit, lowerRateLimit, ventricularPulseAmplitude, ventricularPulseWidth)).grid(row=4, columnspan=2 ,column=3, pady=10, padx=15)
+
+        tk.Button(self, text="Back",
+                  command=lambda: self.master.switch_frame(homePage)).grid(row=4, columnspan=2, column=2, pady=10, padx=20)
+
+    def modifyParameters(self, upperRateLimit, lowerRateLimit, ventricularPulseAmplitude, ventricularPulseWidth):
+        self.upperRateLimit = upperRateLimit.get()
+        self.lowerRateLimit = lowerRateLimit.get()
+        self.ventricularPulseAmplitude = ventricularPulseAmplitude.get()
+        self.ventricularPulseWidth = ventricularPulseWidth.get()
+
+        # if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
+        #             ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth]])):
+        #     data = [self.lowerRateLimit, self.upperRateLimit, self.ventricularPulseAmplitude, self.ventricularPulseWidth]
+        #     data = list(map(int, data))
+        #     DCM_serial.setMode(0,data)
+        #     DCM_serial.echoMode()
+
+    def getDropDown(self, val):
+        self.master.switch_frame(switchMode(val))
+
+    
+class DCM_AOOR(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        master.title("Pacemaker DCM")
+
+        tk.Label(self, text="Pacing Mode:   AOOR").grid(
+            row=0, column=0, pady=10)
+
+        self.isConnected = tk.Label(self, text="") #connection indicator
+        self.ID = tk.Label(self, text="") 
+        self.isConnected.grid(row=0, column=2, pady=10)
+        self.ID.grid(row=0, column=3, pady=10)
+        # connectionIndicator(self.isConnected)
+        # connectionID(self.ID)
+        
+        self.tkvar = tk.StringVar(self)
+        pacingMode = {'AOO', 'VOO', 'AAI', 'VVI','DOO','AOOR','VOOR','AAIR','VVIR','DOOR'}
+
+        pacingModeMenu = tk.OptionMenu(
+            self, self.tkvar, *pacingMode, command=self.getDropDown)
+        pacingModeMenu.grid(row=0, column=1, pady=10, padx=5)
+
+        tk.Label(self, text="Upper Rate Limit").grid(
+            row=1, column=0, pady=10, padx=10)
+        tk.Label(self, text="Lower Rate Limit").grid(
+            row=1, column=2, pady=10, padx=10)
+
+        tk.Label(self, text="Maximum Sensor Rate").grid(
+            row=2, column=0, pady=10, padx=10)
+        tk.Label(self, text="Atrial Amplitude").grid(
+            row=2, column=2, pady=10, padx=10)
+
+        tk.Label(self, text="Atrial Pulse Width").grid(
+            row=3, column=0, pady=10, padx=10)
+        tk.Label(self, text="Activity Threshold").grid(
+            row=3, column=2, pady=10, padx=10)
+
+        tk.Label(self, text="Reaction Time").grid(
+            row=4, column=0, pady=10, padx=10)
+        tk.Label(self, text="Response Factor").grid(
+            row=4, column=2, pady=10, padx=10)
+        
+        tk.Label(self, text="Recovery Time").grid(
+            row=5, column=0, pady=10, padx=10)
+    
+    
+        upperRateLimit = tk.Entry(self)
+        upperRateLimit.grid(row=1, column=1, pady=10, padx=10)
+
+        lowerRateLimit = tk.Entry(self)
+        lowerRateLimit.grid(row=1, column=3, pady=10, padx=10)
+
+        maximumSensorRate = tk.Entry(self)
+        maximumSensorRate.grid(row=2, column=1, pady=10, padx=10)
+
+        atrialAmplitude = tk.Entry(self)
+        atrialAmplitude.grid(row=2, column=3, pady=10, padx=10)
+
+        atrialPulseWidth = tk.Entry(self)
+        atrialPulseWidth.grid(row=3, column=1, pady=10, padx=10)
+
+        activityThreshold = tk.Entry(self)
+        activityThreshold.grid(row=3, column=3, pady=10, padx=10)
+
+        reactionTime = tk.Entry(self)
+        reactionTime.grid(row=4, column=1, pady=10, padx=10)
+
+        responseFactor = tk.Entry(self)
+        responseFactor.grid(row=4, column=3, pady=10, padx=10)
+
+        recoveryTime = tk.Entry(self)
+        recoveryTime.grid(row=5, column=1, pady=10, padx=10)
+        
+
+        tk.Button(self, text="Modify",
+                  command=lambda: self.modifyParameters(upperRateLimit, lowerRateLimit, ventricularPulseAmplitude, ventricularPulseWidth)).grid(row=5, columnspan=2 ,column=3, pady=10, padx=15)
+
+        tk.Button(self, text="Back",
+                  command=lambda: self.master.switch_frame(homePage)).grid(row=5, columnspan=2, column=2, pady=10, padx=20)
+
+    def modifyParameters(self, upperRateLimit, lowerRateLimit, ventricularPulseAmplitude, ventricularPulseWidth):
+        self.upperRateLimit = upperRateLimit.get()
+        self.lowerRateLimit = lowerRateLimit.get()
+        self.ventricularPulseAmplitude = ventricularPulseAmplitude.get()
+        self.ventricularPulseWidth = ventricularPulseWidth.get()
+
+        # if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
+        #             ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth]])):
+        #     data = [self.lowerRateLimit, self.upperRateLimit, self.ventricularPulseAmplitude, self.ventricularPulseWidth]
+        #     data = list(map(int, data))
+        #     DCM_serial.setMode(0,data)
+        #     DCM_serial.echoMode()
+
+    def getDropDown(self, val):
+        self.master.switch_frame(switchMode(val))
+
+class DCM_VOOR(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        master.title("Pacemaker DCM")
+
+        tk.Label(self, text="Pacing Mode:   VOOR").grid(
+            row=0, column=0, pady=10)
+
+        self.isConnected = tk.Label(self, text="") #connection indicator
+        self.ID = tk.Label(self, text="") 
+        self.isConnected.grid(row=0, column=2, pady=10)
+        self.ID.grid(row=0, column=3, pady=10)
+        # connectionIndicator(self.isConnected)
+        # connectionID(self.ID)
+        
+        self.tkvar = tk.StringVar(self)
+        pacingMode = {'AOO', 'VOO', 'AAI', 'VVI','DOO','AOOR','VOOR','AAIR','VVIR','DOOR'}
+
+        pacingModeMenu = tk.OptionMenu(
+            self, self.tkvar, *pacingMode, command=self.getDropDown)
+        pacingModeMenu.grid(row=0, column=1, pady=10, padx=5)
+
+        tk.Label(self, text="Upper Rate Limit").grid(
+            row=1, column=0, pady=10, padx=10)
+        tk.Label(self, text="Lower Rate Limit").grid(
+            row=1, column=2, pady=10, padx=10)
+
+        tk.Label(self, text="Maximum Sensor Rate").grid(
+            row=2, column=0, pady=10, padx=10)
+        tk.Label(self, text="Ventricular Amplitude").grid(
+            row=2, column=2, pady=10, padx=10)
+
+        tk.Label(self, text="Ventricular Pulse Width").grid(
+            row=3, column=0, pady=10, padx=10)
+        tk.Label(self, text="Activity Threshold").grid(
+            row=3, column=2, pady=10, padx=10)
+
+        tk.Label(self, text="Reaction Time").grid(
+            row=4, column=0, pady=10, padx=10)
+        tk.Label(self, text="Response Factor").grid(
+            row=4, column=2, pady=10, padx=10)
+        
+        tk.Label(self, text="Recovery Time").grid(
+            row=5, column=0, pady=10, padx=10)
+    
+        upperRateLimit = tk.Entry(self)
+        upperRateLimit.grid(row=1, column=1, pady=10, padx=10)
+
+        lowerRateLimit = tk.Entry(self)
+        lowerRateLimit.grid(row=1, column=3, pady=10, padx=10)
+
+        maximumSensorRate = tk.Entry(self)
+        maximumSensorRate.grid(row=2, column=1, pady=10, padx=10)
+
+        ventricularAmplitude = tk.Entry(self)
+        ventricularAmplitude.grid(row=2, column=3, pady=10, padx=10)
+
+        ventricularPulseWidth = tk.Entry(self)
+        ventricularPulseWidth.grid(row=3, column=1, pady=10, padx=10)
+
+        activityThreshold = tk.Entry(self)
+        activityThreshold.grid(row=3, column=3, pady=10, padx=10)
+
+        reactionTime = tk.Entry(self)
+        reactionTime.grid(row=4, column=1, pady=10, padx=10)
+
+        responseFactor = tk.Entry(self)
+        responseFactor.grid(row=4, column=3, pady=10, padx=10)
+
+        recoveryTime = tk.Entry(self)
+        recoveryTime.grid(row=5, column=1, pady=10, padx=10)
+        tk.Button(self, text="Modify",
+                  command=lambda: self.modifyParameters(upperRateLimit, lowerRateLimit, ventricularPulseAmplitude, ventricularPulseWidth)).grid(row=5, columnspan=2 ,column=3, pady=10, padx=15)
+
+        tk.Button(self, text="Back",
+                  command=lambda: self.master.switch_frame(homePage)).grid(row=5, columnspan=2, column=2, pady=10, padx=20)
+
+    def modifyParameters(self, upperRateLimit, lowerRateLimit, ventricularPulseAmplitude, ventricularPulseWidth):
+        self.upperRateLimit = upperRateLimit.get()
+        self.lowerRateLimit = lowerRateLimit.get()
+        self.ventricularPulseAmplitude = ventricularPulseAmplitude.get()
+        self.ventricularPulseWidth = ventricularPulseWidth.get()
+
+        # if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
+        #             ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth]])):
+        #     data = [self.lowerRateLimit, self.upperRateLimit, self.ventricularPulseAmplitude, self.ventricularPulseWidth]
+        #     data = list(map(int, data))
+        #     DCM_serial.setMode(0,data)
+        #     DCM_serial.echoMode()
+
+    def getDropDown(self, val):
+        self.master.switch_frame(switchMode(val))
+
+
+class DCM_AAIR(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        master.title("Pacemaker DCM")
+
+        tk.Label(self, text="Pacing Mode:   AAIR").grid(
+            row=0, column=0, pady=10)
+
+        self.isConnected = tk.Label(self, text="") #connection indicator
+        self.ID = tk.Label(self, text="") 
+        self.isConnected.grid(row=0, column=2, pady=10)
+        self.ID.grid(row=0, column=3, pady=10)
+        # connectionIndicator(self.isConnected)
+        # connectionID(self.ID)
+        
+        self.tkvar = tk.StringVar(self)
+        pacingMode = {'AOO', 'VOO', 'AAI', 'VVI','DOO','AOOR','VOOR','AAIR','VVIR','DOOR'}
+
+        pacingModeMenu = tk.OptionMenu(
+            self, self.tkvar, *pacingMode, command=self.getDropDown)
+        pacingModeMenu.grid(row=0, column=1, pady=10, padx=5)
+
+        tk.Label(self, text="Upper Rate Limit").grid(
+            row=1, column=0, pady=10, padx=10)
+        tk.Label(self, text="Lower Rate Limit").grid(
+            row=1, column=2, pady=10, padx=10)
+
+        tk.Label(self, text="Maximum Sensor Rate").grid(
+            row=2, column=0, pady=10, padx=10)
+        tk.Label(self, text="Atrial Amplitude").grid(
+            row=2, column=2, pady=10, padx=10)
+
+        tk.Label(self, text="Atrial Pulse Width").grid(
+            row=3, column=0, pady=10, padx=10)
+        tk.Label(self, text="Atrial Sensitivity").grid(row=3, column=2, pady=10, padx=10)
+
+        tk.Label(self, text="ARP").grid(
+            row=4, column=0, pady=10, padx=10)
+        tk.Label(self, text="PVARP").grid(
+            row=4, column=2, pady=10, padx=10)
+
+        tk.Label(self, text="Hysteresis").grid(
+            row=5, column=0, pady=10, padx=10)
+        tk.Label(self, text="Rate Smoothing").grid(
+            row=5, column=2, pady=10, padx=10)
+
+        tk.Label(self, text="Activity Threshold").grid(
+            row=6, column=0, pady=10, padx=10)
+        tk.Label(self, text="Reaction Time").grid(
+            row=6, column=2, pady=10, padx=10)
+
+        tk.Label(self, text="Response Factor").grid(
+            row=7, column=0, pady=10, padx=10)
+        tk.Label(self, text="Recovery Time").grid(
+            row=7, column=2, pady=10, padx=10)
+
+        upperRateLimit = tk.Entry(self)
+        upperRateLimit.grid(row=1, column=1, pady=10, padx=10)
+
+        lowerRateLimit = tk.Entry(self)
+        lowerRateLimit.grid(row=1, column=3, pady=10, padx=10)
+
+        maximumSensorRate = tk.Entry(self)
+        maximumSensorRate.grid(row=2, column=1, pady=10, padx=10)
+
+        atrialAmplitude = tk.Entry(self)
+        atrialAmplitude.grid(row=2, column=3, pady=10, padx=10)
+
+        atrialPulseWidth = tk.Entry(self)
+        atrialPulseWidth.grid(row=3, column=1, pady=10, padx=10)
+
+        atrialSensitivity = tk.Entry(self)
+        atrialSensitivity.grid(row=3, column=3, pady=10, padx=10)
+
+        ARP = tk.Entry(self)
+        ARP.grid(row=4, column=1, pady=10, padx=10)
+
+        PVARP = tk.Entry(self)
+        PVARP.grid(row=4, column=3, pady=10, padx=10)
+
+        hysteresis = tk.Entry(self)
+        hysteresis.grid(row=5, column=1, pady=10, padx=10)
+
+        rateSmoothing = tk.Entry(self)
+        rateSmoothing.grid(row=5, column=3, pady=10, padx=10)
+
+        activityThreshold = tk.Entry(self)
+        activityThreshold.grid(row=6, column=1, pady=10, padx=10)
+
+        reactionTime = tk.Entry(self)
+        reactionTime.grid(row=6, column=3, pady=10, padx=10)
+
+        responseFactor = tk.Entry(self)
+        responseFactor.grid(row=7, column=1, pady=10, padx=10)
+
+        recoveryTime = tk.Entry(self)
+        recoveryTime.grid(row=7, column=3, pady=10, padx=10)
+
+        tk.Button(self, text="Modify",
+                  command=lambda: self.modifyParameters(upperRateLimit, lowerRateLimit, ventricularPulseAmplitude, ventricularPulseWidth)).grid(row=8, columnspan=2 ,column=3, pady=10, padx=15)
+
+        tk.Button(self, text="Back",
+                  command=lambda: self.master.switch_frame(homePage)).grid(row=8, columnspan=2, column=2, pady=10, padx=20)
+
+    def modifyParameters(self, upperRateLimit, lowerRateLimit, ventricularPulseAmplitude, ventricularPulseWidth):
+        self.upperRateLimit = upperRateLimit.get()
+        self.lowerRateLimit = lowerRateLimit.get()
+        self.ventricularPulseAmplitude = ventricularPulseAmplitude.get()
+        self.ventricularPulseWidth = ventricularPulseWidth.get()
+
+        # if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
+        #             ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth]])):
+        #     data = [self.lowerRateLimit, self.upperRateLimit, self.ventricularPulseAmplitude, self.ventricularPulseWidth]
+        #     data = list(map(int, data))
+        #     DCM_serial.setMode(0,data)
+        #     DCM_serial.echoMode()
+
+    def getDropDown(self, val):
+        self.master.switch_frame(switchMode(val))
+
+class DCM_VVIR(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        master.title("Pacemaker DCM")
+
+        tk.Label(self, text="Pacing Mode:   VVIR").grid(
+            row=0, column=0, pady=10)
+
+        self.isConnected = tk.Label(self, text="") #connection indicator
+        self.ID = tk.Label(self, text="") 
+        self.isConnected.grid(row=0, column=2, pady=10)
+        self.ID.grid(row=0, column=3, pady=10)
+        # connectionIndicator(self.isConnected)
+        # connectionID(self.ID)
+        
+        self.tkvar = tk.StringVar(self)
+        pacingMode = {'AOO', 'VOO', 'AAI', 'VVI','DOO','AOOR','VOOR','AAIR','VVIR','DOOR'}
+
+        pacingModeMenu = tk.OptionMenu(
+            self, self.tkvar, *pacingMode, command=self.getDropDown)
+        pacingModeMenu.grid(row=0, column=1, pady=10, padx=5)
+
+        tk.Label(self, text="Upper Rate Limit").grid(
+            row=1, column=0, pady=10, padx=10)
+        tk.Label(self, text="Lower Rate Limit").grid(
+            row=1, column=2, pady=10, padx=10)
+
+        tk.Label(self, text="Maximum Sensor Rate").grid(
+            row=2, column=0, pady=10, padx=10)
+        tk.Label(self, text="Ventricular Amplitude").grid(
+            row=2, column=2, pady=10, padx=10)
+
+        tk.Label(self, text="Ventricular Pulse Width").grid(
+            row=3, column=0, pady=10, padx=10)
+        tk.Label(self, text="Ventricular Sensitivity").grid(
+            row=3, column=2, pady=10, padx=10)
+
+        tk.Label(self, text="VRP").grid(
+            row=4, column=0, pady=10, padx=10)
+        tk.Label(self, text="Hysteresis").grid(
+            row=4, column=2, pady=10, padx=10)
+        
+        tk.Label(self, text="Rate Smoothing").grid(
+            row=5, column=0, pady=10, padx=10)
+        tk.Label(self, text="Activity Threshold").grid(
+            row=5, column=2, pady=10, padx=10)
+        
+        tk.Label(self, text="Reaction Time").grid(
+            row=6, column=0, pady=10, padx=10)
+        tk.Label(self, text="Response Factor").grid(
+            row=6, column=2, pady=10, padx=10)
+
+        tk.Label(self, text="Recovery Time").grid(
+            row=7, column=0, pady=10, padx=10)
+      
+
+    
+        upperRateLimit = tk.Entry(self)
+        upperRateLimit.grid(row=1, column=1, pady=10, padx=10)
+
+        lowerRateLimit = tk.Entry(self)
+        lowerRateLimit.grid(row=1, column=3, pady=10, padx=10)
+
+        maximumSensorRate = tk.Entry(self)
+        maximumSensorRate.grid(row=2, column=1, pady=10, padx=10)
+
+        ventricularAmplitude = tk.Entry(self)
+        ventricularAmplitude.grid(row=2, column=3, pady=10, padx=10)
+
+        ventricularPulseWidth = tk.Entry(self)
+        ventricularPulseWidth.grid(row=3, column=1, pady=10, padx=10)
+
+        ventricularSensitivity = tk.Entry(self)
+        ventricularSensitivity.grid(row=3, column=3, pady=10, padx=10)
+
+        VPR = tk.Entry(self)
+        VPR.grid(row=4, column=1, pady=10, padx=10)
+
+        hysteresis = tk.Entry(self)
+        hysteresis.grid(row=4, column=3, pady=10, padx=10)
+
+        rateSmoothing = tk.Entry(self)
+        rateSmoothing.grid(row=5, column=1, pady=10, padx=10)
+
+        activityThreshold = tk.Entry(self)
+        activityThreshold.grid(row=5, column=3, pady=10, padx=10)
+
+        reactionTime = tk.Entry(self)
+        reactionTime.grid(row=6, column=1, pady=10, padx=10)
+
+        responseFactor = tk.Entry(self)
+        responseFactor.grid(row=6, column=3, pady=10, padx=10)
+
+        recoveryTime = tk.Entry(self)
+        recoveryTime.grid(row=7, column=1, pady=10, padx=10)
+
+        tk.Button(self, text="Modify",
+                  command=lambda: self.modifyParameters(upperRateLimit, lowerRateLimit, ventricularPulseAmplitude, ventricularPulseWidth)).grid(row=7, columnspan=2 ,column=3, pady=10, padx=15)
+
+        tk.Button(self, text="Back",
+                  command=lambda: self.master.switch_frame(homePage)).grid(row=7, columnspan=2, column=2, pady=10, padx=20)
+
+    def modifyParameters(self, upperRateLimit, lowerRateLimit, ventricularPulseAmplitude, ventricularPulseWidth):
+        self.upperRateLimit = upperRateLimit.get()
+        self.lowerRateLimit = lowerRateLimit.get()
+        self.ventricularPulseAmplitude = ventricularPulseAmplitude.get()
+        self.ventricularPulseWidth = ventricularPulseWidth.get()
+
+        # if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
+        #             ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth]])):
+        #     data = [self.lowerRateLimit, self.upperRateLimit, self.ventricularPulseAmplitude, self.ventricularPulseWidth]
+        #     data = list(map(int, data))
+        #     DCM_serial.setMode(0,data)
+        #     DCM_serial.echoMode()
+
+    def getDropDown(self, val):
+        self.master.switch_frame(switchMode(val))
+
+
+class DCM_DOOR(tk.Frame):
+    print("foor")
+    def __init__(self, master):
+        
+        tk.Frame.__init__(self, master)
+        master.title("Pacemaker DCM")
+
+        tk.Label(self, text="Pacing Mode:   DOOR").grid(
+            row=0, column=0, pady=10)
+
+        self.isConnected = tk.Label(self, text="") #connection indicator
+        self.ID = tk.Label(self, text="") 
+        self.isConnected.grid(row=0, column=2, pady=10)
+        self.ID.grid(row=0, column=3, pady=10)
+        # connectionIndicator(self.isConnected)
+        # connectionID(self.ID)
+        
+        self.tkvar = tk.StringVar(self)
+        pacingMode = {'AOO', 'VOO', 'AAI', 'VVI','DOO','AOOR','VOOR','AAIR','VVIR','DOOR'}
+
+        pacingModeMenu = tk.OptionMenu(
+            self, self.tkvar, *pacingMode, command=self.getDropDown)
+        pacingModeMenu.grid(row=0, column=1, pady=10, padx=5)
+
+        tk.Label(self, text="Upper Rate Limit").grid(
+            row=1, column=0, pady=10, padx=10)
+        tk.Label(self, text="Lower Rate Limit").grid(
+            row=1, column=2, pady=10, padx=10)
+
+        tk.Label(self, text="Maximum Sensor Rate").grid(
+            row=2, column=0, pady=10, padx=10)
+        tk.Label(self, text="Fixed AV Delay").grid(
+            row=2, column=2, pady=10, padx=10)
+
+        tk.Label(self, text="Atrial Amplitude").grid(
+            row=3, column=0, pady=10, padx=10)
+        tk.Label(self, text="Ventricular Amplitude").grid(
+            row=3, column=2, pady=10, padx=10)
+
+        tk.Label(self, text="Atrial Pulse Width").grid(
+            row=4, column=0, pady=10, padx=10)
+        tk.Label(self, text="Ventricular Pulse Width").grid(
+            row=4, column=2, pady=10, padx=10)
+        
+        tk.Label(self, text="Activity Threshold").grid(
+            row=5, column=0, pady=10, padx=10)
+        tk.Label(self, text="Reaction Time").grid(
+            row=5, column=2, pady=10, padx=10)
+        
+        tk.Label(self, text="Response Factor").grid(
+            row=6, column=0, pady=10, padx=10)
+        tk.Label(self, text="Recovery Time").grid(
+            row=6, column=2, pady=10, padx=10)
+      
+
+    
+        upperRateLimit = tk.Entry(self)
+        upperRateLimit.grid(row=1, column=1, pady=10, padx=10)
+
+        lowerRateLimit = tk.Entry(self)
+        lowerRateLimit.grid(row=1, column=3, pady=10, padx=10)
+
+        maximumSensorRate = tk.Entry(self)
+        maximumSensorRate.grid(row=2, column=1, pady=10, padx=10)
+
+        fixedAVDelay = tk.Entry(self)
+        fixedAVDelay.grid(row=2, column=3, pady=10, padx=10)
+
+        atrialPulseAmplitude = tk.Entry(self)
+        atrialPulseAmplitude.grid(row=3, column=1, pady=10, padx=10)
+
+        ventricularPulseWidth = tk.Entry(self)
+        ventricularPulseWidth.grid(row=3, column=3, pady=10, padx=10)
+
+        atrialPulseWidth = tk.Entry(self)
+        atrialPulseWidth.grid(row=4, column=1, pady=10, padx=10)
+
+        ventricularPulseWidth = tk.Entry(self)
+        ventricularPulseWidth.grid(row=4, column=3, pady=10, padx=10)
+
+        activityThreshold = tk.Entry(self)
+        activityThreshold.grid(row=5, column=1, pady=10, padx=10)
+
+        reactionTime = tk.Entry(self)
+        reactionTime.grid(row=5, column=3, pady=10, padx=10)
+
+        responseFactor = tk.Entry(self)
+        responseFactor.grid(row=6, column=1, pady=10, padx=10)
+
+        recoveryTime = tk.Entry(self)
+        recoveryTime.grid(row=6, column=3, pady=10, padx=10)
+
+        tk.Button(self, text="Modify",
+                  command=lambda: self.modifyParameters(upperRateLimit, lowerRateLimit, ventricularPulseAmplitude, ventricularPulseWidth)).grid(row=7, columnspan=2 ,column=3, pady=10, padx=15)
+
+        tk.Button(self, text="Back",
+                  command=lambda: self.master.switch_frame(homePage)).grid(row=7, columnspan=2, column=2, pady=10, padx=20)
+
+    def modifyParameters(self, upperRateLimit, lowerRateLimit, ventricularPulseAmplitude, ventricularPulseWidth):
+        self.upperRateLimit = upperRateLimit.get()
+        self.lowerRateLimit = lowerRateLimit.get()
+        self.ventricularPulseAmplitude = ventricularPulseAmplitude.get()
+        self.ventricularPulseWidth = ventricularPulseWidth.get()
+
+        # if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
+        #             ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth]])):
+        #     data = [self.lowerRateLimit, self.upperRateLimit, self.ventricularPulseAmplitude, self.ventricularPulseWidth]
+        #     data = list(map(int, data))
+        #     DCM_serial.setMode(0,data)
+        #     DCM_serial.echoMode()
+
+    def getDropDown(self, val):
+        self.master.switch_frame(switchMode(val))
+
 
 setParamVals()
 #print(rateSmoothing)
