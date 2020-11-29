@@ -37,7 +37,7 @@ def setMode(mode, param):
         URL = struct.pack("B", param[1]) 
         AA = struct.pack("H", 0*1000)
         APW = struct.pack("f", 0)
-        VA = struct.pack("H", param[2]*1000)
+        VA = struct.pack("H", int(param[2]*1000))
         VPW = struct.pack("f", param[3])
         ARP = struct.pack("H", 0)
         VRP = struct.pack("H", 0)
@@ -52,12 +52,11 @@ def setMode(mode, param):
         respFact = struct.pack("B", 0)
         recovTime = struct.pack("B", 0)
     elif(mode==1):
-        print(param)
         LRL = struct.pack("B", param[0])
         URL = struct.pack("B", param[1]) 
         AA = struct.pack("H", 0*1000)
         APW = struct.pack("f", 0)
-        VA = struct.pack("H", param[2]*1000)
+        VA = struct.pack("H", int(param[2]*1000))
         VPW = struct.pack("f", param[3])
         ARP = struct.pack("H", 0)
         VRP = struct.pack("H", param[4])
@@ -74,7 +73,7 @@ def setMode(mode, param):
     elif(mode==2):
         LRL = struct.pack("B", param[0])
         URL = struct.pack("B", param[1]) 
-        AA = struct.pack("H", param[2]*1000)
+        AA = struct.pack("H", int(param[2]*1000))
         APW = struct.pack("f", param[3])
         VA = struct.pack("H", 0*1000)
         VPW = struct.pack("f", 0)
@@ -93,7 +92,7 @@ def setMode(mode, param):
     elif(mode==3): 
         LRL = struct.pack("B", param[0])
         URL = struct.pack("B", param[1]) 
-        AA = struct.pack("H", param[2]*1000)
+        AA = struct.pack("H", int(param[2]*1000))
         APW = struct.pack("f", param[3])
         VA = struct.pack("H", 0*1000)
         VPW = struct.pack("f", 0)
@@ -115,6 +114,7 @@ def setMode(mode, param):
     #print(data)
     print("Writing Data: ", end = "")
     print(data)
+    #printData(data[2:])
     print("Parameters updated!")
     #x = ser.read(33)
     #print("Correct: " +str(data))
@@ -122,9 +122,9 @@ def setMode(mode, param):
     ser.close()
 
 def echoMode():
-    ser = serial.Serial(COM, 115200, timeout = 30)
+    ser = serial.Serial(COM, 115200, timeout = 10)
 
-    sleep(1)
+    sleep(2)
     ser.write(b"\x16\x22" + b"\x00"*37)
     ser.flushInput()
     ser.flushOutput()
@@ -132,8 +132,11 @@ def echoMode():
     sleep(0.5)
     readIn = ser.read(37)
     print("Recieving: ", end = "")
-    print(readIn)
+    #print(readIn)
+    printData(readIn)
+    ser.close()
 
+def printData(readIn):
     print("Mode: "+ str(struct.unpack("B", readIn[0:1])[0]))
     print("LRL: "+ str(struct.unpack("B", readIn[1:2])[0]))
     print("URL: "+ str(struct.unpack("B", readIn[2:3])[0]))
@@ -153,12 +156,11 @@ def echoMode():
     print("reactTime: "+ str(struct.unpack("B", readIn[34:35])[0]))
     print("respFact: "+ str(struct.unpack("B", readIn[35:36])[0]))
     print("recovTime: "+ str(struct.unpack("B", readIn[36:37])[0]))
-    
-    ser.close()
 
 #TESTING
 #isConnect()
-param = [50, 45, 1, 190, 150, 1, 3]
+#param = [50, 50, 4.9, 20.0, 150, 2.5, 3]
+#param = [50, 50, 4.9, 20.0, 150, 2.3, 3]
 #[50, 50, 1, 1, 150, 1, 3]
 #param = [50,40,1,1]
 #echoMode()
