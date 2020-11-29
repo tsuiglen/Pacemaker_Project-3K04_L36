@@ -14,6 +14,12 @@ ARP = []
 VRP = []
 PVARP = []
 rateSmoothing = []
+maximumSensorRate = []
+fixedAVDelay = []
+activityThreshold = []
+reactionTime = []
+responseFactor = []
+recoveryTime = []
 connected = False
 
 def setParamVals():
@@ -28,6 +34,10 @@ def setParamVals():
     #upperRateLimit
     for i in range(50, 180, 5):
         upperRateLimit.append(i)
+
+    #maximumSensorRate
+    for i in range(50, 180, 5):
+        maximumSensorRate.append(i)
 
     #atrialPulseAmplitude and ventricularPulseAmplitude
     atrialPulseAmplitude.append("OFF")
@@ -69,6 +79,28 @@ def setParamVals():
     while(temp <= 21):
         temp = temp + 3
         rateSmoothing.append(temp)
+    
+    #fixedAVDelay
+    for i in range(70, 310, 10):
+        fixedAVDelay.append(i)
+
+    
+    #upperRateLimit
+    lst = ["V-Low", "Low", "Med-Low", "Med", "Med-High", "High", "V-High"]
+    for i in lst:
+        activityThreshold.append(i)
+
+    #reactionTime
+    for i in range(10, 60, 10):
+        reactionTime.append(i)
+
+    #responseFactor
+    for i in range(1, 17, 1):
+        responseFactor.append(i)
+
+    #recoveryTime
+    for i in range(2, 17, 1):
+        recoveryTime.append(i)
 
 def switchMode(val):
     if(val == 'AOO'):
@@ -175,6 +207,26 @@ def programmableDataRange(modeParam):
                 if str(i[1]) != "OFF" and int(i[1]) not in rateSmoothing:
                     errors.append("Rate Smoothing:\n - (OFF, 3, 6, 9, 12, 15, 18, 21, 25)")
 
+            elif i[0] == "maximumSensorRate":
+                if float(i[1]) not in maximumSensorRate:
+                    errors.append("Rate Smoothing:\n - (50-175, increment = 5)")
+
+            elif i[0] == "activityThreshold":
+                if float(i[1]) not in activityThreshold:
+                    errors.append("Rate Smoothing:\n - (V-Low, Low, Med-Low, Med, Med-High, High, V-High)")
+
+            elif i[0] == "reactionTime":
+                if float(i[1]) not in reactionTime:
+                    errors.append("Rate Smoothing:\n - (10 - 50, increment = 10)")
+
+            elif i[0] == "responseFactor":
+                if float(i[1]) not in responseFactor:
+                    errors.append("Rate Smoothing:\n - (1 - 16, increment = 1)")
+
+            elif i[0] == "recoveryTime":
+                if float(i[1]) not in recoveryTime:
+                    errors.append("Rate Smoothing:\n - (2 - 16, increment = 1)")
+
     except Exception as e:
         print(e)
         errors.append("Text Field(s) are empty or invalid!")
@@ -260,15 +312,19 @@ class DCM_AOO(tk.Frame):
         # add review of the current value to the textbox
         # upperRateLimit.insert(0,self.upperRateLimit)
         upperRateLimit.grid(row=1, column=1, pady=10, padx=10)
+        upperRateLimit.insert(0,'50')
 
         lowerRateLimit = tk.Entry(self)
         lowerRateLimit.grid(row=1, column=3, pady=10, padx=10)
+        lowerRateLimit.insert(0, '30')
 
         atrialPulseAmplitude = tk.Entry(self)
         atrialPulseAmplitude.grid(row=2, column=1, pady=10, padx=10)
+        atrialPulseAmplitude.insert(0, 'OFF')
 
         atrialPulseWidth = tk.Entry(self)
         atrialPulseWidth.grid(row=2, column=3, pady=10, padx=10)
+        atrialPulseWidth.insert(0, '0.1')
 
         tk.Button(self, text="Modify",
                   command=lambda: self.modifyParameters(upperRateLimit, lowerRateLimit, atrialPulseAmplitude, atrialPulseWidth)).grid(row=4, columnspan=2 ,column=0, pady=10, padx=5)
@@ -290,20 +346,11 @@ class DCM_AOO(tk.Frame):
         print("atrialPulseAmplitude ", self.atrialPulseAmplitude)
         print("atrialPulseWidth", self.atrialPulseWidth)
         '''
-<<<<<<< HEAD
         # if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
         #             ["atrialPulseAmplitude", self.atrialPulseAmplitude],["atrialPulseWidth", self.atrialPulseWidth]])):
-        #     data = [self.lowerRateLimit, self.upperRateLimit, self.atrialPulseAmplitude, self.atrialPulseWidth]
-        #     data = list(map(int, data))
+        #     data = [int(self.lowerRateLimit), int(self.upperRateLimit), float(0 if self.atrialPulseAmplitude == "OFF" else self.atrialPulseAmplitude), float(self.atrialPulseWidth)]
         #     DCM_serial.setMode(2,data)
         #     DCM_serial.echoMode()
-=======
-        if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
-                    ["atrialPulseAmplitude", self.atrialPulseAmplitude],["atrialPulseWidth", self.atrialPulseWidth]])):
-            data = [int(self.lowerRateLimit), int(self.upperRateLimit), float(0 if self.atrialPulseAmplitude == "OFF" else self.atrialPulseAmplitude), float(self.atrialPulseWidth)]
-            DCM_serial.setMode(2,data)
-            DCM_serial.echoMode()
->>>>>>> 04f7da988eaeef4b9ad1fa3892fb44c51e0a97c8
 
 class DCM_VOO(tk.Frame):
     def __init__(self, master):
@@ -326,7 +373,7 @@ class DCM_VOO(tk.Frame):
         pacingModeMenu = tk.OptionMenu(
             self, self.tkvar, *pacingMode, command=self.getDropDown)
         pacingModeMenu.grid(row=0, column=1, pady=10, padx=5)
-
+       
         tk.Label(self, text="Upper Rate Limit").grid(
             row=1, column=0, pady=10, padx=10)
         tk.Label(self, text="Lower Rate Limit").grid(
@@ -361,20 +408,11 @@ class DCM_VOO(tk.Frame):
         self.ventricularPulseAmplitude = ventricularPulseAmplitude.get()
         self.ventricularPulseWidth = ventricularPulseWidth.get()
 
-<<<<<<< HEAD
         # if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
         #             ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth]])):
-        #     data = [self.lowerRateLimit, self.upperRateLimit, self.ventricularPulseAmplitude, self.ventricularPulseWidth]
-        #     data = list(map(int, data))
+        #     data = [int(self.lowerRateLimit), int(self.upperRateLimit), float(0 if self.ventricularPulseAmplitude == "OFF" else self.ventricularPulseAmplitude), float(self.ventricularPulseWidth)]
         #     DCM_serial.setMode(0,data)
         #     DCM_serial.echoMode()
-=======
-        if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
-                    ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth]])):
-            data = [int(self.lowerRateLimit), int(self.upperRateLimit), float(0 if self.ventricularPulseAmplitude == "OFF" else self.ventricularPulseAmplitude), float(self.ventricularPulseWidth)]
-            DCM_serial.setMode(0,data)
-            DCM_serial.echoMode()
->>>>>>> 04f7da988eaeef4b9ad1fa3892fb44c51e0a97c8
 
     def getDropDown(self, val):
         self.master.switch_frame(switchMode(val))
@@ -471,26 +509,13 @@ class DCM_AAI(tk.Frame):
         self.hysteresis = hysteresis.get()
         self.rateSmoothing = rateSmoothing.get()
 
-<<<<<<< HEAD
         # if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
         #             ["atrialPulseAmplitude", self.atrialPulseAmplitude],["atrialPulseWidth", self.atrialPulseWidth],
         #             ["atrialSensitivity",self.atrialSensitivity],["ARP", self.ARP], ["PVARP", self.PVARP], ["rateSmoothing", self.rateSmoothing]])):
-        #     data = [self.lowerRateLimit, self.upperRateLimit, self.atrialPulseAmplitude, self.atrialPulseWidth, self.ARP, self.atrialSensitivity,
-        #            self.rateSmoothing, self.PVARP]
-        #     data = list(map(int, data))
+        #     data = [int(self.lowerRateLimit), int(self.upperRateLimit), float(0 if self.atrialPulseAmplitude == "OFF" else self.atrialPulseAmplitude), float(self.atrialPulseWidth), int(self.ARP), float(self.atrialSensitivity),
+        #            int(self.rateSmoothing), int(self.PVARP)]
         #     DCM_serial.setMode(3,data)
         #     DCM_serial.echoMode()
-    
-    
-=======
-        if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
-                    ["atrialPulseAmplitude", self.atrialPulseAmplitude],["atrialPulseWidth", self.atrialPulseWidth],
-                    ["atrialSensitivity",self.atrialSensitivity],["ARP", self.ARP], ["PVARP", self.PVARP], ["rateSmoothing", self.rateSmoothing]])):
-            data = [int(self.lowerRateLimit), int(self.upperRateLimit), float(0 if self.atrialPulseAmplitude == "OFF" else self.atrialPulseAmplitude), float(self.atrialPulseWidth), int(self.ARP), float(self.atrialSensitivity),
-                   int(self.rateSmoothing), int(self.PVARP)]
-            DCM_serial.setMode(3,data)
-            DCM_serial.echoMode()
->>>>>>> 04f7da988eaeef4b9ad1fa3892fb44c51e0a97c8
     
 
 class DCM_VVI(tk.Frame):
@@ -574,7 +599,6 @@ class DCM_VVI(tk.Frame):
         self.hysteresis = hysteresis.get()
         self.rateSmoothing = rateSmoothing.get()
 
-<<<<<<< HEAD
         # if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
         #             ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth],
         #             ["ventricularSensitivity",self.ventricularSensitivity],["VRP", self.VRP], ["rateSmoothing", self.rateSmoothing]])):
@@ -636,11 +660,11 @@ class DCM_DOO(tk.Frame):
         fixedAVDelay = tk.Entry(self)
         fixedAVDelay.grid(row=2, column=1, pady=10, padx=10)
 
-        atrialAmplitude = tk.Entry(self)
-        atrialAmplitude.grid(row=2, column=3, pady=10, padx=10)
+        atrialPulseAmplitude = tk.Entry(self)
+        atrialPulseAmplitude.grid(row=2, column=3, pady=10, padx=10)
 
-        ventricularAmplitude = tk.Entry(self)
-        ventricularAmplitude.grid(row=3, column=1, pady=10, padx=10)
+        ventricularPulseAmplitude = tk.Entry(self)
+        ventricularPulseAmplitude.grid(row=3, column=1, pady=10, padx=10)
 
         atrialPulseWidth = tk.Entry(self)
         atrialPulseWidth.grid(row=3, column=3, pady=10, padx=10)
@@ -651,15 +675,18 @@ class DCM_DOO(tk.Frame):
 
 
         tk.Button(self, text="Modify",
-                  command=lambda: self.modifyParameters(upperRateLimit, lowerRateLimit, ventricularPulseAmplitude, ventricularPulseWidth)).grid(row=4, columnspan=2 ,column=3, pady=10, padx=15)
+                  command=lambda: self.modifyParameters(upperRateLimit, lowerRateLimit, fixedAVDelay, atrialPulseAmplitude, ventricularPulseAmplitude, atrialPulseWidth, ventricularPulseWidth)).grid(row=4, columnspan=2 ,column=3, pady=10, padx=15)
 
         tk.Button(self, text="Back",
                   command=lambda: self.master.switch_frame(homePage)).grid(row=4, columnspan=2, column=2, pady=10, padx=20)
 
-    def modifyParameters(self, upperRateLimit, lowerRateLimit, ventricularPulseAmplitude, ventricularPulseWidth):
+    def modifyParameters(self, upperRateLimit, lowerRateLimit, fixedAVDelay, atrialPulseAmplitude, ventricularPulseAmplitude, atrialPulseWidth, ventricularPulseWidth):
         self.upperRateLimit = upperRateLimit.get()
         self.lowerRateLimit = lowerRateLimit.get()
+        self.fixedAVDelay = fixedAVDelay.get()
+        self.atrialPulseAmplitude = atrialPulseAmplitude.get()
         self.ventricularPulseAmplitude = ventricularPulseAmplitude.get()
+        self.atrialPulseWidth = atrialPulseWidth.get()
         self.ventricularPulseWidth = ventricularPulseWidth.get()
 
         # if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
@@ -748,17 +775,21 @@ class DCM_AOOR(tk.Frame):
         
 
         tk.Button(self, text="Modify",
-                  command=lambda: self.modifyParameters(upperRateLimit, lowerRateLimit, ventricularPulseAmplitude, ventricularPulseWidth)).grid(row=5, columnspan=2 ,column=3, pady=10, padx=15)
+                  command=lambda: self.modifyParameters(upperRateLimit, lowerRateLimit, maximumSensorRate, atrialAmplitude, atrialPulseWidth, activityThreshold, reactionTime, responseFactor, recoveryTime)).grid(row=5, columnspan=2 ,column=3, pady=10, padx=15)
 
         tk.Button(self, text="Back",
                   command=lambda: self.master.switch_frame(homePage)).grid(row=5, columnspan=2, column=2, pady=10, padx=20)
 
-    def modifyParameters(self, upperRateLimit, lowerRateLimit, ventricularPulseAmplitude, ventricularPulseWidth):
+    def modifyParameters(self, upperRateLimit, lowerRateLimit, maximumSensorRate, atrialAmplitude, atrialPulseWidth, activityThreshold, reactionTime, responseFactor, recoveryTime):
         self.upperRateLimit = upperRateLimit.get()
         self.lowerRateLimit = lowerRateLimit.get()
-        self.ventricularPulseAmplitude = ventricularPulseAmplitude.get()
-        self.ventricularPulseWidth = ventricularPulseWidth.get()
-
+        self.maximumSensorRate = maximumSensorRate.get()
+        self.atrialAmplitude = atrialAmplitude.get()
+        self.atrialPulseWidth = atrialPulseWidth.get()
+        self.activityThreshold = activityThreshold.get()
+        self.reactionTime = reactionTime.get()
+        self.responseFactor = responseFactor.get()
+        self.recoveryTime = recoveryTime.get()
         # if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
         #             ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth]])):
         #     data = [self.lowerRateLimit, self.upperRateLimit, self.ventricularPulseAmplitude, self.ventricularPulseWidth]
@@ -841,17 +872,21 @@ class DCM_VOOR(tk.Frame):
         recoveryTime = tk.Entry(self)
         recoveryTime.grid(row=5, column=1, pady=10, padx=10)
         tk.Button(self, text="Modify",
-                  command=lambda: self.modifyParameters(upperRateLimit, lowerRateLimit, ventricularPulseAmplitude, ventricularPulseWidth)).grid(row=5, columnspan=2 ,column=3, pady=10, padx=15)
+                  command=lambda: self.modifyParameters(upperRateLimit, lowerRateLimit, maximumSensorRate, ventricularAmplitude, ventricularPulseWidth, activityThreshold, reactionTime, responseFactor, recoveryTime)).grid(row=5, columnspan=2 ,column=3, pady=10, padx=15)
 
         tk.Button(self, text="Back",
                   command=lambda: self.master.switch_frame(homePage)).grid(row=5, columnspan=2, column=2, pady=10, padx=20)
 
-    def modifyParameters(self, upperRateLimit, lowerRateLimit, ventricularPulseAmplitude, ventricularPulseWidth):
+    def modifyParameters(self,upperRateLimit, lowerRateLimit, maximumSensorRate, ventricularAmplitude, ventricularPulseWidth, activityThreshold, reactionTime, responseFactor, recoveryTime):
         self.upperRateLimit = upperRateLimit.get()
         self.lowerRateLimit = lowerRateLimit.get()
-        self.ventricularPulseAmplitude = ventricularPulseAmplitude.get()
+        self.maximumSensorRate = maximumSensorRate.get()
+        self.ventricularAmplitude = ventricularAmplitude.get()
         self.ventricularPulseWidth = ventricularPulseWidth.get()
-
+        self.activityThreshold = activityThreshold.get()
+        self.reactionTime = reactionTime.get()
+        self.responseFactor = responseFactor.get()
+        self.recoveryTime = recoveryTime.get()
         # if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
         #             ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth]])):
         #     data = [self.lowerRateLimit, self.upperRateLimit, self.ventricularPulseAmplitude, self.ventricularPulseWidth]
@@ -962,32 +997,32 @@ class DCM_AAIR(tk.Frame):
         recoveryTime.grid(row=7, column=3, pady=10, padx=10)
 
         tk.Button(self, text="Modify",
-                  command=lambda: self.modifyParameters(upperRateLimit, lowerRateLimit, ventricularPulseAmplitude, ventricularPulseWidth)).grid(row=8, columnspan=2 ,column=3, pady=10, padx=15)
+                  command=lambda: self.modifyParameters(upperRateLimit, lowerRateLimit, maximumSensorRate, atrialAmplitude, atrialPulseWidth, atrialSensitivity, ARP, PVARP, hysteresis, rateSmoothing, activityThreshold, reactionTime, responseFactor, recoveryTime)).grid(row=8, columnspan=2 ,column=3, pady=10, padx=15)
 
         tk.Button(self, text="Back",
                   command=lambda: self.master.switch_frame(homePage)).grid(row=8, columnspan=2, column=2, pady=10, padx=20)
 
-    def modifyParameters(self, upperRateLimit, lowerRateLimit, ventricularPulseAmplitude, ventricularPulseWidth):
+    def modifyParameters(self, upperRateLimit, lowerRateLimit, maximumSensorRate, atrialAmplitude, atrialPulseWidth, atrialSensitivity, ARP, PVARP, hysteresis, rateSmoothing, activityThreshold, reactionTime, responseFactor, recoveryTime):
         self.upperRateLimit = upperRateLimit.get()
         self.lowerRateLimit = lowerRateLimit.get()
-        self.ventricularPulseAmplitude = ventricularPulseAmplitude.get()
-        self.ventricularPulseWidth = ventricularPulseWidth.get()
-
+        self.maximumSensorRate = maximumSensorRate.get()
+        self.atrialAmplitude = atrialAmplitude.get()
+        self.atrialPulseWidth = atrialPulseWidth.get()
+        self.atrialSensitivity = atrialSensitivity.get()
+        self.ARP = ARP.get()
+        self.PVARP = PVARP.get()
+        self.hysteresis = hysteresis.get()
+        self.rateSmoothing = rateSmoothing.get()
+        self.activityThreshold = activityThreshold.get()
+        self.reactionTime = reactionTime.get()
+        self.responseFactor = responseFactor.get()
+        self.recoveryTime = recoveryTime.get()
         # if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
         #             ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth]])):
         #     data = [self.lowerRateLimit, self.upperRateLimit, self.ventricularPulseAmplitude, self.ventricularPulseWidth]
         #     data = list(map(int, data))
         #     DCM_serial.setMode(0,data)
         #     DCM_serial.echoMode()
-=======
-        if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
-                    ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth],
-                    ["ventricularSensitivity",self.ventricularSensitivity],["VRP", self.VRP], ["rateSmoothing", self.rateSmoothing]])):
-            data = [int(self.lowerRateLimit), int(self.upperRateLimit), float(0 if self.ventricularPulseAmplitude == "OFF" else self.ventricularPulseAmplitude), float(self.ventricularPulseWidth), int(self.VRP), float(self.ventricularSensitivity),
-                   int(self.rateSmoothing)]
-            DCM_serial.setMode(1,data)
-            DCM_serial.echoMode()
->>>>>>> 04f7da988eaeef4b9ad1fa3892fb44c51e0a97c8
 
     def getDropDown(self, val):
         self.master.switch_frame(switchMode(val))
@@ -1058,8 +1093,8 @@ class DCM_VVIR(tk.Frame):
         maximumSensorRate = tk.Entry(self)
         maximumSensorRate.grid(row=2, column=1, pady=10, padx=10)
 
-        ventricularAmplitude = tk.Entry(self)
-        ventricularAmplitude.grid(row=2, column=3, pady=10, padx=10)
+        ventricularPulseAmplitude = tk.Entry(self)
+        ventricularPulseAmplitude.grid(row=2, column=3, pady=10, padx=10)
 
         ventricularPulseWidth = tk.Entry(self)
         ventricularPulseWidth.grid(row=3, column=1, pady=10, padx=10)
@@ -1089,16 +1124,25 @@ class DCM_VVIR(tk.Frame):
         recoveryTime.grid(row=7, column=1, pady=10, padx=10)
 
         tk.Button(self, text="Modify",
-                  command=lambda: self.modifyParameters(upperRateLimit, lowerRateLimit, ventricularPulseAmplitude, ventricularPulseWidth)).grid(row=7, columnspan=2 ,column=3, pady=10, padx=15)
+                  command=lambda: self.modifyParameters(upperRateLimit, lowerRateLimit, ventricularPulseAmplitude, ventricularPulseWidth,ventricularSensitivity,VPR,hysteresis, rateSmoothing, activityThreshold, reactionTime, responseFactor, recoveryTime)).grid(row=7, columnspan=2 ,column=3, pady=10, padx=15)
 
         tk.Button(self, text="Back",
                   command=lambda: self.master.switch_frame(homePage)).grid(row=7, columnspan=2, column=2, pady=10, padx=20)
 
-    def modifyParameters(self, upperRateLimit, lowerRateLimit, ventricularPulseAmplitude, ventricularPulseWidth):
+    def modifyParameters(self, upperRateLimit, lowerRateLimit, ventricularPulseAmplitude, ventricularPulseWidth,ventricularSensitivity,VPR,hysteresis, rateSmoothing, activityThreshold, reactionTime, responseFactor, recoveryTime):
+
         self.upperRateLimit = upperRateLimit.get()
         self.lowerRateLimit = lowerRateLimit.get()
         self.ventricularPulseAmplitude = ventricularPulseAmplitude.get()
         self.ventricularPulseWidth = ventricularPulseWidth.get()
+        self.ventricularSensitivity = ventricularSensitivity.get()
+        self.VPR = VPR.get()
+        self.hysteresis = hysteresis.get()
+        self.rateSmoothing = rateSmoothing.get()
+        self.activityThreshold = activityThreshold.get()
+        self.reactionTime = reactionTime.get()
+        self.responseFactor = responseFactor.get()
+        self.recoveryTime = recoveryTime.get()
 
         # if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
         #             ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth]])):
@@ -1109,7 +1153,6 @@ class DCM_VVIR(tk.Frame):
 
     def getDropDown(self, val):
         self.master.switch_frame(switchMode(val))
-
 
 class DCM_DOOR(tk.Frame):
     print("foor")
@@ -1204,17 +1247,24 @@ class DCM_DOOR(tk.Frame):
         recoveryTime.grid(row=6, column=3, pady=10, padx=10)
 
         tk.Button(self, text="Modify",
-                  command=lambda: self.modifyParameters(upperRateLimit, lowerRateLimit, ventricularPulseAmplitude, ventricularPulseWidth)).grid(row=7, columnspan=2 ,column=3, pady=10, padx=15)
+                  command=lambda: self.modifyParameters(upperRateLimit, lowerRateLimit, maximumSensorRate, fixedAVDelay, atrialPulseAmplitude, ventricularPulseAmplitude, atrialPulseWidth, ventricularPulseWidth, activityThreshold, reactionTime, responseFactor, recoveryTime)).grid(row=7, columnspan=2 ,column=3, pady=10, padx=15)
 
         tk.Button(self, text="Back",
                   command=lambda: self.master.switch_frame(homePage)).grid(row=7, columnspan=2, column=2, pady=10, padx=20)
 
-    def modifyParameters(self, upperRateLimit, lowerRateLimit, ventricularPulseAmplitude, ventricularPulseWidth):
+    def modifyParameters(self, upperRateLimit, lowerRateLimit, maximumSensorRate, fixedAVDelay, atrialPulseAmplitude, ventricularPulseAmplitude, atrialPulseWidth, ventricularPulseWidth, activityThreshold, reactionTime, responseFactor, recoveryTime):
         self.upperRateLimit = upperRateLimit.get()
         self.lowerRateLimit = lowerRateLimit.get()
+        self.maximumSensorRate = maximumSensorRate.get()
+        self.fixedAVDelay = fixedAVDelay.get()
+        self.atrialPulseAmplitude = atrialPulseAmplitude.get()
         self.ventricularPulseAmplitude = ventricularPulseAmplitude.get()
+        self.atrialPulseWidth = atrialPulseWidth.get()
         self.ventricularPulseWidth = ventricularPulseWidth.get()
-
+        self.activityThreshold = activityThreshold.get()
+        self.reactionTime = reactionTime.get()
+        self.responseFactor = responseFactor.get()
+        self.recoveryTime = recoveryTime.get()
         # if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
         #             ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth]])):
         #     data = [self.lowerRateLimit, self.upperRateLimit, self.ventricularPulseAmplitude, self.ventricularPulseWidth]
