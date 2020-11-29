@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # import matplotlib.pyplot as plt
 # import matplotlib.animation as animation
 # from matplotlib import style
@@ -40,6 +41,58 @@
 #     print(readIn)
  
 #     y = struct.unpack("f", readIn[0:4])
+=======
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+from matplotlib import style
+import random
+import serial 
+import time
+import struct
+
+ser = ""
+x = 0
+readIn = '' 
+xs1 = []
+ys1 = []
+xs2 = []
+ys2 = []
+style.use('fivethirtyeight')
+fig1 = plt.figure()
+fig1.canvas.set_window_title('Atrium')
+ax1 = fig1.add_subplot(1,1,1)
+fig2 = plt.figure()
+fig2.canvas.set_window_title('Ventricle')
+ax2 = fig2.add_subplot(1,1,1)
+
+
+def handle_close(evt):
+    global ser
+
+    print('Closed Figure!')
+    ser.close()
+
+def animate1(i): #currently set to use randomly generated values for testing purposes
+    global xs1
+    global ys1
+    global x
+    global ser
+    global readIn
+    xs1.append(x)
+    x = x + 1
+    ser.write(b"\x16\x47" + b"\x00"*37)
+ 
+    readIn =  ser.read(37)#random.randint(0,50)
+    print(readIn)
+ 
+    y = int(struct.unpack("f", readIn[0:4])[0]+0.5)
+
+    if(len(ys1) > 50):
+        ys1.pop(0)
+        ys2.pop(0)
+        xs1.pop(0)
+        xs2.pop(0)
+>>>>>>> 04f7da988eaeef4b9ad1fa3892fb44c51e0a97c8
 
 #     print(x,",",y)
 #     ys1.append(y)
@@ -57,13 +110,18 @@
 #     #x = x + 1
 #     #y = ser.read(31)#random.randint(0,50)
     
+<<<<<<< HEAD
 #     y = struct.unpack("f", readIn[4:8])
+=======
+    y = int(struct.unpack("f", readIn[4:8])[0]+0.5)
+>>>>>>> 04f7da988eaeef4b9ad1fa3892fb44c51e0a97c8
 
 #     print(x,",",y)
 #     ys2.append(y)
 #     ax2.clear()
 #     ax2.plot(xs2, ys2)
     
+<<<<<<< HEAD
 # def plot():
 #     global x
 #     global fig1
@@ -74,6 +132,26 @@
 #     ser = serial.Serial("COM3", 115200)
 #     time.sleep(2)
 #     ser.write(b"\x16\x47" + b"\x00"*31)
+=======
+def plot():
+    global x
+    global fig1
+    global fig2
+    global ax1
+    global ax2
+    global ser
+    global ys1
+    global ys2
+    global xs1
+    global xs2
+    ys1 = []
+    ys2 = []
+    xs1 = []
+    xs2 = []
+    ser = serial.Serial("COM3", 115200)
+    time.sleep(1)
+    ser.write(b"\x16\x47" + b"\x00"*37)
+>>>>>>> 04f7da988eaeef4b9ad1fa3892fb44c51e0a97c8
 
 #     if(x > 0):
 #         fig1 = plt.figure()
@@ -96,6 +174,10 @@
 #     plt.show()
     
 
+<<<<<<< HEAD
 # plot()
 
 # '''
+=======
+#plot()
+>>>>>>> 04f7da988eaeef4b9ad1fa3892fb44c51e0a97c8

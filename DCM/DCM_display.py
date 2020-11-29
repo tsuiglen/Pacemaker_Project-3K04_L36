@@ -32,32 +32,25 @@ def setParamVals():
     #atrialPulseAmplitude and ventricularPulseAmplitude
     atrialPulseAmplitude.append("OFF")
 
-    temp = 4
-    while(temp <= 31):
+    temp = 0
+    while(temp < 50):
         temp = temp + 1
         atrialPulseAmplitude.append(temp/10)
     
-    temp = 30
-    while(temp <= 69):
-        temp = temp + 5
-        atrialPulseAmplitude.append(temp/10)
     ventricularPulseAmplitude.extend(atrialPulseAmplitude)
 
     #atrialPulseWidth and ventricularPulseWidth
     atrialPulseWidth.append(0.05)
     temp = 0
-    while(temp <= 18):
+    while(temp < 30):
         temp = temp + 1
-        atrialPulseWidth.append(temp/10)
+        atrialPulseWidth.append(temp)
     ventricularPulseWidth.extend(atrialPulseWidth)
 
     #atrialSensitivity
-    atrialSensitivity.append(0.25)
-    atrialSensitivity.append(0.5)
-    atrialSensitivity.append(0.75)
-    temp = 5
-    while(temp <= 100):
-        temp = temp + 5
+    temp = 0
+    while(temp < 50):
+        temp = temp + 1
         atrialSensitivity.append(temp/10)
     ventricularSensitivity.extend(atrialSensitivity)
 
@@ -140,27 +133,27 @@ def programmableDataRange(modeParam):
 
             elif str(i[1]) != "OFF" and i[0] == "atrialPulseAmplitude":
                 if float(i[1]) not in atrialPulseAmplitude:
-                    errors.append("Atrial Pulse Amplitude Invalid: \n- (0.5 - 3.2, increment = 0.1) \n- (3.5 - 7.0, increment = 0.5) \n- OFF")
+                    errors.append("Atrial Pulse Amplitude Invalid:\n- (0.1 - 5.0, increment = 0.1) \n- OFF")
 
             elif i[0] == "atrialPulseWidth":
                 if float(i[1]) not in atrialPulseWidth:
-                    errors.append("Atrial Pulse Width Invalid:\n - (0.1 - 1.9, increment = 0.1) \n - 0.05")
+                    errors.append("Atrial Pulse Width Invalid:\n - (1 - 30, increment = 1)")
 
             elif i[0] == "ventricularPulseAmplitude":
                 if str(i[1]) != "OFF" and float(i[1]) not in ventricularPulseAmplitude:
-                    errors.append("Ventricular Pulse Amplitude Invalid:\n - (0.5 - 3.2, increment = 0.1) \n- (3.5 - 7.0, increment = 0.5) \n- OFF")
+                    errors.append("Ventricular Pulse Amplitude Invalid:\n- (0.1 - 5.0, increment = 0.1) \n- OFF")
 
             elif i[0] == "ventricularPulseWidth":
                 if float(i[1]) not in ventricularPulseWidth:
-                    errors.append("Ventricular Pulse Width Invalid:\n - (0.1 - 1.9, increment = 0.1) \n - 0.05")
+                    errors.append("Ventricular Pulse Width Invalid:\n - (1 - 30, increment = 1)")
 
             elif i[0] == "atrialSensitivity":
                 if float(i[1]) not in atrialSensitivity:
-                    errors.append("Atrial Sensitivity Invalid:\n - (0.25, 0.5, 0.75) \n - (1.0 - 10.0, increment = 0.5)")
+                    errors.append("Atrial Sensitivity Invalid:\n - (0.0 - 5.0, increment = 0.1)")
 
             elif i[0] == "ventricularSensitivity":
                 if float(i[1]) not in ventricularSensitivity:
-                    errors.append("Ventricular Sensitivity Invalid:\n - (0.25, 0.5, 0.75) \n - (1.0 - 10.0, increment = 0.5)")
+                    errors.append("Ventricular Sensitivity Invalid:\n - (0.0 - 5.0, increment = 0.1)")
 
             elif i[0] == "ARP":
                 if float(i[1]) not in ARP:
@@ -297,12 +290,20 @@ class DCM_AOO(tk.Frame):
         print("atrialPulseAmplitude ", self.atrialPulseAmplitude)
         print("atrialPulseWidth", self.atrialPulseWidth)
         '''
+<<<<<<< HEAD
         # if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
         #             ["atrialPulseAmplitude", self.atrialPulseAmplitude],["atrialPulseWidth", self.atrialPulseWidth]])):
         #     data = [self.lowerRateLimit, self.upperRateLimit, self.atrialPulseAmplitude, self.atrialPulseWidth]
         #     data = list(map(int, data))
         #     DCM_serial.setMode(2,data)
         #     DCM_serial.echoMode()
+=======
+        if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
+                    ["atrialPulseAmplitude", self.atrialPulseAmplitude],["atrialPulseWidth", self.atrialPulseWidth]])):
+            data = [int(self.lowerRateLimit), int(self.upperRateLimit), float(0 if self.atrialPulseAmplitude == "OFF" else self.atrialPulseAmplitude), float(self.atrialPulseWidth)]
+            DCM_serial.setMode(2,data)
+            DCM_serial.echoMode()
+>>>>>>> 04f7da988eaeef4b9ad1fa3892fb44c51e0a97c8
 
 class DCM_VOO(tk.Frame):
     def __init__(self, master):
@@ -360,12 +361,20 @@ class DCM_VOO(tk.Frame):
         self.ventricularPulseAmplitude = ventricularPulseAmplitude.get()
         self.ventricularPulseWidth = ventricularPulseWidth.get()
 
+<<<<<<< HEAD
         # if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
         #             ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth]])):
         #     data = [self.lowerRateLimit, self.upperRateLimit, self.ventricularPulseAmplitude, self.ventricularPulseWidth]
         #     data = list(map(int, data))
         #     DCM_serial.setMode(0,data)
         #     DCM_serial.echoMode()
+=======
+        if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
+                    ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth]])):
+            data = [int(self.lowerRateLimit), int(self.upperRateLimit), float(0 if self.ventricularPulseAmplitude == "OFF" else self.ventricularPulseAmplitude), float(self.ventricularPulseWidth)]
+            DCM_serial.setMode(0,data)
+            DCM_serial.echoMode()
+>>>>>>> 04f7da988eaeef4b9ad1fa3892fb44c51e0a97c8
 
     def getDropDown(self, val):
         self.master.switch_frame(switchMode(val))
@@ -462,6 +471,7 @@ class DCM_AAI(tk.Frame):
         self.hysteresis = hysteresis.get()
         self.rateSmoothing = rateSmoothing.get()
 
+<<<<<<< HEAD
         # if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
         #             ["atrialPulseAmplitude", self.atrialPulseAmplitude],["atrialPulseWidth", self.atrialPulseWidth],
         #             ["atrialSensitivity",self.atrialSensitivity],["ARP", self.ARP], ["PVARP", self.PVARP], ["rateSmoothing", self.rateSmoothing]])):
@@ -472,6 +482,15 @@ class DCM_AAI(tk.Frame):
         #     DCM_serial.echoMode()
     
     
+=======
+        if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
+                    ["atrialPulseAmplitude", self.atrialPulseAmplitude],["atrialPulseWidth", self.atrialPulseWidth],
+                    ["atrialSensitivity",self.atrialSensitivity],["ARP", self.ARP], ["PVARP", self.PVARP], ["rateSmoothing", self.rateSmoothing]])):
+            data = [int(self.lowerRateLimit), int(self.upperRateLimit), float(0 if self.atrialPulseAmplitude == "OFF" else self.atrialPulseAmplitude), float(self.atrialPulseWidth), int(self.ARP), float(self.atrialSensitivity),
+                   int(self.rateSmoothing), int(self.PVARP)]
+            DCM_serial.setMode(3,data)
+            DCM_serial.echoMode()
+>>>>>>> 04f7da988eaeef4b9ad1fa3892fb44c51e0a97c8
     
 
 class DCM_VVI(tk.Frame):
@@ -555,6 +574,7 @@ class DCM_VVI(tk.Frame):
         self.hysteresis = hysteresis.get()
         self.rateSmoothing = rateSmoothing.get()
 
+<<<<<<< HEAD
         # if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
         #             ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth],
         #             ["ventricularSensitivity",self.ventricularSensitivity],["VRP", self.VRP], ["rateSmoothing", self.rateSmoothing]])):
@@ -959,6 +979,15 @@ class DCM_AAIR(tk.Frame):
         #     data = list(map(int, data))
         #     DCM_serial.setMode(0,data)
         #     DCM_serial.echoMode()
+=======
+        if(programmableDataRange([["upperRateLimit", self.upperRateLimit],["lowerRateLimit", self.lowerRateLimit],
+                    ["ventricularPulseAmplitude", self.ventricularPulseAmplitude],["ventricularPulseWidth", self.ventricularPulseWidth],
+                    ["ventricularSensitivity",self.ventricularSensitivity],["VRP", self.VRP], ["rateSmoothing", self.rateSmoothing]])):
+            data = [int(self.lowerRateLimit), int(self.upperRateLimit), float(0 if self.ventricularPulseAmplitude == "OFF" else self.ventricularPulseAmplitude), float(self.ventricularPulseWidth), int(self.VRP), float(self.ventricularSensitivity),
+                   int(self.rateSmoothing)]
+            DCM_serial.setMode(1,data)
+            DCM_serial.echoMode()
+>>>>>>> 04f7da988eaeef4b9ad1fa3892fb44c51e0a97c8
 
     def getDropDown(self, val):
         self.master.switch_frame(switchMode(val))
@@ -1198,4 +1227,5 @@ class DCM_DOOR(tk.Frame):
 
 
 setParamVals()
-#print(rateSmoothing)
+#print(atrialPulseWidth)
+#print(atrialSensitivity)
