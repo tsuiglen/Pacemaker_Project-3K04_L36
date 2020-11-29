@@ -1,4 +1,5 @@
 import tkinter as tk
+userName = ""
 class welcomePage(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
@@ -18,7 +19,9 @@ class welcomePage(tk.Frame):
                   command=lambda: master.createAccount()).grid(row=3, columnspan=2, pady=5)
     
     def getUser(self):
-        return self.username.get()
+        global userName
+        userName = self.username.get()
+        return userName
 
     def getPass(self):
         return self.password.get()

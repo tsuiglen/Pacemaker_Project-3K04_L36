@@ -2,12 +2,10 @@
 
 import serial
 from time import sleep
-
+import DCM_login
 import struct
 
 COM = "COM3"
-#TODO
-#Work on this for assignment 2
 
 def isConnect():
     connection = False
@@ -26,7 +24,7 @@ def isConnect():
     
 def getDeviceID():
     deviceID = "N/A"
-    deviceID = "15862"
+    deviceID = DCM_login.userName
     return deviceID #device ID to differentiate different pacemakers
 
 def setMode(mode, param):
@@ -115,6 +113,7 @@ def setMode(mode, param):
     data = b"\x16\x55"+setting+LRL+URL+AA+APW+VA+VPW+ARP+VRP+A_Sens+V_Sens+RateSM+PVARP+fixAVDelay+maxSensRate+actThres+reactTime+respFact+recovTime
     ser.write(data)
     #print(data)
+    print("Writing Data: ", end = "")
     print(data)
     print("Parameters updated!")
     #x = ser.read(33)
@@ -132,6 +131,7 @@ def echoMode():
     ser.write(b"\x16\x22" + b"\x00"*37)
     sleep(0.5)
     readIn = ser.read(37)
+    print("Recieving: ", end = "")
     print(readIn)
 
     print("Mode: "+ str(struct.unpack("B", readIn[0:1])[0]))

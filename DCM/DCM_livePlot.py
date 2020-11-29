@@ -15,8 +15,10 @@ xs2 = []
 ys2 = []
 style.use('fivethirtyeight')
 fig1 = plt.figure()
+fig1.canvas.set_window_title('Atrium')
 ax1 = fig1.add_subplot(1,1,1)
 fig2 = plt.figure()
+fig2.canvas.set_window_title('Ventricle')
 ax2 = fig2.add_subplot(1,1,1)
 
 
@@ -39,7 +41,7 @@ def animate1(i): #currently set to use randomly generated values for testing pur
     readIn =  ser.read(37)#random.randint(0,50)
     print(readIn)
  
-    y = struct.unpack("f", readIn[0:4])[0]
+    y = int(struct.unpack("f", readIn[0:4])[0]+0.5)
 
     if(len(ys1) > 50):
         ys1.pop(0)
@@ -63,7 +65,7 @@ def animate2(i): #currently set to use randomly generated values for testing pur
     #x = x + 1
     #y = ser.read(31)#random.randint(0,50)
     
-    y = struct.unpack("f", readIn[4:8])[0]
+    y = int(struct.unpack("f", readIn[4:8])[0]+0.5)
 
     print(x,",",y)
     ys2.append(y)
