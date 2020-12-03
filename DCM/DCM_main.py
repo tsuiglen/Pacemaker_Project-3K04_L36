@@ -1,4 +1,5 @@
 import tkinter as tk
+import DCM_login
 from DCM_login import welcomePage
 from DCM_createAccount import CreateAccPage
 from DCM_display import DCMPage
@@ -31,6 +32,8 @@ class main(tk.Tk):
             for i in accounts:
                 if(username == i.split("-")[0] and password == i.split("-")[1]):
                     print("Login Successful! Username: "  + username)
+                    # fileName = DCM_login.userName + '.txt'
+                    # parameters = open(fileName, 'a')
                     self.switch_frame(homePage)
                     return
             print(username)
@@ -43,6 +46,7 @@ class main(tk.Tk):
             accountInfo = open("accountInfo.txt", 'r')
             accounts = accountInfo.readlines()
             if(len(accounts) > 9):
+                print(len(accounts))
                 return False
             else:
                 return True
@@ -60,8 +64,13 @@ class main(tk.Tk):
             accountInfo = open("accountInfo.txt", 'a')
             #print(self.userInfo.get())
             accountInfo.write(str(username)+"-"+str(password)+"\n")
+            fileName = username + '.txt'
+            parameters = open(fileName, 'w')
+            for i in range (19):
+                parameters.write('20' + '\n')
         finally:
             accountInfo.close()
+            parameters.close()
         self.switch_frame(welcomePage)
     
     def logOut(self):

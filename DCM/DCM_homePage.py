@@ -15,5 +15,18 @@ class homePage(tk.Frame):
         tk.Button(self, text="Log out",
                   command=lambda: master.logOut()).grid(row=3, columnspan=2, pady=10, padx=20)
     
-        tk.Button(self, text="Plot",
-                  command=lambda: DCM_livePlot.plot()).grid(row=4, columnspan=2, pady=10, padx=20)
+        # tk.Button(self, text="Plot",
+        #           command=lambda: DCM_livePlot.plot()).grid(row=4, columnspan=2, pady=10, padx=20)
+
+
+        # for i in range(18):
+        #     if (i == 0):
+        #         parametersFile.write(self.upperRateLimit+"\n")
+        #     elif (i == 1):
+        #         parametersFile.write(self.lowerRateLimit+"\n")
+        #     elif (i == 2):
+        #         parametersFile.write(self.atrialPulseAmplitude+"\n")
+        #     elif (i == 3):
+        #         parametersFile.write(self.atrialPulseWidth+"\n")
+        #     else:
+        #         parametersFile.write(parameters[i]+"\n")
